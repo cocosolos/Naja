@@ -24,24 +24,24 @@
                 <tr>
                     <th class="col-sm-2 bg-secondary bg-opacity-25">Skill</th>
                     <td>
-                        @Html.DisplayFor(model => model.ItemWeapon!.SkillDescription)
+                        @Html.DisplayFor(i => Model.ItemWeapon!.SkillDescription)
                     </td>
                     @if (Model.ItemWeapon!.DmgType != 0)
                     {
                         <th class="col-sm-2 bg-secondary bg-opacity-25">Damage Type</th>
                         <td>
-                            @Html.DisplayFor(model => Model.ItemWeapon!.DmgTypeDescription)
+                            @Html.DisplayFor(i => Model.ItemWeapon!.DmgTypeDescription)
                         </td>
                     }
                 </tr>
                 <tr>
                     <th class="col-sm-2 bg-secondary bg-opacity-25">Damage</th>
                     <td>
-                        @Html.DisplayFor(model => Model.ItemWeapon!.Dmg)
+                        @Html.DisplayFor(i => Model.ItemWeapon!.Dmg)
                     </td>
                     <th class="col-sm-2 bg-secondary bg-opacity-25">Delay</th>
                     <td>
-                        @Html.DisplayFor(model => Model.ItemWeapon!.Delay)
+                        @Html.DisplayFor(i => Model.ItemWeapon!.Delay)
                     </td>
                 </tr>
             }
@@ -50,14 +50,14 @@
                 <tr>
                     <th class="col-sm-2 bg-secondary bg-opacity-25">Shield Size</th>
                     <td colspan="3">
-                        @Html.DisplayFor(model => model.ItemEquipment!.ShieldSize)
+                        @Html.DisplayFor(i => Model.ItemEquipment!.ShieldSize)
                     </td>
                 </tr>
             }
             <tr>
                 <th class="col-sm-2 bg-secondary bg-opacity-25">Level</th>
                 <td colspan="3">
-                    @Html.DisplayFor(model => model.ItemEquipment!.Level)
+                    @Html.DisplayFor(i => Model.ItemEquipment!.Level)
                 </td>
             </tr>
             @if (Model.ItemEquipment!.Ilevel != 0)
@@ -65,7 +65,7 @@
                 <tr>
                     <th class="col-sm-2 bg-secondary bg-opacity-25">Item Level</th>
                     <td colspan="3">
-                        @Html.DisplayFor(model => model.ItemEquipment!.Ilevel)
+                        @Html.DisplayFor(i => Model.ItemEquipment!.Ilevel)
                     </td>
                 </tr>
             }
@@ -74,7 +74,7 @@
                 <tr>
                     <th class="col-sm-2 bg-secondary bg-opacity-25">Superior Level</th>
                     <td colspan="3">
-                        @Html.DisplayFor(model => model.ItemEquipment!.SuLevel)
+                        @Html.DisplayFor(i => Model.ItemEquipment!.SuLevel)
                     </td>
                 </tr>
             }

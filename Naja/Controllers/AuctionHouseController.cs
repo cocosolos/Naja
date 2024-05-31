@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 using Naja.Models;
@@ -25,21 +19,20 @@ namespace Naja.Controllers
         {
             var auctionHouse = await _context.AuctionHouse
                 .Where(ah => ah.SellDate == 0)
-                .Include(a => a.ItemBasic)
-                .ToListAsync();
-
-            var groupedAuctionHouse = auctionHouse
-                .GroupBy(ah => new ValueTuple<ushort, byte>(ah.Itemid, ah.Stack))
-                .Select(g => new
+                .Include(ah => ah.ItemBasic)
+                .GroupBy(ah => new { ah.Itemid, ah.Stack })
+                .Select(g => new AuctionHouseViewModel
                 {
-                    Group = g,
-                    LatestDate = g.Max(ah => ah.Date)
+                    ItemId = g.Key.Itemid,
+                    Stack = g.Key.Stack,
+                    Stock = g.Count(),
+                    LatestDate = g.Max(ah => ah.Date),
+                    Listings = g.ToList()
                 })
                 .OrderByDescending(g => g.LatestDate)
-                .Select(g => g.Group)
-                .ToList();
+                .ToListAsync();
 
-            return View(groupedAuctionHouse);
+            return View(auctionHouse);
         }
 
     }

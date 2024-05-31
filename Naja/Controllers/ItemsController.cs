@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 using Naja.Models;
@@ -30,8 +24,8 @@ namespace Naja.Controllers
             ViewData["NameSortParam"] = sort == "name" ? "name_desc" : sort == "name_desc" ? "" : "name";
             ViewData["SortnameSortParam"] = sort == "sortname" ? "sortname_desc" : sort == "sortname_desc" ? "" : "sortname";
 
-            var items = from s in _context.ItemsBasic
-                        select s;
+            var items = _context.ItemsBasic.Select(item => item);
+
             if (!String.IsNullOrEmpty(search))
             {
                 var searchFormatted = search.Replace(" ", "_");
@@ -69,6 +63,7 @@ namespace Naja.Controllers
             {
                 return NotFound();
             }
+
             var item = await _context.ItemsBasic
                 .Include(b => b.ItemUsable)
                 .Include(b => b.ItemEquipment)
@@ -76,12 +71,13 @@ namespace Naja.Controllers
                 .Include(b => b.ItemFurnishing)
                 .Include(b => b.ItemPuppet)
                 .FirstOrDefaultAsync(m => m.Itemid == id);
+
             if (item == null)
             {
                 return NotFound();
             }
 
-            var auctionHouse = await _context.AuctionHouse
+            var auctionHouseHistory = await _context.AuctionHouse
                 .Where(ah => ah.Itemid == id && ah.SellDate != 0)
                 .OrderByDescending(ah => ah.Date)
                 .ToListAsync();
@@ -89,21 +85,25 @@ namespace Naja.Controllers
             var auctionHouseStock = await _context.AuctionHouse
                 .Where(ah => ah.Itemid == id && ah.SellDate == 0)
                 .GroupBy(ah => ah.Stack)
+                .Select(g => new
+                {
+                    Stack = g.Key,
+                    Count = g.Count()
+                })
                 .ToListAsync();
+
+            int singlesCount = auctionHouseStock.FirstOrDefault(g => g.Stack == 0)?.Count ?? 0;
+            int stacksCount = auctionHouseStock.FirstOrDefault(g => g.Stack == 1)?.Count ?? 0;
 
             var viewModel = new ItemViewModel
             {
                 ItemBasic = item,
-                AuctionHouse = auctionHouse,
-                AuctionHouseStock = auctionHouseStock
+                AuctionHouseHistory = auctionHouseHistory,
+                AuctionHouseStock = (singlesCount, stacksCount)
             };
 
             return View(viewModel);
         }
 
-        private bool ItemExists(ushort id)
-        {
-            return _context.ItemsBasic.Any(e => e.Itemid == id);
-        }
     }
 }

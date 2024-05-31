@@ -42,10 +42,10 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.DisplayName)
+                    @Html.DisplayFor(i => item.DisplayName)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.DisplaySortname)
+                    @Html.DisplayFor(i => item.DisplaySortname)
                 </td>
                 <td class="col-sm-1 text-center">
                     <a class="btn btn-primary btn-sm py-0" asp-action="Details" asp-route-id="@item.Itemid">Details</a>
