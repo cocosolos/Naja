@@ -1,0 +1,92 @@
+@model Naja.Models.ItemBasic
+
+@if (Model.ItemEquipment != null)
+{
+    <table class="table table-bordered border-secondary table-sm">
+        <thead class="bg-primary text-white text-center">
+            <tr>
+                <th colspan="4">Equipment Stats</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th class="col-sm-2 bg-secondary bg-opacity-25">Slot</th>
+                <td colspan="3">
+                    @{
+                        var slots = string.Join(", ", Model.ItemEquipment!.SlotDescriptions);
+                    }
+                    <span>@slots</span>
+                </td>
+            </tr>
+            @if (Model.ItemWeapon != null && Model.ItemWeapon!.Skill != 0)
+            {
+
+                <tr>
+                    <th class="col-sm-2 bg-secondary bg-opacity-25">Skill</th>
+                    <td>
+                        @Html.DisplayFor(model => model.ItemWeapon!.SkillDescription)
+                    </td>
+                    @if (Model.ItemWeapon!.DmgType != 0)
+                    {
+                        <th class="col-sm-2 bg-secondary bg-opacity-25">Damage Type</th>
+                        <td>
+                            @Html.DisplayFor(model => Model.ItemWeapon!.DmgTypeDescription)
+                        </td>
+                    }
+                </tr>
+                <tr>
+                    <th class="col-sm-2 bg-secondary bg-opacity-25">Damage</th>
+                    <td>
+                        @Html.DisplayFor(model => Model.ItemWeapon!.Dmg)
+                    </td>
+                    <th class="col-sm-2 bg-secondary bg-opacity-25">Delay</th>
+                    <td>
+                        @Html.DisplayFor(model => Model.ItemWeapon!.Delay)
+                    </td>
+                </tr>
+            }
+            @if (Model.ItemEquipment!.ShieldSize != 0)
+            {
+                <tr>
+                    <th class="col-sm-2 bg-secondary bg-opacity-25">Shield Size</th>
+                    <td colspan="3">
+                        @Html.DisplayFor(model => model.ItemEquipment!.ShieldSize)
+                    </td>
+                </tr>
+            }
+            <tr>
+                <th class="col-sm-2 bg-secondary bg-opacity-25">Level</th>
+                <td colspan="3">
+                    @Html.DisplayFor(model => model.ItemEquipment!.Level)
+                </td>
+            </tr>
+            @if (Model.ItemEquipment!.Ilevel != 0)
+            {
+                <tr>
+                    <th class="col-sm-2 bg-secondary bg-opacity-25">Item Level</th>
+                    <td colspan="3">
+                        @Html.DisplayFor(model => model.ItemEquipment!.Ilevel)
+                    </td>
+                </tr>
+            }
+            @if (Model.ItemEquipment!.SuLevel != 0)
+            {
+                <tr>
+                    <th class="col-sm-2 bg-secondary bg-opacity-25">Superior Level</th>
+                    <td colspan="3">
+                        @Html.DisplayFor(model => model.ItemEquipment!.SuLevel)
+                    </td>
+                </tr>
+            }
+            <tr>
+                <th class="col-sm-2 bg-secondary bg-opacity-25">Jobs</th>
+                <td colspan="3">
+                    @foreach (var job in Model.ItemEquipment!.JobDescriptions)
+                    {
+                        <span>@job</span>
+                    }
+                </td>
+            </tr>
+        </tbody>
+    </table>
+}

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Naja.Models;
 
@@ -8,6 +9,9 @@ public partial class Char
     public uint Charid { get; set; }
 
     public uint Accid { get; set; }
+
+    [ForeignKey("Accid")]
+    public virtual required Account Account { get; set; }
 
     public uint OriginalAccid { get; set; }
 

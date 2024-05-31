@@ -32,7 +32,7 @@ public partial class XiContext : DbContext
 
     public virtual DbSet<AccountsSession> AccountsSessions { get; set; }
 
-    public virtual DbSet<AuctionHouse> AuctionHouses { get; set; }
+    public virtual DbSet<AuctionHouse> AuctionHouse { get; set; }
 
     public virtual DbSet<AuctionHouseItem> AuctionHouseItems { get; set; }
 
@@ -160,23 +160,23 @@ public partial class XiContext : DbContext
 
     public virtual DbSet<IpException> IpExceptions { get; set; }
 
-    public virtual DbSet<ItemBasic> ItemBasics { get; set; }
+    public virtual DbSet<ItemBasic> ItemsBasic { get; set; }
 
-    public virtual DbSet<ItemEquipment> ItemEquipments { get; set; }
+    public virtual DbSet<ItemEquipment> ItemsEquipment { get; set; }
 
-    public virtual DbSet<ItemFurnishing> ItemFurnishings { get; set; }
+    public virtual DbSet<ItemFurnishing> ItemsFurnishing { get; set; }
 
-    public virtual DbSet<ItemLatent> ItemLatents { get; set; }
+    public virtual DbSet<ItemLatent> ItemsLatent { get; set; }
 
-    public virtual DbSet<ItemMod> ItemMods { get; set; }
+    public virtual DbSet<ItemMod> ItemsMod { get; set; }
 
-    public virtual DbSet<ItemModsPet> ItemModsPets { get; set; }
+    public virtual DbSet<ItemModsPet> ItemsModsPet { get; set; }
 
-    public virtual DbSet<ItemPuppet> ItemPuppets { get; set; }
+    public virtual DbSet<ItemPuppet> ItemsPuppet { get; set; }
 
-    public virtual DbSet<ItemUsable> ItemUsables { get; set; }
+    public virtual DbSet<ItemUsable> ItemsUsable { get; set; }
 
-    public virtual DbSet<ItemWeapon> ItemWeapons { get; set; }
+    public virtual DbSet<ItemWeapon> ItemsWeapon { get; set; }
 
     public virtual DbSet<JobPoint> JobPoints { get; set; }
 

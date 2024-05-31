@@ -1,16 +1,19 @@
 using Microsoft.AspNetCore.Mvc;
-using Naja.Models;
 using System.Diagnostics;
+using Naja.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Naja.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly XiContext _context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, XiContext context)
         {
             _logger = logger;
+            _context = context;
         }
 
         public IActionResult Index()
@@ -18,7 +21,7 @@ namespace Naja.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult About()
         {
             return View();
         }

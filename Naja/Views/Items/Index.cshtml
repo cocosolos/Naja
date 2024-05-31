@@ -1,0 +1,79 @@
+﻿@model PaginatedList<Naja.Models.ItemBasic>
+
+@{
+    ViewData["Title"] = "Items";
+    var searchParam = ViewData["SearchParam"] as string;
+}
+
+<h1>Items</h1>
+
+
+<form asp-controller="Items" asp-action="Index" method="get">
+    <div class="input-group mb-2">
+        <input class="form-control" type="text" value="@ViewData["SearchParam"]" name="search" placeholder="Search" />
+        <input class="btn btn-primary" type="submit" value="Search" />
+    </div>
+</form>
+
+@if (!string.IsNullOrEmpty(searchParam))
+{
+    <div class="mb-2">
+        <a asp-action="Index">Back to Full List</a>
+    </div>
+}
+
+<table class="table table-bordered border-secondary table-hover table-sm">
+    <thead>
+        <tr>
+            <th class="bg-secondary bg-opacity-25"><a class="text-black" asp-action="Index"
+                    asp-route-search="@ViewData["SearchParam"]" asp-route-sort="@ViewData["NameSortParam"]"
+                    asp-route-page="@(Model.PageIndex)">Name</a>
+            </th>
+            <th class="bg-secondary bg-opacity-25"><a class="text-black" asp-action="Index"
+                    asp-route-search="@ViewData["SearchParam"]" asp-route-sort="@ViewData["SortnameSortParam"]"
+                    asp-route-page="@(Model.PageIndex)">Sort
+                    Name</a></th>
+            <th class="bg-secondary bg-opacity-25"></th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DisplayName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DisplaySortname)
+                </td>
+                <td class="col-sm-1 text-center">
+                    <a class="btn btn-primary btn-sm py-0" asp-action="Details" asp-route-id="@item.Itemid">Details</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@{
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+}
+<div class="text-center">
+    <a asp-action="Index" asp-route-search="@ViewData["SearchParam"]" asp-route-sort="@ViewData["CurrentSort"]"
+        asp-route-page="1" class="btn btn-default @prevDisabled">
+        First
+    </a>
+    <a asp-action="Index" asp-route-search="@ViewData["SearchParam"]" asp-route-sort="@ViewData["CurrentSort"]"
+        asp-route-page="@(Model.PageIndex - 1)" class="btn btn-default @prevDisabled">
+        Previous
+    </a>
+    <a asp-action="Index" asp-route-search="@ViewData["SearchParam"]" asp-route-sort="@ViewData["CurrentSort"]"
+        asp-route-page="@(Model.PageIndex + 1)" class="btn btn-default @nextDisabled">
+        Next
+    </a>
+    <a asp-action="Index" asp-route-search="@ViewData["SearchParam"]" asp-route-sort="@ViewData["CurrentSort"]"
+        asp-route-page="@(Model.TotalPages)" class="btn btn-default @nextDisabled">
+        Last
+    </a>
+</div>

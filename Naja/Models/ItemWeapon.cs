@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Naja.Models;
 
@@ -7,9 +8,51 @@ public partial class ItemWeapon
 {
     public ushort ItemId { get; set; }
 
+    [ForeignKey("ItemId")]
+    public virtual required ItemBasic ItemBasic { get; set; }
+
     public string? Name { get; set; }
 
     public byte Skill { get; set; }
+
+    [NotMapped]
+    private static readonly Dictionary<int, string> SkillMappings = new Dictionary<int, string>
+    {
+        { 0, "None" },
+        { 1, "Hand To Hand" },
+        { 2, "Dagger" },
+        { 3, "Sword" },
+        { 4, "Great Sword" },
+        { 5, "Axe" },
+        { 6, "Great Axe" },
+        { 7, "Scythe" },
+        { 8, "Polearm" },
+        { 9, "Katana" },
+        { 10, "Great Katana" },
+        { 11, "Club" },
+        { 12, "Staff" },
+        { 25, "Archery" },
+        { 26, "Marksmanship" },
+        { 27, "Throwing" },
+        { 41, "String Instrument" },
+        { 42, "Wind Instrument" },
+        { 45, "Handbell" },
+        { 48, "Fishing" }
+    };
+
+    [NotMapped]
+    public string SkillDescription
+    {
+        get
+        {
+            string description = "Unknown";
+            if (SkillMappings.TryGetValue(Skill, out string? tempDescription))
+            {
+                description = tempDescription!;
+            }
+            return description;
+        }
+    }
 
     public sbyte Subskill { get; set; }
 
@@ -20,6 +63,29 @@ public partial class ItemWeapon
     public short IlvlMacc { get; set; }
 
     public uint DmgType { get; set; }
+
+    [NotMapped]
+    private static readonly Dictionary<uint, string> DmgTypeMappings = new Dictionary<uint, string>
+    {
+        { 1, "Piercing" },
+        { 2, "Slashing" },
+        { 3, "Blunt (Impact)" },
+        { 4, "Blunt (Hand to Hand)" },
+    };
+
+    [NotMapped]
+    public string DmgTypeDescription
+    {
+        get
+        {
+            string description = "Unknown";
+            if (DmgTypeMappings.TryGetValue(DmgType, out string? tempDescription))
+            {
+                description = tempDescription!;
+            }
+            return description;
+        }
+    }
 
     public byte Hit { get; set; }
 

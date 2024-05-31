@@ -1,0 +1,89 @@
+@model Naja.Models.ItemViewModel
+
+@if (Model.ItemBasic.AH != 0)
+{
+    int singleItemStockCount = Model.AuctionHouseStock
+    .Where(stock => stock.First().Amount == 1)
+    .Sum(stock => stock.Count());
+
+    int stackItemStockCount = Model.AuctionHouseStock
+    .Where(stock => stock.First().Amount != 1)
+    .Sum(stock => stock.Count());
+
+    int stockRowSpan = Model.ItemBasic.StackSize == 1 ? 1 : 2;
+
+    <table class="table table-bordered border-secondary table-sm">
+        <thead class="bg-primary text-white text-center">
+            <tr>
+                <th colspan="4">Auction House</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th class="col-sm-2 bg-secondary bg-opacity-25">Category</th>
+                <td colspan="3">
+                    @Model.ItemBasic.AHDescription
+                </td>
+            </tr>
+            <tr>
+                <th class="col-sm-2 bg-secondary bg-opacity-25 align-middle" rowspan="@stockRowSpan">Stock</th>
+                @if (stockRowSpan == 2)
+                {
+                    <th class="col-sm-2 bg-secondary bg-opacity-10">Single</th>
+                    <td>@singleItemStockCount</td>
+                }
+                else
+                {
+                    <td colspan="3">@singleItemStockCount</td>
+                }
+            </tr>
+            @if (stockRowSpan == 2)
+            {
+                <tr>
+                    <th class="col-sm-2 bg-secondary bg-opacity-10">Stack</th>
+                    <td>@stackItemStockCount</td>
+                </tr>
+            }
+            <tr>
+                <td colspan="4">
+                    <table class="table table-bordered border-secondary table-sm table-hover">
+                        <thead>
+                            <tr class="bg-secondary bg-opacity-25">
+                                <th colspan="5" class="text-center">History</th>
+                            </tr>
+                            <tr class="bg-secondary bg-opacity-10">
+                                <th class="col-sm-2">Date</th>
+                                <th class="col-sm-2">Seller</th>
+                                <th class="col-sm-2">Buyer</th>
+                                <th class="col-sm-1">Amount</th>
+                                <th class="col-sm-2">Price</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.AuctionHouse)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.SellDateDt)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.SellerName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.BuyerName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Amount)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Sale)g
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+}

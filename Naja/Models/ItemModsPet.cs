@@ -1,11 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Naja.Models;
 
 public partial class ItemModsPet
 {
     public ushort ItemId { get; set; }
+
+    [ForeignKey("ItemId")]
+    public virtual required ItemBasic ItemBasic { get; set; }
 
     public ushort ModId { get; set; }
 
