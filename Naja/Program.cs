@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 
 using Naja.Data;
@@ -17,6 +18,13 @@ builder.Services.AddDbContext<XiContext>(options => options.UseMySql(
     ));
 
 builder.Services.AddControllersWithViews();
+builder.Services.AddHttpClient();
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options =>
+    {
+        options.LoginPath = "/Account/Login";
+        options.LogoutPath = "/Account/Logout";
+    });
 
 var app = builder.Build();
 
@@ -33,6 +41,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(
@@ -46,5 +55,9 @@ app.MapControllerRoute(
 app.MapControllerRoute(
     name: "items",
     pattern: "{controller=Items}/{action=Index}/{id?}");
+
+app.MapControllerRoute(
+    name: "account",
+    pattern: "{controller=Account}/{action=Index}/{id?}");
 
 app.Run();

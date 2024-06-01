@@ -1,0 +1,51 @@
+@model RegisterModel
+
+@{
+    ViewData["Title"] = "Register";
+    var recaptchaKey = DotNetEnv.Env.GetString("RECAPTCHA_SITE");
+}
+
+@if (!string.IsNullOrEmpty(ViewData["ErrorMessage"] as string))
+{
+    <div class="text-danger">@ViewData["ErrorMessage"]</div>
+}
+
+<form asp-action="Register" method="post">
+    <div class="form-group">
+        <label asp-for="Username" class="control-label"></label>
+        <input asp-for="Username" class="form-control" />
+        <span asp-validation-for="Username" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Email" class="control-label"></label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Password" class="control-label"></label>
+        <input asp-for="Password" class="form-control" type="password" />
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+    <div class="form-group mb-2">
+        <label asp-for="ConfirmPassword" class="control-label">Confirm Password</label>
+        <input asp-for="ConfirmPassword" class="form-control" type="password" />
+        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <div class="g-recaptcha mb-2" id="recaptcha" data-sitekey="@recaptchaKey" data-callback="onRecaptchaSuccess"
+            data-expired-callback="onRecaptchaExpired"></div>
+        <button type="submit" class="btn btn-primary" id="registerButton" disabled>Register</button>
+    </div>
+</form>
+
+@section Scripts {
+    <script>
+        function onRecaptchaSuccess() {
+            document.getElementById('registerButton').disabled = false;
+        }
+
+        function onRecaptchaExpired() {
+            document.getElementById('registerButton').disabled = true;
+        }
+    </script>
+}
