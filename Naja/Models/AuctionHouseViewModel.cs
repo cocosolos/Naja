@@ -1,3 +1,5 @@
+using Naja.Models.External;
+
 namespace Naja.Models;
 
 public class AuctionHouseViewModel

@@ -16,20 +16,20 @@
     <tbody>
         @foreach (var group in Model)
         {
-            <tr>
-                <td>
-                    <a asp-action="Details" asp-controller="Items" asp-route-id="@group.ItemId">
-                        @Html.DisplayFor(g => group.Listings.First().ItemBasic.DisplaySortname)
-                    </a>
-                    @if (group.Stack == 1)
-                    {
-                        @($"x{group.Listings.First().Amount}")
-                    }
-                </td>
-                <td class="col-sm-1 text-center">
-                    @group.Stock
-                </td>
-            </tr>
+        <tr>
+            <td>
+                <a asp-action="Details" asp-controller="Items" asp-route-id="@group.ItemId">
+                @Html.DisplayFor(g => group.Listings.First().ItemBasic.DisplaySortname)
+                </a>
+            @if (group.Stack == 1)
+            {
+                @($"x{group.Listings.First().Amount}")
+            }
+            </td>
+            <td class="col-sm-1 text-center">
+            @group.Stock
+            </td>
+        </tr>
         }
     </tbody>
 </table>

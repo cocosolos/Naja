@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
+using Naja.Data;
 using Naja.Models;
 
 namespace Naja.Controllers

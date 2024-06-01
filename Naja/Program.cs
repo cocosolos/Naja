@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 
-using Naja.Models;
+using Naja.Data;
 
 using Pomelo.EntityFrameworkCore.MySql;
 

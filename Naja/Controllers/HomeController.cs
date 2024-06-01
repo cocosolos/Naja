@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using Naja.Data;
 using Naja.Models;
 
 namespace Naja.Controllers
