@@ -1,0 +1,3 @@
+[submodule "LandSandBoat"]
+	path = LandSandBoat
+	url = https://github.com/LandSandBoat/server.git
