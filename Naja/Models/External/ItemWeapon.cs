@@ -65,25 +65,23 @@ public partial class ItemWeapon
     public uint DmgType { get; set; }
 
     [NotMapped]
-    private static readonly Dictionary<uint, string> DmgTypeMappings = new Dictionary<uint, string>
-    {
-        { 1, "Piercing" },
-        { 2, "Slashing" },
-        { 3, "Blunt (Impact)" },
-        { 4, "Blunt (Hand to Hand)" },
-    };
-
-    [NotMapped]
     public string DmgTypeDescription
     {
         get
         {
-            string description = "Unknown";
-            if (DmgTypeMappings.TryGetValue(DmgType, out string? tempDescription))
+            switch (DmgType)
             {
-                description = tempDescription!;
+                case 1:
+                    return "Piercing";
+                case 2:
+                    return "Slashing";
+                case 3:
+                    return "Blunt (Impact)";
+                case 4:
+                    return "Blunt (Hand to Hand)";
+                default:
+                    return "Unknown";
             }
-            return description;
         }
     }
 

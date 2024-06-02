@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Naja.Models.External;
 
@@ -77,4 +78,7 @@ public partial class Account
     }
 
     public PrivilegeCodes Priv { get; set; }
+
+    [NotMapped]
+    public ICollection<Char> Chars { get; set; } = new List<Char>();
 }

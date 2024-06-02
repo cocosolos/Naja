@@ -1,0 +1,270 @@
+﻿@model Naja.Models.CharViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Char</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Char.Account)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Char.Account.Id)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Char.OriginalAccid)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Char.OriginalAccid)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Char.Charname)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Char.Charname)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Char.Nation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Char.Nation)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Char.PosZone)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Char.PosZone)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Char.PosPrevzone)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Char.PosPrevzone)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Char.PosRot)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Char.PosRot)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Char.PosX)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Char.PosX)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Char.PosY)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Char.PosY)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Char.PosZ)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Char.PosZ)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Char.Moghouse)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Char.Moghouse)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Char.Boundary)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Char.Boundary)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Char.HomeZone)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Char.HomeZone)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Char.HomeRot)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Char.HomeRot)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Char.HomeX)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Char.HomeX)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Char.HomeY)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Char.HomeY)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Char.HomeZ)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Char.HomeZ)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Char.Missions)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Char.Missions)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Char.Assault)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Char.Assault)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Char.Campaign)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Char.Campaign)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Char.Eminence)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Char.Eminence)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Char.Quests)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Char.Quests)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Char.Keyitems)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Char.Keyitems)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Char.SetBlueSpells)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Char.SetBlueSpells)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Char.Abilities)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Char.Abilities)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Char.Weaponskills)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Char.Weaponskills)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Char.Titles)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Char.Titles)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Char.Zones)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Char.Zones)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Char.Playtime)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Char.Playtime)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Char.UnlockedWeapons)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Char.UnlockedWeapons)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Char.Gmlevel)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Char.Gmlevel)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Char.Languages)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Char.Languages)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Char.Mentor)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Char.Mentor)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Char.JobMaster)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Char.JobMaster)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Char.CampaignAllegiance)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Char.CampaignAllegiance)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Char.Isstylelocked)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Char.Isstylelocked)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Char.Settings)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Char.Settings)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Char.Chatfilters1)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Char.Chatfilters1)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Char.Chatfilters2)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Char.Chatfilters2)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Char.Moghancement)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Char.Moghancement)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Char.Timecreated)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Char.Timecreated)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Char.Lastupdate)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Char.Lastupdate)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Char.Charid">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

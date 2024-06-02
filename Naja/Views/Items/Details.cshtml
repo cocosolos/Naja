@@ -1,17 +1,16 @@
 ﻿@model Naja.Models.ItemViewModel
 
 @{
-    ViewData["Title"] = Model.ItemBasic.DisplaySortname;
+    ViewData["Title"] = Model.SortName;
 }
 
 
 <div style="display: flex; align-items: center;">
     <div class="mx-3">
-        <img src="https://static.ffxiah.com/images/icon/@($"{Model.ItemBasic.Itemid}.png")"
-            title="@Model.ItemBasic.DisplayName" />
+        <img src="https://static.ffxiah.com/images/icon/@($"{Model.ItemBasic.Itemid}.png")" title="@Model.Name" />
     </div>
     <div>
-        <h1>@Model.ItemBasic.DisplaySortname</h1>
+        <h1>@Model.SortName</h1>
         <a href="https://www.ffxiah.com/item/@Model.ItemBasic.Itemid" target="_blank">
             <img src="~/images/ffxiah.png" alt="FFXIAH" title="FFXIAH" class="align-top" />
         </a>
@@ -20,7 +19,7 @@
 
 @foreach (var flag in Model.ItemBasic.FlagsDescriptions)
 {
-<span class="badge bg-primary mb-2">@flag</span>
+    <span class="badge bg-primary mb-2">@flag</span>
 }
 
 <dl class="row">
@@ -30,10 +29,10 @@
     </dd>
     @if (Model.ItemBasic.Sellable && Model.ItemBasic.BaseSell > 0)
     {
-    <dt class="col-sm-2">Resale Price</dt>
-    <dd class="col-sm-10">
-    @Html.DisplayFor(i => Model.ItemBasic.BaseSell)g
-    </dd>
+        <dt class="col-sm-2">Resale Price</dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(i => Model.ItemBasic.BaseSell)g
+        </dd>
     }
 </dl>
 

@@ -11,21 +11,10 @@ public partial class ItemBasic
 {
     [Key]
     public ushort Itemid { get; set; }
-
     public ushort Subid { get; set; }
-
     public string Name { get; set; } = null!;
-
-    [NotMapped]
-    public string DisplayName => Name.Replace("_", " ");
-
     public string Sortname { get; set; } = null!;
-
-    [NotMapped]
-    public string DisplaySortname => Sortname.Replace("_", " ");
-
     public byte StackSize { get; set; }
-
     public ushort Flags { get; set; }
 
     // Dictionary to map flag values to descriptions

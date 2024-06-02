@@ -1,0 +1,438 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<monster_skills>
+  <o id="257" element="6" icon_id="46" targets="32" tp_cost="1000" monster_level="1" range="2" prefix="/monsterskill" en="Foot Kick" ja="フットキック" />
+  <o id="258" element="3" icon_id="43" targets="32" tp_cost="800" monster_level="10" range="2" prefix="/monsterskill" en="Dust Cloud" ja="土煙" />
+  <o id="259" element="6" icon_id="46" targets="32" tp_cost="1800" monster_level="20" range="8" prefix="/monsterskill" en="Whirl Claws" ja="爪旋風脚" />
+  <o id="260" element="6" icon_id="46" targets="32" tp_cost="1300" monster_level="30" range="2" prefix="/monsterskill" en="Lamb Chop" ja="頭突き" />
+  <o id="261" element="6" icon_id="46" targets="1" tp_cost="800" monster_level="10" range="0" prefix="/monsterskill" en="Rage" ja="レイジ" />
+  <o id="262" element="6" icon_id="46" targets="32" tp_cost="800" monster_level="1" range="2" prefix="/monsterskill" en="Sheep Charge" ja="シープチャージ" />
+  <o id="263" element="6" icon_id="46" targets="32" tp_cost="500" monster_level="40" range="8" prefix="/monsterskill" en="Sheep Bleat" ja="シープクライ" />
+  <o id="264" element="6" icon_id="46" targets="32" tp_cost="1500" monster_level="20" range="8" prefix="/monsterskill" en="Sheep Song" ja="シープソング" />
+  <o id="265" element="6" icon_id="46" targets="1" tp_cost="800" monster_level="10" range="0" prefix="/monsterskill" en="Rage" ja="レイジ" />
+  <o id="266" element="6" icon_id="46" targets="32" tp_cost="1000" monster_level="1" range="2" prefix="/monsterskill" en="Ram Charge" ja="ラムチャージ" />
+  <o id="267" element="3" icon_id="43" targets="32" tp_cost="800" monster_level="20" range="8" prefix="/monsterskill" en="Rumble" ja="地鳴り" />
+  <o id="268" element="6" icon_id="46" targets="32" tp_cost="9999" monster_level="-1" range="8" prefix="/monsterskill" en="Great Bleat" ja="大咆哮" />
+  <o id="269" element="3" icon_id="43" targets="32" tp_cost="2000" monster_level="40" range="9" prefix="/monsterskill" en="Petribreath" ja="ペトロブレス" />
+  <o id="270" element="6" icon_id="46" targets="32" tp_cost="1000" monster_level="20" range="8" prefix="/monsterskill" en="Roar" ja="咆哮" />
+  <o id="271" element="6" icon_id="46" targets="32" tp_cost="1500" monster_level="1" range="2" prefix="/monsterskill" en="Razor Fang" ja="レイザーファング" />
+  <o id="272" element="6" icon_id="46" targets="32" tp_cost="1800" monster_level="10" range="9" prefix="/monsterskill" en="Claw Cyclone" ja="クローサイクロン" />
+  <o id="273" element="7" icon_id="47" targets="32" tp_cost="600" monster_level="1" range="7" prefix="/monsterskill" en="Sandblast" ja="サンドブラスト" />
+  <o id="274" element="1" icon_id="41" targets="32" tp_cost="600" monster_level="10" range="2" prefix="/monsterskill" en="Sandpit" ja="サンドピット" />
+  <o id="275" element="5" icon_id="45" targets="32" tp_cost="800" monster_level="20" range="8" prefix="/monsterskill" en="Venom Spray" ja="ベノムスプレー" />
+  <o id="276" element="6" icon_id="46" targets="32" tp_cost="1200" monster_level="30" range="2" prefix="/monsterskill" en="Mandibular Bite" ja="M.バイト" />
+  <o id="277" element="2" icon_id="42" targets="32" tp_cost="1000" monster_level="30" range="9" prefix="/monsterskill" en="Sonic Wave" ja="ソニックウェーブ" />
+  <o id="278" element="6" icon_id="46" targets="32" tp_cost="1000" monster_level="1" range="2" prefix="/monsterskill" en="Stomping" ja="ストンピング" />
+  <o id="279" element="6" icon_id="46" targets="32" tp_cost="800" monster_level="10" range="9" prefix="/monsterskill" en="Cold Stare" ja="白眼視" />
+  <o id="280" element="6" icon_id="46" targets="1" tp_cost="600" monster_level="20" range="2" prefix="/monsterskill" en="Whistle" ja="ホイッスル" />
+  <o id="281" element="6" icon_id="46" targets="1" tp_cost="800" monster_level="40" range="0" prefix="/monsterskill" en="Berserk" ja="バーサク" />
+  <o id="282" element="6" icon_id="46" targets="1" tp_cost="2000" monster_level="50" range="2" prefix="/monsterskill" en="Healing Breeze" ja="いやしの風" />
+  <o id="283" element="6" icon_id="46" targets="32" tp_cost="1300" monster_level="1" range="2" prefix="/monsterskill" en="Vicious Claw" ja="ビシャスクロー" />
+  <o id="284" element="6" icon_id="46" targets="32" tp_cost="1200" monster_level="10" range="9" prefix="/monsterskill" en="Stone Throw" ja="投石" />
+  <o id="285" element="6" icon_id="46" targets="32" tp_cost="1800" monster_level="20" range="8" prefix="/monsterskill" en="Spinning Claw" ja="スピニングクロー" />
+  <o id="286" element="6" icon_id="46" targets="32" tp_cost="1500" monster_level="30" range="2" prefix="/monsterskill" en="Claw Storm" ja="クローストーム" />
+  <o id="287" element="6" icon_id="46" targets="32" tp_cost="1000" monster_level="40" range="9" prefix="/monsterskill" en="Blank Gaze" ja="ブランクゲイズ" />
+  <o id="288" element="6" icon_id="46" targets="32" tp_cost="1000" monster_level="50" range="2" prefix="/monsterskill" en="Eye Scratch" ja="アイスクラッチ" />
+  <o id="289" element="6" icon_id="46" targets="1" tp_cost="1500" monster_level="60" range="0" prefix="/monsterskill" en="Magic Fruit" ja="マジックフルーツ" />
+  <o id="290" element="6" icon_id="46" targets="32" tp_cost="1200" monster_level="10" range="2" prefix="/monsterskill" en="Drill Branch" ja="ドリルブランチ" />
+  <o id="291" element="6" icon_id="46" targets="32" tp_cost="1200" monster_level="20" range="8" prefix="/monsterskill" en="Pinecone Bomb" ja="まつぼっくり爆弾" />
+  <o id="292" element="6" icon_id="46" targets="32" tp_cost="1000" monster_level="30" range="8" prefix="/monsterskill" en="Leafstorm" ja="リーフストーム" />
+  <o id="293" element="6" icon_id="46" targets="32" tp_cost="1000" monster_level="1" range="2" prefix="/monsterskill" en="Entangle" ja="エンタングル" />
+  <o id="294" element="6" icon_id="46" targets="32" tp_cost="1000" monster_level="50" range="2" prefix="/monsterskill" en="Head Butt" ja="ヘッドバット" />
+  <o id="295" element="6" icon_id="46" targets="32" tp_cost="1200" monster_level="40" range="8" prefix="/monsterskill" en="Dream Flower" ja="夢想花" />
+  <o id="296" element="6" icon_id="46" targets="32" tp_cost="500" monster_level="1" range="9" prefix="/monsterskill" en="Wild Oats" ja="種まき" />
+  <o id="297" element="6" icon_id="46" targets="1" tp_cost="1500" monster_level="20" range="0" prefix="/monsterskill" en="Photosynthesis" ja="光合成" />
+  <o id="298" element="6" icon_id="46" targets="32" tp_cost="800" monster_level="30" range="9" prefix="/monsterskill" en="Leaf Dagger" ja="リーフダガー" />
+  <o id="299" element="6" icon_id="46" targets="32" tp_cost="500" monster_level="10" range="8" prefix="/monsterskill" en="Scream" ja="スクリーム" />
+  <o id="300" element="6" icon_id="46" targets="32" tp_cost="1000" monster_level="1" range="2" prefix="/monsterskill" en="Frogkick" ja="フロッグキック" />
+  <o id="301" element="7" icon_id="47" targets="32" tp_cost="800" monster_level="10" range="2" prefix="/monsterskill" en="Spore" ja="スポア" />
+  <o id="302" element="7" icon_id="47" targets="32" tp_cost="1000" monster_level="20" range="9" prefix="/monsterskill" en="Queasyshroom" ja="マヨイタケ" />
+  <o id="303" element="7" icon_id="47" targets="32" tp_cost="1200" monster_level="30" range="9" prefix="/monsterskill" en="Numbshroom" ja="シビレタケ" />
+  <o id="304" element="7" icon_id="47" targets="32" tp_cost="1000" monster_level="40" range="9" prefix="/monsterskill" en="Shakeshroom" ja="オドリタケ" />
+  <o id="305" element="7" icon_id="47" targets="32" tp_cost="1500" monster_level="50" range="9" prefix="/monsterskill" en="Silence Gas" ja="サイレスガス" />
+  <o id="306" element="7" icon_id="47" targets="32" tp_cost="1200" monster_level="60" range="9" prefix="/monsterskill" en="Dark Spore" ja="ダークスポア" />
+  <o id="307" element="6" icon_id="46" targets="32" tp_cost="1000" monster_level="1" range="2" prefix="/monsterskill" en="Impale" ja="くしざし" />
+  <o id="308" element="6" icon_id="46" targets="32" tp_cost="1000" monster_level="10" range="2" prefix="/monsterskill" en="Vampiric Lash" ja="吸血ムチ" />
+  <o id="309" element="6" icon_id="46" targets="32" tp_cost="1300" monster_level="20" range="2" prefix="/monsterskill" en="Somersault" ja="サマーソルト" />
+  <o id="310" element="3" icon_id="43" targets="32" tp_cost="2000" monster_level="30" range="9" prefix="/monsterskill" en="Bad Breath" ja="臭い息" />
+  <o id="311" element="7" icon_id="47" targets="32" tp_cost="1500" monster_level="20" range="9" prefix="/monsterskill" en="Sweet Breath" ja="甘い息" />
+  <o id="312" element="6" icon_id="46" targets="32" tp_cost="1000" monster_level="1" range="12" prefix="/monsterskill" en="Needleshot" ja="ニードルショット" />
+  <o id="313" element="6" icon_id="46" targets="32" tp_cost="1300" monster_level="20" range="8" prefix="/monsterskill" en="1000 Needles" ja="針千本" />
+  <o id="314" element="6" icon_id="46" targets="1" tp_cost="1000" monster_level="30" range="0" prefix="/monsterskill" en="Wild Carrot" ja="ワイルドカロット" />
+  <o id="315" element="6" icon_id="46" targets="1" tp_cost="1500" monster_level="10" range="0" prefix="/monsterskill" en="Photosynthesis" ja="光合成" />
+  <o id="316" element="6" icon_id="46" targets="32" tp_cost="1000" monster_level="10" range="9" prefix="/monsterskill" en="Random Kiss" ja="ランダムキッス" />
+  <o id="317" element="6" icon_id="46" targets="32" tp_cost="2000" monster_level="70" range="2" prefix="/monsterskill" en="Absorbing Kiss" ja="アブゾキッス" />
+  <o id="318" element="6" icon_id="46" targets="32" tp_cost="1800" monster_level="80" range="2" prefix="/monsterskill" en="Deep Kiss" ja="ディープキッス" />
+  <o id="319" element="6" icon_id="46" targets="32" tp_cost="1000" monster_level="1" range="12" prefix="/monsterskill" en="Sharp Sting" ja="シャープスティング" />
+  <o id="320" element="6" icon_id="46" targets="1" tp_cost="1500" monster_level="10" range="0" prefix="/monsterskill" en="Pollen" ja="花粉" />
+  <o id="321" element="6" icon_id="46" targets="32" tp_cost="2000" monster_level="20" range="9" prefix="/monsterskill" en="Final Sting" ja="ファイナルスピア" />
+  <o id="322" element="6" icon_id="46" targets="32" tp_cost="1000" monster_level="1" range="2" prefix="/monsterskill" en="Power Attack" ja="パワーアタック" />
+  <o id="323" element="6" icon_id="46" targets="32" tp_cost="1000" monster_level="20" range="9" prefix="/monsterskill" en="Hi-Freq Field" ja="高周波フィールド" />
+  <o id="324" element="6" icon_id="46" targets="32" tp_cost="1200" monster_level="40" range="2" prefix="/monsterskill" en="Rhino Attack" ja="ライノアタック" />
+  <o id="325" element="6" icon_id="46" targets="1" tp_cost="800" monster_level="30" range="0" prefix="/monsterskill" en="Rhino Guard" ja="ライノガード" />
+  <o id="326" element="6" icon_id="46" targets="32" tp_cost="800" monster_level="10" range="2" prefix="/monsterskill" en="Spoil" ja="スポイル" />
+  <o id="327" element="6" icon_id="46" targets="32" tp_cost="1000" monster_level="1" range="2" prefix="/monsterskill" en="Sticky Thread" ja="粘糸" />
+  <o id="328" element="5" icon_id="45" targets="32" tp_cost="1200" monster_level="20" range="9" prefix="/monsterskill" en="Poison Breath" ja="ポイズンブレス" />
+  <o id="329" element="6" icon_id="46" targets="1" tp_cost="800" monster_level="10" range="0" prefix="/monsterskill" en="Cocoon" ja="コクーン" />
+  <o id="330" element="1" icon_id="41" targets="32" tp_cost="1500" monster_level="50" range="9" prefix="/monsterskill" en="Numbing Breath" ja="ナムブレス" />
+  <o id="331" element="1" icon_id="41" targets="32" tp_cost="1200" monster_level="20" range="9" prefix="/monsterskill" en="Cold Breath" ja="コールドブレス" />
+  <o id="332" element="6" icon_id="46" targets="32" tp_cost="1000" monster_level="1" range="2" prefix="/monsterskill" en="Mandible Bite" ja="マンディブルバイト" />
+  <o id="333" element="6" icon_id="46" targets="32" tp_cost="800" monster_level="10" range="2" prefix="/monsterskill" en="Poison Sting" ja="ポイズンスティング" />
+  <o id="334" element="6" icon_id="46" targets="32" tp_cost="2000" monster_level="50" range="2" prefix="/monsterskill" en="Death Scissors" ja="デスシザース" />
+  <o id="335" element="6" icon_id="46" targets="32" tp_cost="1300" monster_level="40" range="8" prefix="/monsterskill" en="Wild Rage" ja="大暴れ" />
+  <o id="336" element="3" icon_id="43" targets="32" tp_cost="1200" monster_level="30" range="8" prefix="/monsterskill" en="Earth Pounder" ja="アースパウンダー" />
+  <o id="337" element="6" icon_id="46" targets="1" tp_cost="800" monster_level="1" range="0" prefix="/monsterskill" en="Sharp Strike" ja="シャープストライク" />
+  <o id="338" element="6" icon_id="46" targets="32" tp_cost="1000" monster_level="1" range="2" prefix="/monsterskill" en="Double Claw" ja="ダブルクロー" />
+  <o id="339" element="6" icon_id="46" targets="32" tp_cost="1500" monster_level="10" range="7" prefix="/monsterskill" en="Grapple" ja="グラップル" />
+  <o id="340" element="3" icon_id="43" targets="32" tp_cost="1000" monster_level="20" range="7" prefix="/monsterskill" en="Filamented Hold" ja="F.ホールド" />
+  <o id="341" element="6" icon_id="46" targets="32" tp_cost="1200" monster_level="30" range="8" prefix="/monsterskill" en="Spinning Top" ja="スピニングトップ" />
+  <o id="342" element="6" icon_id="46" targets="32" tp_cost="1000" monster_level="70" range="2" prefix="/monsterskill" en="Tail Blow" ja="テイルブロー" />
+  <o id="343" element="0" icon_id="40" targets="32" tp_cost="1000" monster_level="1" range="9" prefix="/monsterskill" en="Fireball" ja="ファイアボール" />
+  <o id="344" element="6" icon_id="46" targets="32" tp_cost="1500" monster_level="30" range="2" prefix="/monsterskill" en="Blockhead" ja="ブロックヘッド" />
+  <o id="345" element="6" icon_id="46" targets="32" tp_cost="1200" monster_level="20" range="2" prefix="/monsterskill" en="Brain Crush" ja="ブレインクラッシュ" />
+  <o id="346" element="6" icon_id="46" targets="32" tp_cost="1000" monster_level="40" range="9" prefix="/monsterskill" en="Baleful Gaze" ja="邪視" />
+  <o id="347" element="5" icon_id="45" targets="32" tp_cost="1500" monster_level="50" range="2" prefix="/monsterskill" en="Plaguebreath" ja="プレイグブレス" />
+  <o id="348" element="6" icon_id="46" targets="32" tp_cost="800" monster_level="60" range="2" prefix="/monsterskill" en="Infrasonics" ja="超低周波" />
+  <o id="349" element="6" icon_id="46" targets="1" tp_cost="500" monster_level="10" range="0" prefix="/monsterskill" en="Secretion" ja="体液分泌" />
+  <o id="350" element="6" icon_id="46" targets="32" tp_cost="1000" monster_level="1" range="2" prefix="/monsterskill" en="Ripper Fang" ja="リッパーファング" />
+  <o id="351" element="0" icon_id="40" targets="32" tp_cost="1500" monster_level="40" range="9" prefix="/monsterskill" en="Foul Breath" ja="ファウルブレス" />
+  <o id="352" element="1" icon_id="41" targets="32" tp_cost="1500" monster_level="40" range="9" prefix="/monsterskill" en="Frost Breath" ja="フロストブレス" />
+  <o id="353" element="4" icon_id="44" targets="32" tp_cost="1500" monster_level="30" range="9" prefix="/monsterskill" en="Thunderbolt" ja="サンダーボルト" />
+  <o id="354" element="6" icon_id="46" targets="32" tp_cost="1000" monster_level="10" range="2" prefix="/monsterskill" en="Chomp Rush" ja="噛みつきラッシュ" />
+  <o id="355" element="6" icon_id="46" targets="32" tp_cost="1200" monster_level="20" range="2" prefix="/monsterskill" en="Scythe Tail" ja="サイズテール" />
+  <o id="356" element="6" icon_id="46" targets="32" tp_cost="1000" monster_level="20" range="7" prefix="/monsterskill" en="Tail Roll" ja="テールロール" />
+  <o id="357" element="6" icon_id="46" targets="32" tp_cost="2000" monster_level="10" range="2" prefix="/monsterskill" en="Tusk" ja="タスク" />
+  <o id="358" element="6" icon_id="46" targets="1" tp_cost="800" monster_level="1" range="0" prefix="/monsterskill" en="Scutum" ja="スクトゥム" />
+  <o id="359" element="6" icon_id="46" targets="32" tp_cost="1000" monster_level="50" range="2" prefix="/monsterskill" en="Bone Crunch" ja="ボーンクランチ" />
+  <o id="360" element="6" icon_id="46" targets="32" tp_cost="800" monster_level="30" range="7" prefix="/monsterskill" en="Awful Eye" ja="アーフルアイ" />
+  <o id="361" element="6" icon_id="46" targets="32" tp_cost="1000" monster_level="40" range="7" prefix="/monsterskill" en="Heavy Bellow" ja="ヘヴィベロー" />
+  <o id="362" element="6" icon_id="46" targets="32" tp_cost="750" monster_level="1" range="9" prefix="/monsterskill" en="Ultrasonics" ja="超音波" />
+  <o id="363" element="6" icon_id="46" targets="32" tp_cost="750" monster_level="1" range="9" prefix="/monsterskill" en="Sonic Boom" ja="ソニックブーム" />
+  <o id="364" element="6" icon_id="46" targets="32" tp_cost="1000" monster_level="10" range="2" prefix="/monsterskill" en="Blood Drain" ja="吸血" />
+  <o id="365" element="6" icon_id="46" targets="32" tp_cost="1000" monster_level="10" range="9" prefix="/monsterskill" en="Jet Stream" ja="ジェットストリーム" />
+  <o id="366" element="6" icon_id="46" targets="32" tp_cost="1000" monster_level="1" range="2" prefix="/monsterskill" en="Blind Vortex" ja="ブラインヴォルテクス" />
+  <o id="367" element="6" icon_id="46" targets="32" tp_cost="1000" monster_level="10" range="2" prefix="/monsterskill" en="Giga Scream" ja="ギガスクリーム" />
+  <o id="368" element="6" icon_id="46" targets="32" tp_cost="1000" monster_level="20" range="2" prefix="/monsterskill" en="Dread Dive" ja="ドレッドダイヴ" />
+  <o id="369" element="2" icon_id="42" targets="1" tp_cost="500" monster_level="30" range="0" prefix="/monsterskill" en="Feather Barrier" ja="フェザーバリア" />
+  <o id="370" element="2" icon_id="42" targets="32" tp_cost="1500" monster_level="40" range="8" prefix="/monsterskill" en="Stormwind" ja="ストームウィンド" />
+  <o id="371" element="6" icon_id="46" targets="32" tp_cost="1000" monster_level="30" range="2" prefix="/monsterskill" en="Hammer Beak" ja="ハンマービーク" />
+  <o id="372" element="6" icon_id="46" targets="32" tp_cost="1000" monster_level="40" range="2" prefix="/monsterskill" en="Poison Pick" ja="ポイズンピック" />
+  <o id="373" element="6" icon_id="46" targets="32" tp_cost="800" monster_level="1" range="9" prefix="/monsterskill" en="Sound Vacuum" ja="サウンドバキューム" />
+  <o id="374" element="6" icon_id="46" targets="32" tp_cost="800" monster_level="10" range="8" prefix="/monsterskill" en="Sound Blast" ja="サウンドブラスト" />
+  <o id="375" element="3" icon_id="43" targets="32" tp_cost="1300" monster_level="20" range="9" prefix="/monsterskill" en="Baleful Gaze" ja="邪視" />
+  <o id="376" element="6" icon_id="46" targets="32" tp_cost="1000" monster_level="1" range="2" prefix="/monsterskill" en="Suction" ja="吸着" />
+  <o id="377" element="5" icon_id="45" targets="32" tp_cost="1200" monster_level="30" range="8" prefix="/monsterskill" en="Acid Mist" ja="アシッドミスト" />
+  <o id="378" element="3" icon_id="43" targets="32" tp_cost="1200" monster_level="20" range="7" prefix="/monsterskill" en="Sand Breath" ja="サンドブレス" />
+  <o id="379" element="6" icon_id="46" targets="32" tp_cost="1000" monster_level="50" range="2" prefix="/monsterskill" en="Drainkiss" ja="ドレインキッス" />
+  <o id="380" element="6" icon_id="46" targets="1" tp_cost="600" monster_level="40" range="0" prefix="/monsterskill" en="Regeneration" ja="リジェネレーション" />
+  <o id="381" element="6" icon_id="46" targets="32" tp_cost="700" monster_level="50" range="2" prefix="/monsterskill" en="TP Drainkiss" ja="TP吸収キッス" />
+  <o id="382" element="6" icon_id="46" targets="32" tp_cost="1000" monster_level="50" range="2" prefix="/monsterskill" en="MP Drainkiss" ja="MP吸収キッス" />
+  <o id="383" element="7" icon_id="47" targets="32" tp_cost="1500" monster_level="60" range="2" prefix="/monsterskill" en="Brain Drain" ja="ブレインドレイン" />
+  <o id="384" element="6" icon_id="46" targets="32" tp_cost="1000" monster_level="10" range="7" prefix="/monsterskill" en="Fluid Spread" ja="フルイドスプレッド" />
+  <o id="385" element="6" icon_id="46" targets="32" tp_cost="800" monster_level="1" range="9" prefix="/monsterskill" en="Fluid Toss" ja="フルイドスルー" />
+  <o id="386" element="6" icon_id="46" targets="32" tp_cost="1000" monster_level="10" range="2" prefix="/monsterskill" en="Digest" ja="消化" />
+  <o id="387" element="7" icon_id="47" targets="32" tp_cost="1500" monster_level="20" range="8" prefix="/monsterskill" en="Soporific" ja="サペリフィック" />
+  <o id="388" element="1" icon_id="41" targets="32" tp_cost="800" monster_level="10" range="2" prefix="/monsterskill" en="Palsy Pollen" ja="パルジィパレン" />
+  <o id="389" element="3" icon_id="43" targets="32" tp_cost="1000" monster_level="1" range="8" prefix="/monsterskill" en="Gloeosuccus" ja="グロオーサケス" />
+  <o id="390" element="6" icon_id="46" targets="32" tp_cost="1000" monster_level="1" range="9" prefix="/monsterskill" en="Death Ray" ja="デスレイ" />
+  <o id="391" element="6" icon_id="46" targets="32" tp_cost="1000" monster_level="10" range="9" prefix="/monsterskill" en="Hex Eye" ja="凶眼" />
+  <o id="392" element="6" icon_id="46" targets="32" tp_cost="1300" monster_level="20" range="9" prefix="/monsterskill" en="Petro Gaze" ja="ペトロゲイズ" />
+  <o id="393" element="6" icon_id="46" targets="1" tp_cost="1000" monster_level="30" range="0" prefix="/monsterskill" en="Catharsis" ja="カタルシス" />
+  <o id="394" element="5" icon_id="45" targets="32" tp_cost="1500" monster_level="20" range="12" prefix="/monsterskill" en="Bubble Shower" ja="バブルシャワー" />
+  <o id="395" element="5" icon_id="45" targets="1" tp_cost="800" monster_level="10" range="0" prefix="/monsterskill" en="Bubble Curtain" ja="バブルカーテン" />
+  <o id="396" element="6" icon_id="46" targets="32" tp_cost="800" monster_level="1" range="2" prefix="/monsterskill" en="Big Scissors" ja="ビッグシザー" />
+  <o id="397" element="6" icon_id="46" targets="1" tp_cost="800" monster_level="30" range="0" prefix="/monsterskill" en="Scissor Guard" ja="シザーガード" />
+  <o id="398" element="6" icon_id="46" targets="1" tp_cost="800" monster_level="40" range="0" prefix="/monsterskill" en="Metallic Body" ja="メタルボディ" />
+  <o id="399" element="6" icon_id="46" targets="32" tp_cost="750" monster_level="1" range="9" prefix="/monsterskill" en="Intimidate" ja="威嚇" />
+  <o id="400" element="5" icon_id="45" targets="32" tp_cost="1000" monster_level="10" range="9" prefix="/monsterskill" en="Aqua Ball" ja="アクアボール" />
+  <o id="401" element="5" icon_id="45" targets="32" tp_cost="1200" monster_level="20" range="9" prefix="/monsterskill" en="Splash Breath" ja="スプラッシュブレス" />
+  <o id="402" element="6" icon_id="46" targets="32" tp_cost="800" monster_level="30" range="2" prefix="/monsterskill" en="Screwdriver" ja="スクリュードライバー" />
+  <o id="403" element="6" icon_id="46" targets="1" tp_cost="800" monster_level="40" range="0" prefix="/monsterskill" en="Water Wall" ja="ウォーターウォール" />
+  <o id="404" element="6" icon_id="46" targets="1" tp_cost="800" monster_level="50" range="0" prefix="/monsterskill" en="Water Shield" ja="ウォーターシールド" />
+  <o id="405" element="6" icon_id="46" targets="32" tp_cost="1000" monster_level="1" range="2" prefix="/monsterskill" en="Tentacle" ja="触手" />
+  <o id="406" element="7" icon_id="47" targets="32" tp_cost="1200" monster_level="10" range="9" prefix="/monsterskill" en="Ink Jet" ja="インクジェット" />
+  <o id="407" element="6" icon_id="46" targets="1" tp_cost="800" monster_level="20" range="0" prefix="/monsterskill" en="Hard Membrane" ja="粘膜強化" />
+  <o id="408" element="6" icon_id="46" targets="32" tp_cost="1500" monster_level="30" range="2" prefix="/monsterskill" en="Cross Attack" ja="クロスアタック" />
+  <o id="409" element="6" icon_id="46" targets="1" tp_cost="1000" monster_level="40" range="0" prefix="/monsterskill" en="Regeneration" ja="リジェネレーション" />
+  <o id="410" element="5" icon_id="45" targets="32" tp_cost="1200" monster_level="60" range="7" prefix="/monsterskill" en="Maelstrom" ja="メイルシュトロム" />
+  <o id="411" element="2" icon_id="42" targets="32" tp_cost="1200" monster_level="50" range="7" prefix="/monsterskill" en="Whirlwind" ja="旋風" />
+  <o id="412" element="3" icon_id="43" targets="32" tp_cost="800" monster_level="40" range="2" prefix="/monsterskill" en="Petri. Breath" ja="石の吐息" />
+  <o id="413" element="6" icon_id="46" targets="1" tp_cost="800" monster_level="1" range="0" prefix="/monsterskill" en="Frenzied Rage" ja="怒髪" />
+  <o id="414" element="6" icon_id="46" targets="32" tp_cost="1200" monster_level="10" range="2" prefix="/monsterskill" en="Pounce" ja="パウンス" />
+  <o id="415" element="4" icon_id="44" targets="32" tp_cost="1500" monster_level="50" range="8" prefix="/monsterskill" en="Charged Whisker" ja="チャージドホイスカー" />
+  <o id="416" element="6" icon_id="46" targets="32" tp_cost="1500" monster_level="30" range="2" prefix="/monsterskill" en="Rampant Gnaw" ja="ランパントナウ" />
+  <o id="417" element="6" icon_id="46" targets="32" tp_cost="1000" monster_level="1" range="2" prefix="/monsterskill" en="Big Horn" ja="ビッグホーン" />
+  <o id="418" element="2" icon_id="42" targets="32" tp_cost="1000" monster_level="20" range="7" prefix="/monsterskill" en="Snort" ja="スノート" />
+  <o id="419" element="6" icon_id="46" targets="1" tp_cost="800" monster_level="10" range="0" prefix="/monsterskill" en="Rapid Dance" ja="ラビッドダンス" />
+  <o id="420" element="6" icon_id="46" targets="32" tp_cost="1000" monster_level="40" range="7" prefix="/monsterskill" en="Lowing" ja="ロウイン" />
+  <o id="421" element="5" icon_id="45" targets="32" tp_cost="600" monster_level="1" range="8" prefix="/monsterskill" en="Gas Shell" ja="ガスシェル" />
+  <o id="422" element="5" icon_id="45" targets="32" tp_cost="1200" monster_level="40" range="8" prefix="/monsterskill" en="Venom Shell" ja="ベノムシェル" />
+  <o id="423" element="6" icon_id="46" targets="32" tp_cost="1000" monster_level="30" range="2" prefix="/monsterskill" en="Palsynyxis" ja="パルジーニクシス" />
+  <o id="424" element="6" icon_id="46" targets="32" tp_cost="1000" monster_level="10" range="2" prefix="/monsterskill" en="Painful Whip" ja="ペインフルウィップ" />
+  <o id="425" element="5" icon_id="45" targets="32" tp_cost="600" monster_level="20" range="2" prefix="/monsterskill" en="Suctorial Tentacle" ja="S.テンタクル" />
+  <o id="426" element="5" icon_id="45" targets="32" tp_cost="1200" monster_level="1" range="12" prefix="/monsterskill" en="Toxic Spit" ja="トクシックスピット" />
+  <o id="427" element="7" icon_id="47" targets="32" tp_cost="1200" monster_level="40" range="8" prefix="/monsterskill" en="Geist Wall" ja="ガイストウォール" />
+  <o id="428" element="4" icon_id="44" targets="32" tp_cost="1000" monster_level="20" range="7" prefix="/monsterskill" en="Numbing Noise" ja="ナビングノイズ" />
+  <o id="429" element="6" icon_id="46" targets="32" tp_cost="1500" monster_level="10" range="2" prefix="/monsterskill" en="Nimble Snap" ja="ニンブルスナップ" />
+  <o id="430" element="6" icon_id="46" targets="32" tp_cost="1300" monster_level="30" range="8" prefix="/monsterskill" en="Cyclotail" ja="サイクロテール" />
+  <o id="431" element="6" icon_id="46" targets="32" tp_cost="1200" monster_level="1" range="2" prefix="/monsterskill" en="Back Heel" ja="バックヒール" />
+  <o id="432" element="6" icon_id="46" targets="32" tp_cost="2000" monster_level="40" range="7" prefix="/monsterskill" en="Jettatura" ja="ジェタチュラ" />
+  <o id="433" element="7" icon_id="47" targets="32" tp_cost="1300" monster_level="30" range="9" prefix="/monsterskill" en="Nihility Song" ja="ニヒリティソング" />
+  <o id="434" element="6" icon_id="46" targets="32" tp_cost="1000" monster_level="20" range="7" prefix="/monsterskill" en="Choke Breath" ja="チョークブレス" />
+  <o id="435" element="6" icon_id="46" targets="1" tp_cost="2000" monster_level="10" range="0" prefix="/monsterskill" en="Fantod" ja="ファンタッド" />
+  <o id="436" element="6" icon_id="46" targets="32" tp_cost="1000" monster_level="20" range="2" prefix="/monsterskill" en="Blow" ja="ブロー" />
+  <o id="437" element="6" icon_id="46" targets="32" tp_cost="1000" monster_level="1" range="2" prefix="/monsterskill" en="Beatdown" ja="ビートダウン" />
+  <o id="438" element="6" icon_id="46" targets="32" tp_cost="1500" monster_level="10" range="2" prefix="/monsterskill" en="Uppercut" ja="アッパーカット" />
+  <o id="439" element="6" icon_id="46" targets="32" tp_cost="1200" monster_level="30" range="9" prefix="/monsterskill" en="Blank Gaze" ja="虚ろな眼" />
+  <o id="440" element="6" icon_id="46" targets="32" tp_cost="1000" monster_level="40" range="8" prefix="/monsterskill" en="Antiphase" ja="逆位相波" />
+  <o id="441" element="1" icon_id="41" targets="32" tp_cost="1000" monster_level="1" range="9" prefix="/monsterskill" en="Snowball" ja="スノーボール" />
+  <o id="442" element="6" icon_id="46" targets="32" tp_cost="800" monster_level="1" range="2" prefix="/monsterskill" en="Helldive" ja="ヘルダイブ" />
+  <o id="443" element="2" icon_id="42" targets="32" tp_cost="800" monster_level="10" range="9" prefix="/monsterskill" en="Wing Cutter" ja="ウィングカッター" />
+  <o id="444" element="6" icon_id="46" targets="32" tp_cost="1000" monster_level="1" range="9" prefix="/monsterskill" en="Wild Horn" ja="ワイルドホーン" />
+  <o id="445" element="4" icon_id="44" targets="32" tp_cost="2000" monster_level="40" range="12" prefix="/monsterskill" en="Thunderbolt" ja="サンダーボルト" />
+  <o id="446" element="2" icon_id="42" targets="32" tp_cost="1000" monster_level="10" range="9" prefix="/monsterskill" en="Shock Wave" ja="衝撃波" />
+  <o id="447" element="6" icon_id="46" targets="1" tp_cost="800" monster_level="20" range="0" prefix="/monsterskill" en="Flame Armor" ja="フレイムアーマー" />
+  <o id="448" element="6" icon_id="46" targets="1" tp_cost="1000" monster_level="30" range="0" prefix="/monsterskill" en="Howl" ja="雄叫び" />
+  <o id="449" element="6" icon_id="46" targets="32" tp_cost="3000" monster_level="50" range="12" prefix="/monsterskill" en="Meteor" ja="メテオ" />
+  <o id="450" element="6" icon_id="46" targets="32" tp_cost="1250" monster_level="60" range="9" prefix="/monsterskill" en="Recoil Dive" ja="リコイルダイブ" />
+  <o id="451" element="6" icon_id="46" targets="32" tp_cost="1000" monster_level="30" range="9" prefix="/monsterskill" en="Blaster" ja="ブラスター" />
+  <o id="452" element="6" icon_id="46" targets="32" tp_cost="800" monster_level="20" range="9" prefix="/monsterskill" en="Chaotic Eye" ja="カオティックアイ" />
+  <o id="453" element="6" icon_id="46" targets="32" tp_cost="1000" monster_level="10" range="9" prefix="/monsterskill" en="Cursed Sphere" ja="カースドスフィア" />
+  <o id="454" element="5" icon_id="45" targets="32" tp_cost="700" monster_level="1" range="9" prefix="/monsterskill" en="Venom" ja="毒液" />
+  <o id="455" element="1" icon_id="41" targets="32" tp_cost="1000" monster_level="40" range="2" prefix="/monsterskill" en="Snow Cloud" ja="雪煙" />
+  <o id="456" element="6" icon_id="46" targets="32" tp_cost="1200" monster_level="10" range="8" prefix="/monsterskill" en="Sprout Spin" ja="スプラウトスピン" />
+  <o id="457" element="7" icon_id="47" targets="32" tp_cost="1000" monster_level="20" range="8" prefix="/monsterskill" en="Slumber Powder" ja="グーグーパウダー" />
+  <o id="458" element="6" icon_id="46" targets="32" tp_cost="1000" monster_level="1" range="2" prefix="/monsterskill" en="Sprout Smack" ja="スプラウトスマック" />
+  <o id="459" element="1" icon_id="41" targets="32" tp_cost="800" monster_level="60" range="12" prefix="/monsterskill" en="Venom Breath" ja="ベノムブレス" />
+  <o id="460" element="6" icon_id="46" targets="32" tp_cost="1300" monster_level="60" range="2" prefix="/monsterskill" en="Critical Bite" ja="クリティカルバイト" />
+  <o id="461" element="6" icon_id="46" targets="32" tp_cost="1000" monster_level="80" range="2" prefix="/monsterskill" en="Venom Sting" ja="ベノムスティング" />
+  <o id="462" element="6" icon_id="46" targets="32" tp_cost="1000" monster_level="80" range="2" prefix="/monsterskill" en="Stasis" ja="ステーシス" />
+  <o id="463" element="6" icon_id="46" targets="32" tp_cost="1000" monster_level="70" range="12" prefix="/monsterskill" en="Venom Storm" ja="ベノムストーム" />
+  <o id="464" element="3" icon_id="43" targets="32" tp_cost="1500" monster_level="90" range="12" prefix="/monsterskill" en="Earthbreaker" ja="アースブレイカー" />
+  <o id="465" element="6" icon_id="46" targets="1" tp_cost="800" monster_level="70" range="0" prefix="/monsterskill" en="Evasion" ja="エヴァージョン" />
+  <o id="466" element="6" icon_id="46" targets="32" tp_cost="1000" monster_level="60" range="2" prefix="/monsterskill" en="Deadly Hold" ja="デッドリーホールド" />
+  <o id="467" element="6" icon_id="46" targets="32" tp_cost="1000" monster_level="1" range="2" prefix="/monsterskill" en="Tail Swing" ja="テールスイング" />
+  <o id="468" element="6" icon_id="46" targets="32" tp_cost="1000" monster_level="10" range="2" prefix="/monsterskill" en="Tail Smash" ja="テールスマッシュ" />
+  <o id="469" element="0" icon_id="40" targets="32" tp_cost="1000" monster_level="30" range="9" prefix="/monsterskill" en="Heat Breath" ja="火炎の息" />
+  <o id="470" element="0" icon_id="40" targets="32" tp_cost="1000" monster_level="20" range="9" prefix="/monsterskill" en="Riddle" ja="リドル" />
+  <o id="471" element="2" icon_id="42" targets="32" tp_cost="1000" monster_level="40" range="9" prefix="/monsterskill" en="Great Sandstorm" ja="大砂塵" />
+  <o id="472" element="2" icon_id="42" targets="32" tp_cost="1200" monster_level="50" range="9" prefix="/monsterskill" en="Great Whirlwind" ja="大旋風" />
+  <o id="473" element="6" icon_id="46" targets="32" tp_cost="1500" monster_level="30" range="12" prefix="/monsterskill" en="Tortoise Song" ja="トータスソング" />
+  <o id="474" element="6" icon_id="46" targets="32" tp_cost="1000" monster_level="1" range="2" prefix="/monsterskill" en="Head Butt" ja="ヘッドバット" />
+  <o id="475" element="6" icon_id="46" targets="32" tp_cost="1200" monster_level="10" range="2" prefix="/monsterskill" en="Tortoise Stomp" ja="トータスストンプ" />
+  <o id="476" element="6" icon_id="46" targets="1" tp_cost="800" monster_level="20" range="0" prefix="/monsterskill" en="Harden Shell" ja="甲羅強化" />
+  <o id="477" element="3" icon_id="43" targets="32" tp_cost="1000" monster_level="40" range="9" prefix="/monsterskill" en="Earth Breath" ja="アースブレス" />
+  <o id="478" element="5" icon_id="45" targets="32" tp_cost="1000" monster_level="50" range="9" prefix="/monsterskill" en="Aqua Breath" ja="アクアブレス" />
+  <o id="479" element="6" icon_id="46" targets="32" tp_cost="1200" monster_level="20" range="2" prefix="/monsterskill" en="Sickle Slash" ja="シックルスラッシュ" />
+  <o id="480" element="5" icon_id="45" targets="32" tp_cost="800" monster_level="1" range="9" prefix="/monsterskill" en="Acid Spray" ja="アシッドスプレー" />
+  <o id="481" element="3" icon_id="43" targets="32" tp_cost="1000" monster_level="10" range="9" prefix="/monsterskill" en="Spider Web" ja="スパイダーウェブ" />
+  <o id="482" element="6" icon_id="46" targets="32" tp_cost="1000" monster_level="40" range="12" prefix="/monsterskill" en="Arbor Storm" ja="アーバーストーム" />
+  <o id="483" element="6" icon_id="46" targets="32" tp_cost="9999" monster_level="-1" range="8" prefix="/monsterskill" en="10,000 Needles" ja="針万本" />
+  <o id="484" element="6" icon_id="46" targets="32" tp_cost="750" monster_level="20" range="8" prefix="/monsterskill" en="Subsonics" ja="サブソニクス" />
+  <o id="485" element="6" icon_id="46" targets="32" tp_cost="1000" monster_level="30" range="9" prefix="/monsterskill" en="Marrow Drain" ja="マロードレイン" />
+  <o id="486" element="6" icon_id="46" targets="32" tp_cost="750" monster_level="20" range="8" prefix="/monsterskill" en="Slipstream" ja="スリップストリーム" />
+  <o id="487" element="2" icon_id="42" targets="32" tp_cost="1000" monster_level="30" range="8" prefix="/monsterskill" en="Turbulence" ja="タービュレンス" />
+  <o id="488" element="6" icon_id="46" targets="32" tp_cost="800" monster_level="20" range="2" prefix="/monsterskill" en="Broad. Barrage" ja="ボロードサイド.B" />
+  <o id="489" element="6" icon_id="46" targets="32" tp_cost="800" monster_level="30" range="2" prefix="/monsterskill" en="Blind. Barrage" ja="ブラインドサイド.B" />
+  <o id="490" element="6" icon_id="46" targets="32" tp_cost="1500" monster_level="40" range="7" prefix="/monsterskill" en="Damnation Dive" ja="ダムネーションダイブ" />
+  <o id="491" element="6" icon_id="46" targets="32" tp_cost="750" monster_level="20" range="6" prefix="/monsterskill" en="Mucus Spread" ja="ミューカススプレッド" />
+  <o id="492" element="6" icon_id="46" targets="32" tp_cost="750" monster_level="30" range="6" prefix="/monsterskill" en="Epoxy Spread" ja="イポクシースプレッド" />
+  <o id="493" element="6" icon_id="46" targets="32" tp_cost="1000" monster_level="30" range="7" prefix="/monsterskill" en="Debilitating Drone" ja="耳障りな羽音" />
+  <o id="494" element="6" icon_id="46" targets="32" tp_cost="2000" monster_level="50" range="2" prefix="/monsterskill" en="Hoof Volley" ja="フーフボレー" />
+  <o id="495" element="6" icon_id="46" targets="32" tp_cost="2000" monster_level="60" range="9" prefix="/monsterskill" en="Con. Transfer" ja="コンテージョン" />
+  <o id="496" element="6" icon_id="46" targets="32" tp_cost="1500" monster_level="50" range="2" prefix="/monsterskill" en="Toxic Pick" ja="トクシックピック" />
+  <o id="497" element="6" icon_id="46" targets="32" tp_cost="1800" monster_level="40" range="9" prefix="/monsterskill" en="Crossthrash" ja="クロススラッシュ" />
+  <o id="498" element="6" icon_id="46" targets="32" tp_cost="1300" monster_level="40" range="8" prefix="/monsterskill" en="Knife Edge Circle" ja="ナイフエッジサークル" />
+  <o id="499" element="6" icon_id="46" targets="32" tp_cost="2000" monster_level="50" range="2" prefix="/monsterskill" en="Train Fall" ja="トレインフォール" />
+  <o id="500" element="3" icon_id="43" targets="32" tp_cost="1200" monster_level="40" range="7" prefix="/monsterskill" en="Viscid Secretion" ja="粘粘" />
+  <o id="501" element="6" icon_id="46" targets="1" tp_cost="1200" monster_level="50" range="0" prefix="/monsterskill" en="Wild Ginseng" ja="ワイルドジンセン" />
+  <o id="502" element="6" icon_id="46" targets="32" tp_cost="1800" monster_level="60" range="2" prefix="/monsterskill" en="Hungry Crunch" ja="ハングリークランチ" />
+  <o id="503" element="2" icon_id="42" targets="32" tp_cost="1200" monster_level="50" range="7" prefix="/monsterskill" en="Mighty Snort" ja="マイティースノート" />
+  <o id="504" element="6" icon_id="46" targets="32" tp_cost="1300" monster_level="40" range="2" prefix="/monsterskill" en="Soul Accretion" ja="ソウルアクリーション" />
+  <o id="505" element="6" icon_id="46" targets="32" tp_cost="1800" monster_level="50" range="12" prefix="/monsterskill" en="Miasmic Breath" ja="臭い酒息" />
+  <o id="506" element="6" icon_id="46" targets="32" tp_cost="1500" monster_level="60" range="12" prefix="/monsterskill" en="Putrid Breath" ja="忌まわしい嘆息" />
+  <o id="507" element="6" icon_id="46" targets="32" tp_cost="1900" monster_level="30" range="8" prefix="/monsterskill" en="2,000 Needles" ja="針弐千本" />
+  <o id="508" element="6" icon_id="46" targets="32" tp_cost="2500" monster_level="40" range="8" prefix="/monsterskill" en="4,000 Needles" ja="針四千本" />
+  <o id="509" element="6" icon_id="46" targets="32" tp_cost="1000" monster_level="60" range="8" prefix="/monsterskill" en="Predatory Glare" ja="プレダトリグレア" />
+  <o id="510" element="6" icon_id="46" targets="32" tp_cost="1500" monster_level="40" range="8" prefix="/monsterskill" en="Vile Belch" ja="おくび" />
+  <o id="511" element="6" icon_id="46" targets="32" tp_cost="1000" monster_level="1" range="9" prefix="/monsterskill" en="Hypnic Lamp" ja="ヒプニックランプ" />
+  <o id="512" element="6" icon_id="46" targets="32" tp_cost="2000" monster_level="30" range="8" prefix="/monsterskill" en="Seismic Tail" ja="セイズミックテール" />
+  <o id="513" element="5" icon_id="45" targets="32" tp_cost="1500" monster_level="10" range="8" prefix="/monsterskill" en="Seaspray" ja="潮泡" />
+  <o id="514" element="6" icon_id="46" targets="32" tp_cost="1800" monster_level="50" range="9" prefix="/monsterskill" en="Leeching Current" ja="渦潮" />
+  <o id="515" element="6" icon_id="46" targets="32" tp_cost="1000" monster_level="10" range="4" prefix="/monsterskill" en="Pecking Flurry" ja="ペッキングフラリー" />
+  <o id="516" element="6" icon_id="46" targets="32" tp_cost="600" monster_level="1" range="4" prefix="/monsterskill" en="Snatch Morsel" ja="スナッチモースル" />
+  <o id="517" element="2" icon_id="42" targets="32" tp_cost="1000" monster_level="20" range="7" prefix="/monsterskill" en="Feather Tickle" ja="フェザーティックル" />
+  <o id="518" element="6" icon_id="46" targets="1" tp_cost="800" monster_level="40" range="0" prefix="/monsterskill" en="Barrier Tusk" ja="牙門" />
+  <o id="519" element="6" icon_id="46" targets="32" tp_cost="1000" monster_level="1" range="8" prefix="/monsterskill" en="Onrush" ja="オンラッシュ" />
+  <o id="520" element="6" icon_id="46" targets="32" tp_cost="1500" monster_level="30" range="2" prefix="/monsterskill" en="Stampede" ja="轟足" />
+  <o id="521" element="6" icon_id="46" targets="32" tp_cost="1600" monster_level="10" range="8" prefix="/monsterskill" en="Flailing Trunk" ja="薙鼻" />
+  <o id="522" element="6" icon_id="46" targets="32" tp_cost="1000" monster_level="20" range="8" prefix="/monsterskill" en="Voracious Trunk" ja="吸印" />
+  <o id="523" element="5" icon_id="45" targets="1" tp_cost="1500" monster_level="50" range="8" prefix="/monsterskill" en="Proboscis Shower" ja="プロバシスシャワー" />
+  <o id="524" element="6" icon_id="46" targets="32" tp_cost="1000" monster_level="1" range="8" prefix="/monsterskill" en="Yawn" ja="ヤーン" />
+  <o id="525" element="6" icon_id="46" targets="32" tp_cost="1500" monster_level="30" range="2" prefix="/monsterskill" en="Wing Slap" ja="ウィングスラップ" />
+  <o id="526" element="6" icon_id="46" targets="32" tp_cost="1200" monster_level="10" range="7" prefix="/monsterskill" en="Beak Lunge" ja="ビークランジ" />
+  <o id="527" element="6" icon_id="46" targets="32" tp_cost="1000" monster_level="20" range="8" prefix="/monsterskill" en="Frigid Shuffle" ja="クールダンス" />
+  <o id="528" element="2" icon_id="42" targets="32" tp_cost="1500" monster_level="40" range="8" prefix="/monsterskill" en="Wing Whirl" ja="貝独楽" />
+  <o id="529" element="0" icon_id="40" targets="32" tp_cost="1000" monster_level="1" range="12" prefix="/monsterskill" en="Lava Spit" ja="ラヴァスピット" />
+  <o id="530" element="0" icon_id="40" targets="32" tp_cost="1200" monster_level="10" range="8" prefix="/monsterskill" en="Sulfurous Breath" ja="サルファラスブレス" />
+  <o id="531" element="6" icon_id="46" targets="32" tp_cost="1200" monster_level="30" range="12" prefix="/monsterskill" en="Ululation" ja="ユルレーション" />
+  <o id="532" element="0" icon_id="40" targets="1" tp_cost="1200" monster_level="50" range="0" prefix="/monsterskill" en="Magma Hoplon" ja="マグマホプロン" />
+  <o id="533" element="0" icon_id="40" targets="32" tp_cost="2500" monster_level="60" range="12" prefix="/monsterskill" en="Gates of Hades" ja="ゲーツオブハデス" />
+  <o id="534" element="0" icon_id="40" targets="32" tp_cost="1200" monster_level="30" range="8" prefix="/monsterskill" en="Incinerate" ja="インシナレート" />
+  <o id="535" element="6" icon_id="46" targets="32" tp_cost="1500" monster_level="70" range="7" prefix="/monsterskill" en="Vampiric Root" ja="ヴァンピリックルート" />
+  <o id="536" element="3" icon_id="43" targets="1" tp_cost="800" monster_level="1" range="0" prefix="/monsterskill" en="Amber Scutum" ja="アンバースクトゥム" />
+  <o id="537" element="0" icon_id="40" targets="32" tp_cost="1000" monster_level="20" range="8" prefix="/monsterskill" en="Vitriolic Spray" ja="V.スプレー" />
+  <o id="538" element="0" icon_id="40" targets="32" tp_cost="1000" monster_level="30" range="8" prefix="/monsterskill" en="Thermal Pulse" ja="サーマルパルス" />
+  <o id="539" element="3" icon_id="43" targets="32" tp_cost="1000" monster_level="20" range="7" prefix="/monsterskill" en="Cannonball" ja="キャノンボール" />
+  <o id="540" element="0" icon_id="40" targets="1" tp_cost="1200" monster_level="10" range="0" prefix="/monsterskill" en="Heat Barrier" ja="ヒートバリア" />
+  <o id="541" element="0" icon_id="40" targets="32" tp_cost="1500" monster_level="40" range="8" prefix="/monsterskill" en="Vitriolic Shower" ja="V.シャワー" />
+  <o id="542" element="6" icon_id="46" targets="1" tp_cost="1300" monster_level="1" range="0" prefix="/monsterskill" en="Amplification" ja="ねたみ種" />
+  <o id="543" element="5" icon_id="45" targets="32" tp_cost="1000" monster_level="10" range="8" prefix="/monsterskill" en="Boiling Point" ja="罵詈雑言" />
+  <o id="544" element="6" icon_id="46" targets="1" tp_cost="1000" monster_level="20" range="8" prefix="/monsterskill" en="Xenoglossia" ja="自画自賛" />
+  <o id="545" element="6" icon_id="46" targets="32" tp_cost="1000" monster_level="30" range="7" prefix="/monsterskill" en="Amorphic Spikes" ja="槍玉" />
+  <o id="546" element="6" icon_id="46" targets="32" tp_cost="1000" monster_level="40" range="7" prefix="/monsterskill" en="Amorphic Scythe" ja="鎌かけ" />
+  <o id="547" element="6" icon_id="46" targets="1" tp_cost="9999" monster_level="-1" range="8" prefix="/monsterskill" en="Synergism" ja="悪平等" />
+  <o id="548" element="6" icon_id="46" targets="32" tp_cost="1000" monster_level="50" range="8" prefix="/monsterskill" en="Feeble Bleat" ja="小咆哮" />
+  <o id="549" element="6" icon_id="46" targets="1" tp_cost="3000" monster_level="30" range="0" prefix="/monsterskill" en="Frenzy Pollen" ja="フレンジーポレン" />
+  <o id="550" element="0" icon_id="40" targets="32" tp_cost="1000" monster_level="50" range="8" prefix="/monsterskill" en="Magma Fan" ja="マグマファン" />
+  <o id="551" element="0" icon_id="40" targets="32" tp_cost="1500" monster_level="60" range="9" prefix="/monsterskill" en="Erratic Flutter" ja="エラチックフラッター" />
+  <o id="552" element="0" icon_id="40" targets="32" tp_cost="1500" monster_level="90" range="8" prefix="/monsterskill" en="Proboscis" ja="プロボシス" />
+  <o id="553" element="0" icon_id="40" targets="32" tp_cost="1000" monster_level="80" range="12" prefix="/monsterskill" en="Erosion Dust" ja="妖鱗粉" />
+  <o id="554" element="0" icon_id="40" targets="1" tp_cost="2000" monster_level="70" range="0" prefix="/monsterskill" en="Exuviation" ja="イグジュビエーション" />
+  <o id="555" element="0" icon_id="40" targets="32" tp_cost="2000" monster_level="95" range="8" prefix="/monsterskill" en="Fire Break" ja="ファイアブレーク" />
+  <o id="556" element="6" icon_id="46" targets="32" tp_cost="1500" monster_level="60" range="9" prefix="/monsterskill" en="Abominable Belch" ja="長大息" />
+  <o id="557" element="6" icon_id="46" targets="32" tp_cost="1500" monster_level="20" range="7" prefix="/monsterskill" en="Batterhorn" ja="バッターホーン" />
+  <o id="558" element="6" icon_id="46" targets="32" tp_cost="1000" monster_level="10" range="10" prefix="/monsterskill" en="Demoralizing Roar" ja="デモラライジングロア" />
+  <o id="559" element="6" icon_id="46" targets="1" tp_cost="1500" monster_level="30" range="0" prefix="/monsterskill" en="Boiling Blood" ja="ボイリングブラッド" />
+  <o id="560" element="6" icon_id="46" targets="1" tp_cost="1000" monster_level="1" range="0" prefix="/monsterskill" en="Granite Skin" ja="グラニットスキン" />
+  <o id="561" element="6" icon_id="46" targets="32" tp_cost="2000" monster_level="40" range="8" prefix="/monsterskill" en="Crippling Slam" ja="クリップリングスラム" />
+  <o id="562" element="5" icon_id="45" targets="32" tp_cost="1300" monster_level="30" range="12" prefix="/monsterskill" en="Aqua Fortis" ja="アクアフォーティス" />
+  <o id="563" element="5" icon_id="45" targets="32" tp_cost="1300" monster_level="20" range="12" prefix="/monsterskill" en="Regurgitation" ja="リガージテーション" />
+  <o id="564" element="6" icon_id="46" targets="32" tp_cost="1200" monster_level="10" range="4" prefix="/monsterskill" en="Delta Thrust" ja="デルタスラスト" />
+  <o id="565" element="6" icon_id="46" targets="32" tp_cost="1000" monster_level="1" range="8" prefix="/monsterskill" en="Torpefying Charge" ja="T.チャージ" />
+  <o id="566" element="5" icon_id="45" targets="32" tp_cost="1800" monster_level="40" range="12" prefix="/monsterskill" en="Calcifying Mist" ja="C.ミスト" />
+  <o id="567" element="6" icon_id="46" targets="32" tp_cost="1000" monster_level="1" range="7" prefix="/monsterskill" en="Insipid Nip" ja="インシピッドニップ" />
+  <o id="568" element="6" icon_id="46" targets="32" tp_cost="9999" monster_level="-1" range="7" prefix="/monsterskill" en="Pandemic Nip" ja="パンデミックニップ" />
+  <o id="569" element="7" icon_id="47" targets="32" tp_cost="1500" monster_level="10" range="8" prefix="/monsterskill" en="Bombilation" ja="ボンビレーション" />
+  <o id="570" element="7" icon_id="47" targets="32" tp_cost="1500" monster_level="20" range="8" prefix="/monsterskill" en="Cimicine Discharge" ja="C.ディスチャージ" />
+  <o id="571" element="7" icon_id="47" targets="32" tp_cost="9999" monster_level="-1" range="9" prefix="/monsterskill" en="Emetic Discharge" ja="E.ディスチャージ" />
+  <o id="572" element="3" icon_id="43" targets="32" tp_cost="1200" monster_level="10" range="8" prefix="/monsterskill" en="Seedspray" ja="シードスプレー" />
+  <o id="573" element="3" icon_id="43" targets="32" tp_cost="1500" monster_level="40" range="8" prefix="/monsterskill" en="Viscid Emission" ja="ヴィシドエミッション" />
+  <o id="574" element="6" icon_id="46" targets="32" tp_cost="1000" monster_level="1" range="8" prefix="/monsterskill" en="Rotten Stench" ja="ロトンステンチ" />
+  <o id="575" element="6" icon_id="46" targets="32" tp_cost="1200" monster_level="30" range="7" prefix="/monsterskill" en="Bloody Caress" ja="ブラッディカレス" />
+  <o id="576" element="6" icon_id="46" targets="32" tp_cost="1000" monster_level="1" range="7" prefix="/monsterskill" en="Fevered Pitch" ja="フィーバードピッチ" />
+  <o id="577" element="6" icon_id="46" targets="1" tp_cost="2500" monster_level="20" range="0" prefix="/monsterskill" en="Plenilune Embrace" ja="P.エンブレイス" />
+  <o id="578" element="6" icon_id="46" targets="1" tp_cost="2500" monster_level="20" range="0" prefix="/monsterskill" en="Plenilune Embrace" ja="P.エンブレイス" />
+  <o id="579" element="7" icon_id="47" targets="32" tp_cost="1500" monster_level="10" range="8" prefix="/monsterskill" en="Nox Blast" ja="ノックスブラスト" />
+  <o id="580" element="6" icon_id="46" targets="32" tp_cost="1800" monster_level="1" range="2" prefix="/monsterskill" en="Asuran Claws" ja="アシュラクロー" />
+  <o id="581" element="6" icon_id="46" targets="1" tp_cost="1500" monster_level="30" range="0" prefix="/monsterskill" en="Cacophony" ja="カコフォニー" />
+  <o id="582" element="6" icon_id="46" targets="32" tp_cost="1000" monster_level="1" range="4" prefix="/monsterskill" en="Sudden Lunge" ja="サドンランジ" />
+  <o id="583" element="6" icon_id="46" targets="32" tp_cost="1000" monster_level="10" range="8" prefix="/monsterskill" en="Noisome Powder" ja="ノイサムパウダー" />
+  <o id="584" element="2" icon_id="42" targets="32" tp_cost="1500" monster_level="30" range="8" prefix="/monsterskill" en="Nepenthean Hum" ja="ネペンシアンハム" />
+  <o id="585" element="6" icon_id="46" targets="32" tp_cost="1000" monster_level="20" range="9" prefix="/monsterskill" en="Spiral Spin" ja="スパイラルスピン" />
+  <o id="586" element="0" icon_id="40" targets="32" tp_cost="1200" monster_level="40" range="9" prefix="/monsterskill" en="Spiral Burst" ja="スパイラルバースト" />
+  <o id="587" element="5" icon_id="45" targets="32" tp_cost="2000" monster_level="10" range="8" prefix="/monsterskill" en="Fuscous Ooze" ja="ファスカスウーズ" />
+  <o id="588" element="5" icon_id="45" targets="32" tp_cost="1000" monster_level="1" range="8" prefix="/monsterskill" en="Purulent Ooze" ja="ピュルラントウーズ" />
+  <o id="589" element="5" icon_id="45" targets="32" tp_cost="1500" monster_level="20" range="8" prefix="/monsterskill" en="Corrosive Ooze" ja="コローシブウーズ" />
+  <o id="590" element="5" icon_id="45" targets="32" tp_cost="3000" monster_level="30" range="8" prefix="/monsterskill" en="Mucil. Ooze" ja="ミュシラジナスウーズ" />
+  <o id="591" element="2" icon_id="42" targets="32" tp_cost="1000" monster_level="1" range="9" prefix="/monsterskill" en="Dustvoid" ja="ダストヴォイド" />
+  <o id="592" element="3" icon_id="43" targets="32" tp_cost="2000" monster_level="10" range="9" prefix="/monsterskill" en="Slaverous Gale" ja="スラヴェラスゲイル" />
+  <o id="593" element="2" icon_id="42" targets="32" tp_cost="1800" monster_level="20" range="9" prefix="/monsterskill" en="Aeolian Void" ja="イオリアンヴォイド" />
+  <o id="594" element="6" icon_id="46" targets="32" tp_cost="2000" monster_level="30" range="9" prefix="/monsterskill" en="Ex. Purgation" ja="E.パーゲーション" />
+  <o id="595" element="6" icon_id="46" targets="32" tp_cost="3000" monster_level="90" range="9" prefix="/monsterskill" en="Desiccation" ja="デシケーション" />
+  <o id="596" element="6" icon_id="46" targets="32" tp_cost="2000" monster_level="50" range="8" prefix="/monsterskill" en="Disorienting Waul" ja="魂の咆哮" />
+  <o id="597" element="7" icon_id="47" targets="32" tp_cost="9999" monster_level="-1" range="9" prefix="/monsterskill" en="Microspores" ja="マイクロスポア" />
+  <o id="598" element="6" icon_id="46" targets="32" tp_cost="9999" monster_level="-1" range="8" prefix="/monsterskill" en="Blink of Peril" ja="ブリンクオブペリル" />
+  <o id="599" element="6" icon_id="46" targets="32" tp_cost="1300" monster_level="60" range="7" prefix="/monsterskill" en="Petal Pirouette" ja="ペタルピルエット" />
+  <o id="600" element="6" icon_id="46" targets="32" tp_cost="9999" monster_level="-1" range="2" prefix="/monsterskill" en="Hell Scissors" ja="ヘルシザース" />
+  <o id="601" element="6" icon_id="46" targets="32" tp_cost="9999" monster_level="-1" range="8" prefix="/monsterskill" en="Fatal Scream" ja="フェイタルスクリーム" />
+  <o id="602" element="7" icon_id="47" targets="32" tp_cost="2000" monster_level="60" range="10" prefix="/monsterskill" en="Amnesic Blast" ja="アムネジクブラスト" />
+  <o id="603" element="6" icon_id="46" targets="32" tp_cost="1000" monster_level="60" range="4" prefix="/monsterskill" en="Demonic Flower" ja="夢狂花" />
+  <o id="604" element="6" icon_id="46" targets="32" tp_cost="1300" monster_level="10" range="6" prefix="/monsterskill" en="Bloody Beak" ja="ブラッディビーク" />
+  <o id="605" element="6" icon_id="46" targets="32" tp_cost="2000" monster_level="-1" range="12" prefix="/monsterskill" en="Warped Wail" ja="ワープドウェール" />
+  <o id="606" element="2" icon_id="42" targets="32" tp_cost="1500" monster_level="20" range="9" prefix="/monsterskill" en="Reaving Wind" ja="リービンウィンド" />
+  <o id="607" element="2" icon_id="42" targets="32" tp_cost="1300" monster_level="1" range="12" prefix="/monsterskill" en="Storm Wing" ja="ストームウィング" />
+  <o id="608" element="2" icon_id="42" targets="32" tp_cost="1700" monster_level="30" range="12" prefix="/monsterskill" en="Calamitous Wind" ja="カラミティウィンド" />
+  <o id="609" element="6" icon_id="46" targets="32" tp_cost="1500" monster_level="1" range="4" prefix="/monsterskill" en="Severing Fang" ja="セヴァリンファング" />
+  <o id="610" element="5" icon_id="45" targets="32" tp_cost="1500" monster_level="10" range="10" prefix="/monsterskill" en="Aqua Blast" ja="アクアブラスト" />
+  <o id="611" element="1" icon_id="41" targets="32" tp_cost="3000" monster_level="30" range="8" prefix="/monsterskill" en="Frozen Mist" ja="フローズンミスト" />
+  <o id="612" element="5" icon_id="45" targets="32" tp_cost="2500" monster_level="40" range="8" prefix="/monsterskill" en="Hydro Wave" ja="ハイドロウェーブ" />
+  <o id="613" element="1" icon_id="41" targets="32" tp_cost="2000" monster_level="50" range="5" prefix="/monsterskill" en="Ice Guillotine" ja="アイスギロティン" />
+  <o id="614" element="5" icon_id="45" targets="32" tp_cost="2000" monster_level="60" range="11" prefix="/monsterskill" en="Aqua Cannon" ja="アクアキャノン" />
+  <o id="615" element="5" icon_id="45" targets="32" tp_cost="2500" monster_level="60" range="12" prefix="/monsterskill" en="Venom Shower" ja="ベノムシャワー" />
+  <o id="616" element="6" icon_id="46" targets="32" tp_cost="2000" monster_level="50" range="8" prefix="/monsterskill" en="Mega Scissors" ja="メガシザース" />
+  <o id="617" element="6" icon_id="46" targets="32" tp_cost="1500" monster_level="40" range="12" prefix="/monsterskill" en="Cytokinesis" ja="サイトキネシス" />
+  <o id="618" element="6" icon_id="46" targets="32" tp_cost="9999" monster_level="-1" range="12" prefix="/monsterskill" en="Gravitic Horn" ja="グラビティホーン" />
+  <o id="619" element="3" icon_id="43" targets="32" tp_cost="2000" monster_level="50" range="12" prefix="/monsterskill" en="Quake Blast" ja="クエイクブラスト" />
+  <o id="620" element="6" icon_id="46" targets="32" tp_cost="1000" monster_level="10" range="7" prefix="/monsterskill" en="Fluid Spread" ja="フルイドスプレッド" />
+  <o id="621" element="6" icon_id="46" targets="32" tp_cost="800" monster_level="1" range="9" prefix="/monsterskill" en="Fluid Toss" ja="フルイドスルー" />
+  <o id="622" element="6" icon_id="46" targets="32" tp_cost="3000" monster_level="50" range="8" prefix="/monsterskill" en="Dissolve" ja="ディゾルブ" />
+  <o id="623" element="6" icon_id="46" targets="32" tp_cost="750" monster_level="20" range="6" prefix="/monsterskill" en="Mucus Spread" ja="ミューカススプレッド" />
+  <o id="624" element="6" icon_id="46" targets="32" tp_cost="750" monster_level="30" range="6" prefix="/monsterskill" en="Epoxy Spread" ja="イポクシースプレッド" />
+  <o id="625" element="6" icon_id="46" targets="32" tp_cost="2000" monster_level="80" range="8" prefix="/monsterskill" en="Thousand Spears" ja="サウザンドスピア" />
+  <o id="626" element="7" icon_id="47" targets="1" tp_cost="2000" monster_level="80" range="2" prefix="/monsterskill" en="Phaeosynthesis" ja="闇合成" />
+  <o id="627" element="3" icon_id="43" targets="32" tp_cost="2000" monster_level="60" range="9" prefix="/monsterskill" en="Testudo Tremor" ja="テストゥドトレマー" />
+  <o id="628" element="7" icon_id="47" targets="32" tp_cost="2000" monster_level="70" range="9" prefix="/monsterskill" en="Ecliptic Meteor" ja="エクリプスメテオ" />
+  <o id="629" element="6" icon_id="46" targets="32" tp_cost="9999" monster_level="-1" range="8" prefix="/monsterskill" en="Tepal Twist" ja="テパルツイスト" />
+  <o id="630" element="6" icon_id="46" targets="32" tp_cost="9999" monster_level="-1" range="8" prefix="/monsterskill" en="Bloom Fouette" ja="ブルームフェッテ" />
+  <o id="631" element="6" icon_id="46" targets="32" tp_cost="2000" monster_level="90" range="7" prefix="/monsterskill" en="Petalback Spin" ja="ペタルバックスピン" />
+  <o id="632" element="6" icon_id="46" targets="32" tp_cost="9999" monster_level="-1" range="8" prefix="/monsterskill" en="Mortal Blast" ja="モータルブラスト" />
+  <o id="633" element="6" icon_id="46" targets="32" tp_cost="1500" monster_level="-1" range="9" prefix="/monsterskill" en="Gorge" ja="ゴージ" />
+  <o id="634" element="3" icon_id="43" targets="32" tp_cost="1500" monster_level="-1" range="9" prefix="/monsterskill" en="Disgorge" ja="ディスゴージ" />
+  <o id="635" element="7" icon_id="47" targets="32" tp_cost="2000" monster_level="70" range="9" prefix="/monsterskill" en="Agaricus" ja="アガリクス" />
+  <o id="636" element="6" icon_id="46" targets="32" tp_cost="9999" monster_level="-1" range="9" prefix="/monsterskill" en="Terminal Sting" ja="ターミナルスピア" />
+  <o id="637" element="6" icon_id="46" targets="32" tp_cost="9999" monster_level="-1" range="8" prefix="/monsterskill" en="Booming Bleat" ja="ブーミングブリート" />
+  <o id="638" element="6" icon_id="46" targets="32" tp_cost="1500" monster_level="70" range="9" prefix="/monsterskill" en="Vacant Gaze" ja="ベイカントゲイズ" />
+  <o id="639" element="6" icon_id="46" targets="32" tp_cost="2000" monster_level="70" range="9" prefix="/monsterskill" en="Psyche Suction" ja="サイキサクション" />
+  <o id="640" element="2" icon_id="42" targets="32" tp_cost="1500" monster_level="40" range="10" prefix="/monsterskill" en="Vermilion Wind" ja="V.ウィンド" />
+  <o id="641" element="7" icon_id="47" targets="32" tp_cost="9999" monster_level="-1" range="8" prefix="/monsterskill" en="Tyrant Tusk" ja="タイラントタスク" />
+  <o id="642" element="3" icon_id="43" targets="32" tp_cost="1200" monster_level="50" range="8" prefix="/monsterskill" en="Virulent Haze" ja="ビルレントヘイズ" />
+  <o id="643" element="7" icon_id="47" targets="32" tp_cost="9999" monster_level="-1" range="8" prefix="/monsterskill" en="Torment Tusk" ja="トーメントタスク" />
+  <o id="644" element="6" icon_id="46" targets="32" tp_cost="9999" monster_level="-1" range="8" prefix="/monsterskill" en="Tarsal Slam" ja="ターサルスラム" />
+  <o id="645" element="0" icon_id="40" targets="32" tp_cost="3000" monster_level="60" range="12" prefix="/monsterskill" en="Acheron Flame" ja="アケロンフレイム" />
+  <o id="646" element="2" icon_id="42" targets="32" tp_cost="2500" monster_level="50" range="12" prefix="/monsterskill" en="Dread Wind" ja="ドレッドウィンド" />
+  <o id="647" element="2" icon_id="42" targets="32" tp_cost="2000" monster_level="99" range="8" prefix="/monsterskill" en="Telsonic Tempest" ja="T.テンペスト" />
+  <o id="648" element="6" icon_id="46" targets="32" tp_cost="1800" monster_level="80" range="8" prefix="/monsterskill" en="Preter. Gleam" ja="クイエセンスグリーム" />
+  <o id="649" element="7" icon_id="47" targets="32" tp_cost="3000" monster_level="60" range="8" prefix="/monsterskill" en="Chupa Blossom" ja="チュパブロッサム" />
+  <o id="650" element="5" icon_id="45" targets="32" tp_cost="1800" monster_level="60" range="11" prefix="/monsterskill" en="Blighted Bouquet" ja="ブライテッドブーケ" />
+  <o id="651" element="6" icon_id="46" targets="32" tp_cost="1800" monster_level="50" range="11" prefix="/monsterskill" en="Booming Bomb." ja="B.ボンビネーション" />
+  <o id="652" element="5" icon_id="45" targets="32" tp_cost="1800" monster_level="50" range="8" prefix="/monsterskill" en="Gush o' Goo" ja="グッシュ・オ・グー" />
+  <o id="653" element="6" icon_id="46" targets="32" tp_cost="1000" monster_level="1" range="8" prefix="/monsterskill" en="Yawn" ja="ヤーン" />
+  <o id="654" element="6" icon_id="46" targets="32" tp_cost="1500" monster_level="30" range="2" prefix="/monsterskill" en="Wing Slap" ja="ウィングスラップ" />
+  <o id="655" element="6" icon_id="46" targets="32" tp_cost="1200" monster_level="10" range="7" prefix="/monsterskill" en="Beak Lunge" ja="ビークランジ" />
+  <o id="656" element="6" icon_id="46" targets="32" tp_cost="1000" monster_level="20" range="8" prefix="/monsterskill" en="Frigid Shuffle" ja="クールダンス" />
+  <o id="657" element="2" icon_id="42" targets="32" tp_cost="1500" monster_level="40" range="8" prefix="/monsterskill" en="Wing Whirl" ja="貝独楽" />
+  <o id="658" element="1" icon_id="41" targets="32" tp_cost="3000" monster_level="50" range="12" prefix="/monsterskill" en="Whiteout" ja="ホワイトアウト" />
+  <o id="659" element="3" icon_id="43" targets="32" tp_cost="9999" monster_level="-1" range="10" prefix="/monsterskill" en="Keratinous Crush" ja="ケラチナスクラッシュ" />
+  <o id="660" element="6" icon_id="46" targets="32" tp_cost="2200" monster_level="50" range="8" prefix="/monsterskill" en="Rhinowrecker" ja="ライノレッカー" />
+  <o id="661" element="6" icon_id="46" targets="32" tp_cost="2000" monster_level="40" range="10" prefix="/monsterskill" en="Tropic Tenor" ja="トロピカルテノール" />
+  <o id="662" element="6" icon_id="46" targets="32" tp_cost="1800" monster_level="50" range="8" prefix="/monsterskill" en="Searing Effulgence" ja="S.エッファルジェンス" />
+  <o id="663" element="5" icon_id="45" targets="32" tp_cost="1500" monster_level="50" range="8" prefix="/monsterskill" en="Tarichutoxin" ja="タリチャトクシン" />
+  <o id="664" element="7" icon_id="47" targets="32" tp_cost="2000" monster_level="70" range="9" prefix="/monsterskill" en="Caliginosity" ja="カリギノシティー" />
+  <o id="665" element="6" icon_id="46" targets="1" tp_cost="1500" monster_level="30" range="0" prefix="/monsterskill" en="Nat. Meditation" ja="ネイチャーメディテイト" />
+  <o id="666" element="6" icon_id="46" targets="32" tp_cost="1000" monster_level="10" range="8" prefix="/monsterskill" en="Sensilla Blades" ja="センシラブレード" />
+  <o id="667" element="6" icon_id="46" targets="32" tp_cost="1000" monster_level="1" range="4" prefix="/monsterskill" en="Tegmina Buffet" ja="テグミナバフェット" />
+  <o id="668" element="6" icon_id="46" targets="32" tp_cost="1000" monster_level="20" range="10" prefix="/monsterskill" en="Sanguinary Slash" ja="サングインスラッシュ" />
+  <o id="669" element="6" icon_id="46" targets="32" tp_cost="1000" monster_level="40" range="8" prefix="/monsterskill" en="Orthopterror" ja="オーソプテラー" />
+  <o id="670" element="2" icon_id="42" targets="32" tp_cost="1000" monster_level="1" range="8" prefix="/monsterskill" en="Temp. Upheaval" ja="T.アップヒーヴ" />
+  <o id="671" element="6" icon_id="46" targets="32" tp_cost="1000" monster_level="10" range="8" prefix="/monsterskill" en="Slice 'n' Dice" ja="スライスンダイス" />
+  <o id="672" element="7" icon_id="47" targets="32" tp_cost="1000" monster_level="20" range="8" prefix="/monsterskill" en="Blackout" ja="ブラックアウト" />
+  <o id="673" element="0" icon_id="40" targets="32" tp_cost="1000" monster_level="30" range="8" prefix="/monsterskill" en="Smould. Swarm" ja="S.スウォーム" />
+  <o id="674" element="5" icon_id="45" targets="32" tp_cost="1000" monster_level="1" range="10" prefix="/monsterskill" en="Foul Waters" ja="ファウルウォーター" />
+  <o id="675" element="7" icon_id="47" targets="32" tp_cost="1000" monster_level="10" range="10" prefix="/monsterskill" en="Pestilent Plume" ja="ペステレントプルーム" />
+  <o id="676" element="5" icon_id="45" targets="32" tp_cost="1000" monster_level="20" range="8" prefix="/monsterskill" en="Deadening Haze" ja="デッドヘイズ" />
+  <o id="677" element="5" icon_id="45" targets="32" tp_cost="1000" monster_level="30" range="8" prefix="/monsterskill" en="Venomous Vapor" ja="ヴェノムヴェイパー" />
+  <o id="678" element="6" icon_id="46" targets="32" tp_cost="1000" monster_level="1" range="8" prefix="/monsterskill" en="Retinal Glare" ja="レテナグレア" />
+  <o id="679" element="7" icon_id="47" targets="32" tp_cost="1000" monster_level="10" range="8" prefix="/monsterskill" en="Sylvan Slumber" ja="シルバンスランバー" />
+  <o id="680" element="2" icon_id="42" targets="32" tp_cost="1000" monster_level="20" range="8" prefix="/monsterskill" en="Crushing Gaze" ja="クラッシングゲイズ" />
+  <o id="681" element="7" icon_id="47" targets="32" tp_cost="9999" monster_level="-1" range="8" prefix="/monsterskill" en="Vaskania" ja="バスカニア" />
+  <o id="682" element="0" icon_id="40" targets="32" tp_cost="1800" monster_level="50" range="9" prefix="/monsterskill" en="Whirling Inferno" ja="W.インフェルノ" />
+  <o id="683" element="0" icon_id="40" targets="32" tp_cost="2500" monster_level="99" range="9" prefix="/monsterskill" en="Benumbing Blaze" ja="ベナムブレイズ" />
+  <o id="684" element="6" icon_id="46" targets="1" tp_cost="300" monster_level="1" range="2" prefix="/monsterskill" en="Fighting Stance α" ja="ファイトスタンスα" />
+  <o id="685" element="6" icon_id="46" targets="1" tp_cost="300" monster_level="1" range="2" prefix="/monsterskill" en="Fighting Stance β" ja="ファイトスタンスβ" />
+  <o id="686" element="6" icon_id="46" targets="1" tp_cost="300" monster_level="1" range="2" prefix="/monsterskill" en="Fighting Stance γ" ja="ファイトスタンスγ" />
+  <o id="687" element="6" icon_id="46" targets="1" tp_cost="300" monster_level="1" range="2" prefix="/monsterskill" en="Fighting Stance δ" ja="ファイトスタンスδ" />
+  <o id="688" element="0" icon_id="40" targets="32" tp_cost="1000" monster_level="1" range="12" prefix="/monsterskill" en="Frizz" ja="メラ" />
+  <o id="689" element="6" icon_id="46" targets="1" tp_cost="700" monster_level="1" range="2" prefix="/monsterskill" en="Jittering Jig" ja="情熱の律動" />
+  <o id="690" element="6" icon_id="46" targets="32" tp_cost="700" monster_level="10" range="4" prefix="/monsterskill" en="Romp" ja="ロンプ" />
+  <o id="691" element="6" icon_id="46" targets="32" tp_cost="1500" monster_level="1" range="2" prefix="/monsterskill" en="Frenetic Flurry" ja="熱狂撃" />
+</monster_skills>

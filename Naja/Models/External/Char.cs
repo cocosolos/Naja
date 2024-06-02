@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Naja.Models.External;
 
 public partial class Char
 {
+    [Key]
     public uint Charid { get; set; }
 
     public uint Accid { get; set; }

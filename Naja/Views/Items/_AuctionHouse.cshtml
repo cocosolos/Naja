@@ -4,78 +4,81 @@
 {
     int stockRowSpan = Model.ItemBasic.StackSize == 1 ? 1 : 2;
 
-        <table class="table table-bordered border-secondary table-sm">
-            <thead class="bg-primary text-white text-center">
-                <tr>
-                    <th colspan="4">Auction House</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th class="col-sm-2 bg-secondary bg-opacity-25">Category</th>
-                    <td colspan="3">
+    <table class="table table-bordered border-secondary table-sm">
+        <thead class="bg-primary text-white text-center">
+            <tr>
+                <th colspan="4">Auction House</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th class="col-sm-2 bg-secondary bg-opacity-25">Category</th>
+                <td colspan="3">
                     @Model.ItemBasic.AHDescription
-                    </td>
-                </tr>
-                <tr>
-                    <th class="col-sm-2 bg-secondary bg-opacity-25 align-middle" rowspan="@stockRowSpan">Stock</th>
+                </td>
+            </tr>
+            <tr>
+                <th class="col-sm-2 bg-secondary bg-opacity-25 align-middle" rowspan="@stockRowSpan">Stock</th>
                 @if (stockRowSpan == 2)
                 {
-                            <th class="col-sm-2 bg-secondary bg-opacity-10">Single</th>
-                            <td>@Model.AuctionHouseStock.Singles</td>
+                    <th class="col-sm-2 bg-secondary bg-opacity-10">Single</th>
+                    <td>@Model.AuctionHouseStock?.Stacks</td>
                 }
                 else
                 {
-                            <td colspan="3">@Model.AuctionHouseStock.Singles</td>
+                    <td colspan="3">@Model.AuctionHouseStock?.Singles</td>
                 }
-                </tr>
+            </tr>
             @if (stockRowSpan == 2)
             {
-                        <tr>
-                            <th class="col-sm-2 bg-secondary bg-opacity-10">Stack</th>
-                            <td>@Model.AuctionHouseStock.Stacks</td>
-                        </tr>
-            }
                 <tr>
-                    <td colspan="4">
-                        <table class="table table-bordered border-secondary table-sm table-hover">
-                            <thead>
-                                <tr class="bg-secondary bg-opacity-25">
-                                    <th colspan="5" class="text-center">History</th>
-                                </tr>
-                                <tr class="bg-secondary bg-opacity-10">
-                                    <th class="col-sm-2">Date</th>
-                                    <th class="col-sm-2">Seller</th>
-                                    <th class="col-sm-2">Buyer</th>
-                                    <th class="col-sm-1">Amount</th>
-                                    <th class="col-sm-2">Price</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            @foreach (var item in Model.AuctionHouseHistory)
-                            {
-                                        <tr>
-                                            <td>
-                                        @Html.DisplayFor(i => item.SellDateDt)
-                                            </td>
-                                            <td>
-                                        @Html.DisplayFor(i => item.SellerName)
-                                            </td>
-                                            <td>
-                                        @Html.DisplayFor(i => item.BuyerName)
-                                            </td>
-                                            <td>
-                                        @Html.DisplayFor(i => item.Amount)
-                                            </td>
-                                            <td>
-                                        @Html.DisplayFor(i => item.Sale)g
-                                            </td>
-                                        </tr>
-                            }
-                            </tbody>
-                        </table>
-                    </td>
+                    <th class="col-sm-2 bg-secondary bg-opacity-10">Stack</th>
+                    <td>@Model.AuctionHouseStock?.Stacks</td>
                 </tr>
-            </tbody>
-        </table>
+            }
+            <tr>
+                <td colspan="4">
+                    <table class="table table-bordered border-secondary table-sm table-hover">
+                        <thead>
+                            <tr class="bg-secondary bg-opacity-25">
+                                <th colspan="5" class="text-center">History</th>
+                            </tr>
+                            <tr class="bg-secondary bg-opacity-10">
+                                <th class="col-sm-2">Date</th>
+                                <th class="col-sm-2">Seller</th>
+                                <th class="col-sm-2">Buyer</th>
+                                <th class="col-sm-1">Amount</th>
+                                <th class="col-sm-2">Price</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model.AuctionHouseHistory != null)
+                            {
+                                @foreach (var item in Model.AuctionHouseHistory)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(i => item.SellDateDt)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(i => item.SellerName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(i => item.BuyerName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(i => item.Amount)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(i => item.Sale)g
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 }

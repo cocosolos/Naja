@@ -26,6 +26,10 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
         options.LogoutPath = "/Account/Logout";
     });
 
+builder.Services.AddSingleton<XmlService>();
+builder.Services.AddSingleton<ZoneService>();
+builder.Services.AddTransient<CharService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -59,5 +63,9 @@ app.MapControllerRoute(
 app.MapControllerRoute(
     name: "account",
     pattern: "{controller=Account}/{action=Index}/{id?}");
+
+app.MapControllerRoute(
+    name: "accountCharacters",
+    pattern: "{controller=AccountCharacters}/{action=Index}/{id?}");
 
 app.Run();

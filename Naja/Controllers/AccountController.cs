@@ -27,6 +27,11 @@ public class AccountController : Controller
     [HttpGet]
     public IActionResult Login()
     {
+        var accountId = User.FindFirst("AccountId")?.Value;
+        if (accountId != null)
+        {
+            return RedirectToAction("Index", "AccountCharacters");
+        }
         return View();
     }
 
@@ -68,13 +73,13 @@ public class AccountController : Controller
             new ClaimsPrincipal(claimsIdentity),
             authProperties);
 
-        return RedirectToAction("Index", "Home");
+        return RedirectToAction("Index", "AccountCharacters");
     }
 
     public async Task<IActionResult> Logout()
     {
         await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-        return RedirectToAction("Index", "Home");
+        return RedirectToAction("Login", "Account");
     }
 
     [HttpGet]

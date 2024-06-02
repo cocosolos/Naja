@@ -26,13 +26,25 @@ namespace Naja.Controllers
             ViewData["NameSortParam"] = sort == "name" ? "name_desc" : sort == "name_desc" ? "" : "name";
             ViewData["SortnameSortParam"] = sort == "sortname" ? "sortname_desc" : sort == "sortname_desc" ? "" : "sortname";
 
-            var items = _context.ItemsBasic.Select(item => item);
+            var items = _context.ItemsBasic.Select(item => new ItemViewModel
+            {
+                ItemBasic = item,
+                Name = item.Name.Replace("_", " "),
+                SortName = item.Sortname.Replace("_", " "),
+            });
 
             if (!String.IsNullOrEmpty(search))
             {
-                var searchFormatted = search.Replace(" ", "_");
-                items = items.Where(s => s.Name.Contains(searchFormatted) || s.Sortname.Contains(searchFormatted));
+                items = items.Where(s => s.Name.Contains(search) || s.SortName.Contains(search));
             }
+
+            // items = items.Select(item => new ItemViewModel
+            // {
+            //     ItemBasic = item.ItemBasic,
+            //     Name = item.Name.ToTitleCaseWithRomanNumerals(),
+            //     SortName = item.SortName.ToTitleCaseWithRomanNumerals(),
+            // });
+
             switch (sort)
             {
                 case "name_desc":
@@ -42,20 +54,20 @@ namespace Naja.Controllers
                     items = items.OrderBy(s => s.Name);
                     break;
                 case "sortname_desc":
-                    items = items.OrderByDescending(s => s.Sortname);
+                    items = items.OrderByDescending(s => s.SortName);
                     break;
                 case "sortname":
-                    items = items.OrderBy(s => s.Sortname);
+                    items = items.OrderBy(s => s.SortName);
                     break;
                 case "itemid_desc":
-                    items = items.OrderByDescending(s => s.Itemid);
+                    items = items.OrderByDescending(s => s.ItemBasic.Itemid);
                     break;
                 default:
-                    items = items.OrderBy(s => s.Itemid);
+                    items = items.OrderBy(s => s.ItemBasic.Itemid);
                     break;
             }
             int pageSize = 100;
-            return View(await PaginatedList<ItemBasic>.CreateAsync(items.AsNoTracking(), page ?? 1, pageSize));
+            return View(await PaginatedList<ItemViewModel>.CreateAsync(items.AsNoTracking(), page ?? 1, pageSize));
         }
 
         // GET: Items/Details/5
@@ -100,6 +112,8 @@ namespace Naja.Controllers
             var viewModel = new ItemViewModel
             {
                 ItemBasic = item,
+                Name = item.Name.Replace("_", " "), //.ToTitleCaseWithRomanNumerals(),
+                SortName = item.Sortname.Replace("_", " "), //.ToTitleCaseWithRomanNumerals(),
                 AuctionHouseHistory = auctionHouseHistory,
                 AuctionHouseStock = (singlesCount, stacksCount)
             };
