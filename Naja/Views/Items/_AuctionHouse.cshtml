@@ -2,7 +2,8 @@
 
 @if (Model.ItemBasic.AH != 0)
 {
-    int stockRowSpan = Model.ItemBasic.StackSize == 1 ? 1 : 2;
+    int stackSize = Model.ItemBasic.StackSize;
+    int stockRowSpan = stackSize == 1 ? 1 : 2;
 
     <table class="table table-bordered border-secondary table-sm">
         <thead class="bg-primary text-white text-center">
@@ -36,24 +37,24 @@
                     <td>@Model.AuctionHouseStock?.Stacks</td>
                 </tr>
             }
-            <tr>
-                <td colspan="4">
-                    <table class="table table-bordered border-secondary table-sm table-hover">
-                        <thead>
-                            <tr class="bg-secondary bg-opacity-25">
-                                <th colspan="5" class="text-center">History</th>
-                            </tr>
-                            <tr class="bg-secondary bg-opacity-10">
-                                <th class="col-sm-2">Date</th>
-                                <th class="col-sm-2">Seller</th>
-                                <th class="col-sm-2">Buyer</th>
-                                <th class="col-sm-1">Amount</th>
-                                <th class="col-sm-2">Price</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @if (Model.AuctionHouseHistory != null)
-                            {
+            @if (Model.AuctionHouseHistory?.Count() > 0)
+            {
+                <tr>
+                    <td colspan="4">
+                        <table class="table table-bordered border-secondary table-sm table-hover mb-0">
+                            <thead>
+                                <tr class="bg-secondary bg-opacity-25">
+                                    <th colspan="5" class="text-center">History</th>
+                                </tr>
+                                <tr class="bg-secondary bg-opacity-10">
+                                    <th class="col-sm-2">Date</th>
+                                    <th class="col-sm-2">Seller</th>
+                                    <th class="col-sm-2">Buyer</th>
+                                    <th class="col-sm-1">Quantity</th>
+                                    <th class="col-sm-2">Price</th>
+                                </tr>
+                            </thead>
+                            <tbody>
                                 @foreach (var item in Model.AuctionHouseHistory)
                                 {
                                     <tr>
@@ -67,18 +68,21 @@
                                             @Html.DisplayFor(i => item.BuyerName)
                                         </td>
                                         <td>
-                                            @Html.DisplayFor(i => item.Amount)
+                                            @{
+                                                var quantity = item.Stack == 1 ? stackSize : 1;
+                                            }
+                                            @quantity
                                         </td>
                                         <td>
-                                            @Html.DisplayFor(i => item.Sale)g
+                                            @String.Format("{0:n0}", item.Sale)g
                                         </td>
                                     </tr>
                                 }
-                            }
-                        </tbody>
-                    </table>
-                </td>
-            </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+            }
         </tbody>
     </table>
 }

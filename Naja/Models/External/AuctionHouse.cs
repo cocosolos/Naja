@@ -16,9 +16,6 @@ public partial class AuctionHouse
 
     public byte Stack { get; set; }
 
-    [NotMapped]
-    public byte Amount => Stack == 1 ? ItemBasic.StackSize : (byte)(1);
-
     public uint Seller { get; set; }
 
     public string? SellerName { get; set; }

@@ -26,7 +26,7 @@ namespace Naja.Controllers
                 {
                     ItemId = g.Key.Itemid,
                     SortName = g.FirstOrDefault()!.ItemBasic.Sortname.Replace("_", " "),
-                    Amount = g.Key.Stack == 1 ? g.FirstOrDefault()!.ItemBasic.StackSize : (byte)1,
+                    Quantity = g.Key.Stack == 1 ? g.FirstOrDefault()!.ItemBasic.StackSize : (byte)1,
                     Stack = g.Key.Stack,
                     Stock = g.Count(),
                     LatestDate = g.Max(ah => ah.Date),

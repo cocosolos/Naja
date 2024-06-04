@@ -4,7 +4,7 @@
     ViewData["Title"] = "Auction House";
 }
 
-<h1>Auction House</h1>
+<h1 class="text-center">Auction House</h1>
 
 <table class="table table-bordered border-secondary table-hover table-sm">
     <thead>
@@ -23,7 +23,7 @@
                     </a>
                     @if (group.Stack == 1)
                     {
-                        @($"x{group.Amount}")
+                        @($"x{group.Quantity}")
                     }
                 </td>
                 <td class="col-sm-1 text-center">

@@ -17,25 +17,41 @@
     </div>
 </div>
 
-@foreach (var flag in Model.ItemBasic.FlagsDescriptions)
-{
-    <span class="badge bg-primary mb-2">@flag</span>
-}
 
-<dl class="row">
-    <dt class="col-sm-2">Stack Size</dt>
-    <dd class="col-sm-10">
-        @Html.DisplayFor(i => Model.ItemBasic.StackSize)
-    </dd>
-    @if (Model.ItemBasic.Sellable && Model.ItemBasic.BaseSell > 0)
-    {
-        <dt class="col-sm-2">Resale Price</dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(i => Model.ItemBasic.BaseSell)g
-        </dd>
-    }
-</dl>
-
+<table class="table table-bordered border-secondary table-sm">
+    <thead class="bg-primary text-white text-center">
+        <tr>
+            <th colspan="4">Item Details</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th class="col-sm-2 bg-secondary bg-opacity-25">Flags</th>
+            <td colspan="3">
+                @{
+                    var flags = string.Join(", ", Model.ItemBasic.FlagsDescriptions);
+                }
+                <span>@flags</span>
+            </td>
+        </tr>
+        <tr>
+            <th class="col-sm-2 bg-secondary bg-opacity-25">Stack Size</th>
+            <td colspan="3">
+                @Html.DisplayFor(i => Model.ItemBasic.StackSize)
+            </td>
+        </tr>
+        @if (Model.ItemBasic.Sellable && Model.ItemBasic.BaseSell > 0)
+        {
+            <tr>
+                <th class="col-sm-2 bg-secondary bg-opacity-25">Resale Price</th>
+                <td colspan="3">
+                    @String.Format("{0:n0}", Model.ItemBasic.BaseSell)g
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
 
 @await Html.PartialAsync("_EquipmentStats", Model.ItemBasic)
 @await Html.PartialAsync("_AuctionHouse", Model)
+@await Html.PartialAsync("_Bazaar", Model)

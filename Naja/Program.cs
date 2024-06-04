@@ -8,6 +8,7 @@ using Pomelo.EntityFrameworkCore.MySql;
 DotNetEnv.Env.Load("../.env");
 
 var builder = WebApplication.CreateBuilder(args);
+var environment = builder.Environment.EnvironmentName;
 
 // Add services to the container.
 var connectionString = $"Server={DotNetEnv.Env.GetString("SERVER")};Database={DotNetEnv.Env.GetString("DATABASE")};User={DotNetEnv.Env.GetString("USER")};Password={DotNetEnv.Env.GetString("PASSWORD")};";
@@ -19,16 +20,29 @@ builder.Services.AddDbContext<XiContext>(options => options.UseMySql(
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddHttpClient();
+builder.Services.AddHttpContextAccessor();
+
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
     {
         options.LoginPath = "/Account/Login";
         options.LogoutPath = "/Account/Logout";
+        options.Cookie.HttpOnly = true;
+        options.Cookie.IsEssential = true;
+        if (environment == Environments.Production)
+        {
+            options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+        }
+        else
+        {
+            options.Cookie.SecurePolicy = CookieSecurePolicy.None;
+        }
     });
 
 builder.Services.AddSingleton<XmlService>();
-builder.Services.AddSingleton<ZoneService>();
+builder.Services.AddTransient<AccountService>();
 builder.Services.AddTransient<CharService>();
+builder.Services.AddSingleton<ZoneService>();
 
 var app = builder.Build();
 

@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 public class LoginViewModel
 {
     [Required]
-    public required string Login { get; set; }
+    public required string Username { get; set; }
 
     [Required]
     [DataType(DataType.Password)]

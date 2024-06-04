@@ -1,18 +1,19 @@
 ﻿@model List<Naja.Models.CharViewModel>
 
 @using Humanizer
-
+@inject AccountService AccountService
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+@{
+    var characterId = AccountService.GetCharacterId();
+}
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
+<h1 class="text-center">Select Character</h1>
+
+<table class="table text-center align-middle">
     <thead>
         <tr>
             <th>
@@ -22,16 +23,13 @@
                 Nation
             </th>
             <th>
-                Current Location
+                Location
             </th>
             <th>
                 Time Played
             </th>
             <th>
                 Created
-            </th>
-            <th>
-                Last Online
             </th>
             <th></th>
         </tr>
@@ -41,13 +39,13 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Char.Charname)
+                    <b>@Html.DisplayFor(modelItem => item.Char.Charname)</b>
                 </td>
                 <td>
                     <img src="@item.NationImageUrl" alt="@item.NationName" />
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.ZoneName)
+                    <i>@Html.DisplayFor(modelItem => item.ZoneName)</i>
                 </td>
                 <td>
                     @TimeSpan.FromSeconds(item.Char.Playtime).Humanize(maxUnit: Humanizer.Localisation.TimeUnit.Day,
@@ -57,12 +55,17 @@
                     @Html.DisplayFor(modelItem => item.Char.Timecreated)
                 </td>
                 <td>
-                    @item.Char.Lastupdate.Humanize()
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.Char.Charid">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.Char.Charid">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Char.Charid">Delete</a>
+                    @if (item.Char.Charid == characterId)
+                    {
+                        <i class="bi bi-check-lg text-success align-middle" style="font-size: 1.5rem;"></i>
+                    }
+                    else
+                    {
+                        <form asp-action="SelectCharacter" asp-controller="AccountCharacters" method="post">
+                            <input type="hidden" name="id" value="@item.Char.Charid" />
+                            <button type="submit" class="btn btn-primary">Select</button>
+                        </form>
+                    }
                 </td>
             </tr>
         }

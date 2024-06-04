@@ -1,0 +1,49 @@
+@model Naja.Models.ItemViewModel
+
+@inject CharService CharService
+
+@if (Model.BazaarStock?.Count() > 0)
+{
+    <table class="table table-bordered border-secondary table-sm">
+        <thead class="bg-primary text-white text-center">
+            <tr>
+                <th colspan="4">Bazaar</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td colspan="4">
+                    <table class="table table-bordered border-secondary table-sm table-hover mb-0">
+                        <thead>
+                            <tr class="bg-secondary bg-opacity-10">
+                                <th class="col-sm-2">Seller</th>
+                                <th class="col-sm-2">Location</th>
+                                <th class="col-sm-1">Quantity</th>
+                                <th class="col-sm-2">Price</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.BazaarStock)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(i => item.Char.Charname)
+                                    </td>
+                                    <td>
+                                        <i>@CharService.GetCurrentZoneName(item.Char.PosZone)</i>
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(i => item.Quantity)
+                                    </td>
+                                    <td>
+                                        @String.Format("{0:n0}", item.Bazaar)g
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+}

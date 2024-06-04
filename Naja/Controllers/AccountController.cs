@@ -16,18 +16,20 @@ public class AccountController : Controller
     private readonly XiContext _context;
     private readonly IHttpClientFactory _httpClientFactory;
     private readonly ILogger<AccountController> _logger;
+    private readonly AccountService _accountService;
 
-    public AccountController(XiContext context, IHttpClientFactory httpClientFactory, ILogger<AccountController> logger)
+    public AccountController(XiContext context, IHttpClientFactory httpClientFactory, ILogger<AccountController> logger, AccountService accountService)
     {
         _context = context;
         _httpClientFactory = httpClientFactory;
         _logger = logger;
+        _accountService = accountService;
     }
 
     [HttpGet]
     public IActionResult Login()
     {
-        var accountId = User.FindFirst("AccountId")?.Value;
+        var accountId = _accountService.GetAccountId();
         if (accountId != null)
         {
             return RedirectToAction("Index", "AccountCharacters");
@@ -43,7 +45,7 @@ public class AccountController : Controller
             return View(model);
         }
         var account = await _context.Accounts
-            .FirstOrDefaultAsync(a => a.Login == model.Login);
+            .FirstOrDefaultAsync(a => a.Login == model.Username);
 
         if (account == null || !BCrypt.Net.BCrypt.Verify(model.Password, account.Password))
         {

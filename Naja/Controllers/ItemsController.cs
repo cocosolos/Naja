@@ -109,13 +109,16 @@ namespace Naja.Controllers
             int singlesCount = auctionHouseStock.FirstOrDefault(g => g.Stack == 0)?.Count ?? 0;
             int stacksCount = auctionHouseStock.FirstOrDefault(g => g.Stack == 1)?.Count ?? 0;
 
+            var bazaarStock = await _context.CharInventories.Include(c => c.Char).Where(i => i.ItemId == id && i.Bazaar > 0).OrderBy(i => i.Bazaar).ToListAsync();
+
             var viewModel = new ItemViewModel
             {
                 ItemBasic = item,
                 Name = item.Name.Replace("_", " "), //.ToTitleCaseWithRomanNumerals(),
                 SortName = item.Sortname.Replace("_", " "), //.ToTitleCaseWithRomanNumerals(),
                 AuctionHouseHistory = auctionHouseHistory,
-                AuctionHouseStock = (singlesCount, stacksCount)
+                AuctionHouseStock = (singlesCount, stacksCount),
+                BazaarStock = bazaarStock
             };
 
             return View(viewModel);

@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -19,11 +22,13 @@ namespace Naja
     public class AccountCharactersController : Controller
     {
         private readonly XiContext _context;
+        private readonly AccountService _accountService;
         private readonly CharService _charService;
 
-        public AccountCharactersController(XiContext context, CharService charService)
+        public AccountCharactersController(XiContext context, AccountService accountService, CharService charService)
         {
             _context = context;
+            _accountService = accountService;
             _charService = charService;
         }
 
@@ -31,13 +36,13 @@ namespace Naja
         [HttpGet("")]
         public async Task<IActionResult> Index()
         {
-            var accountId = User.FindFirst("AccountId")?.Value;
+            var accountId = _accountService.GetAccountId();
             if (accountId == null)
             {
                 return Unauthorized();
             }
 
-            var chars = await _context.Chars.Where(c => c.Accid == uint.Parse(accountId)).ToListAsync();
+            var chars = await _context.Chars.Where(c => c.Accid == accountId).ToListAsync();
 
             var charViewModels = new List<CharViewModel>();
             foreach (var character in chars)
@@ -60,6 +65,55 @@ namespace Naja
             return View(charViewModels);
         }
 
+        // POST: Account/Characters/SelectCharacter
+        [HttpPost("SelectCharacter")]
+        public async Task<IActionResult> SelectCharacter(int id)
+        {
+            var accountId = _accountService.GetAccountId();
+            if (accountId == null)
+            {
+                return Unauthorized();
+            }
+
+            var character = await _context.Chars
+                .Include(c => c.Account)
+                .FirstOrDefaultAsync(c => c.Charid == id && c.Accid == accountId);
+            if (character == null)
+            {
+                return NotFound();
+            }
+
+            var claimsPrincipal = HttpContext.User;
+
+            if (claimsPrincipal.Identity is ClaimsIdentity currentClaimsIdentity)
+            {
+                var existingCharacterIdClaim = currentClaimsIdentity.FindFirst("CharacterId");
+                var existingCharacterNameClaim = currentClaimsIdentity.FindFirst("CharacterName");
+
+                if (existingCharacterIdClaim != null && existingCharacterNameClaim != null)
+                {
+                    currentClaimsIdentity.RemoveClaim(existingCharacterIdClaim);
+                    currentClaimsIdentity.RemoveClaim(existingCharacterNameClaim);
+                }
+
+                currentClaimsIdentity.AddClaim(new Claim("CharacterId", character.Charid.ToString()));
+                currentClaimsIdentity.AddClaim(new Claim("CharacterName", character.Charname));
+
+                var authProperties = await HttpContext.AuthenticateAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+
+                await HttpContext.SignInAsync(
+                    CookieAuthenticationDefaults.AuthenticationScheme,
+                    new ClaimsPrincipal(currentClaimsIdentity),
+                    authProperties.Properties);
+            }
+            else
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
+
+            return RedirectToAction("Index", "Home");
+        }
+
         // GET: Account/Character/5/Details
         [HttpGet("{id}/Details")]
         public async Task<IActionResult> Details(uint? id)
@@ -69,7 +123,7 @@ namespace Naja
                 return NotFound();
             }
 
-            var accountId = User.FindFirst("AccountId")?.Value;
+            var accountId = _accountService.GetAccountId();
             if (accountId == null)
             {
                 return Unauthorized();
@@ -77,7 +131,7 @@ namespace Naja
 
             var character = await _context.Chars
                 .Include(c => c.Account)
-                .FirstOrDefaultAsync(c => c.Charid == id && c.Accid == uint.Parse(accountId));
+                .FirstOrDefaultAsync(c => c.Charid == id && c.Accid == accountId);
             if (character == null)
             {
                 return NotFound();
@@ -102,7 +156,7 @@ namespace Naja
         [HttpGet("Create")]
         public IActionResult Create()
         {
-            var accountId = User.FindFirst("AccountId")?.Value;
+            var accountId = _accountService.GetAccountId();
             if (accountId == null)
             {
                 return Unauthorized();
@@ -117,7 +171,7 @@ namespace Naja
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Charid,Accid,OriginalAccid,Charname,Nation,PosZone,PosPrevzone,PosRot,PosX,PosY,PosZ,Moghouse,Boundary,HomeZone,HomeRot,HomeX,HomeY,HomeZ,Missions,Assault,Campaign,Eminence,Quests,Keyitems,SetBlueSpells,Abilities,Weaponskills,Titles,Zones,Playtime,UnlockedWeapons,Gmlevel,Languages,Mentor,JobMaster,CampaignAllegiance,Isstylelocked,Settings,Chatfilters1,Chatfilters2,Moghancement,Timecreated,Lastupdate")] Models.External.Char newChar)
         {
-            var accountId = User.FindFirst("AccountId")?.Value;
+            var accountId = _accountService.GetAccountId();
             if (accountId == null)
             {
                 return Unauthorized();
@@ -125,7 +179,7 @@ namespace Naja
 
             if (ModelState.IsValid)
             {
-                newChar.Accid = uint.Parse(accountId);
+                newChar.Accid = (uint)accountId;
                 _context.Add(newChar);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Details", newChar.Charid);
@@ -142,7 +196,7 @@ namespace Naja
                 return NotFound();
             }
 
-            var accountId = User.FindFirst("AccountId")?.Value;
+            var accountId = _accountService.GetAccountId();
             if (accountId == null)
             {
                 return Unauthorized();
@@ -150,7 +204,7 @@ namespace Naja
 
             var charToEdit = await _context.Chars
                 .Include(c => c.Account)
-                .FirstOrDefaultAsync(c => c.Charid == id && c.Accid == uint.Parse(accountId));
+                .FirstOrDefaultAsync(c => c.Charid == id && c.Accid == accountId);
             if (charToEdit == null)
             {
                 return NotFound();
@@ -170,8 +224,8 @@ namespace Naja
                 return NotFound();
             }
 
-            var accountId = User.FindFirst("AccountId")?.Value;
-            if (accountId == null || charToEdit.Accid != uint.Parse(accountId))
+            var accountId = _accountService.GetAccountId();
+            if (accountId == null || charToEdit.Accid != accountId)
             {
                 return Unauthorized();
             }
@@ -208,7 +262,7 @@ namespace Naja
                 return NotFound();
             }
 
-            var accountId = User.FindFirst("AccountId")?.Value;
+            var accountId = _accountService.GetAccountId();
             if (accountId == null)
             {
                 return Unauthorized();
@@ -216,7 +270,7 @@ namespace Naja
 
             var charToDelete = await _context.Chars
                 .Include(c => c.Account)
-                .FirstOrDefaultAsync(c => c.Charid == id && c.Accid == uint.Parse(accountId));
+                .FirstOrDefaultAsync(c => c.Charid == id && c.Accid == accountId);
             if (charToDelete == null)
             {
                 return NotFound();
@@ -230,7 +284,7 @@ namespace Naja
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(uint id)
         {
-            var accountId = User.FindFirst("AccountId")?.Value;
+            var accountId = _accountService.GetAccountId();
             if (accountId == null)
             {
                 return Unauthorized();
@@ -238,7 +292,7 @@ namespace Naja
 
             var charToDelete = await _context.Chars
                 .Include(c => c.Account)
-                .FirstOrDefaultAsync(c => c.Charid == id && c.Accid == uint.Parse(accountId));
+                .FirstOrDefaultAsync(c => c.Charid == id && c.Accid == accountId);
 
             if (charToDelete != null)
             {

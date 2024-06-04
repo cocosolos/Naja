@@ -7,7 +7,7 @@
     var searchParam = ViewData["SearchParam"] as string;
 }
 
-<h1>Items</h1>
+<h1 class="text-center">Items</h1>
 
 
 <form asp-controller="Items" asp-action="Index" method="get">
@@ -50,7 +50,8 @@
                     @item.SortName
                 </td>
                 <td class="col-sm-1 text-center">
-                    <a class="btn btn-primary btn-sm py-0" asp-action="Details" asp-route-id="@item.ItemBasic.Itemid">Details</a>
+                    <a class="btn btn-primary btn-sm py-0" asp-action="Details"
+                        asp-route-id="@item.ItemBasic.Itemid">Details</a>
                 </td>
             </tr>
         }

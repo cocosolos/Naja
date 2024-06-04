@@ -5,7 +5,7 @@
     <table class="table table-bordered border-secondary table-sm">
         <thead class="bg-primary text-white text-center">
             <tr>
-                <th colspan="4">Equipment Stats</th>
+                <th colspan="4">Equipment Information</th>
             </tr>
         </thead>
         <tbody>
@@ -23,13 +23,13 @@
 
                 <tr>
                     <th class="col-sm-2 bg-secondary bg-opacity-25">Skill</th>
-                    <td>
+                    <td class="align-middle">
                         @Html.DisplayFor(i => Model.ItemWeapon!.SkillDescription)
                     </td>
                     @if (Model.ItemWeapon!.DmgType != 0)
                     {
                         <th class="col-sm-2 bg-secondary bg-opacity-25">Damage Type</th>
-                        <td>
+                        <td class="align-middle">
                             @Html.DisplayFor(i => Model.ItemWeapon!.DmgTypeDescription)
                         </td>
                     }

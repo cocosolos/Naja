@@ -9,4 +9,5 @@ public class ItemViewModel
     public required string SortName { get; set; }
     public IEnumerable<AuctionHouse>? AuctionHouseHistory { get; set; }
     public (int Singles, int Stacks)? AuctionHouseStock { get; set; }
+    public IEnumerable<CharInventory>? BazaarStock { get; set; }
 }
