@@ -1,6 +1,8 @@
 using System.ComponentModel.DataAnnotations;
 
-public class RegisterModel
+namespace Naja.ViewModels;
+
+public class RegisterViewModel
 {
     [Required]
     [StringLength(15, MinimumLength = 3, ErrorMessage = "Username must be between 3 and 15 characters long.")]

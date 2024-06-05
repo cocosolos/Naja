@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 
 using Naja.Data;
-using Naja.Models;
+using Naja.ViewModels;
 
 namespace Naja.Controllers
 {

@@ -8,9 +8,6 @@ public partial class ItemLatent
 {
     public ushort ItemId { get; set; }
 
-    [ForeignKey("ItemId")]
-    public virtual required ItemBasic ItemBasic { get; set; }
-
     public ushort ModId { get; set; }
 
     public short Value { get; set; }

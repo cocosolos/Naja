@@ -1,6 +1,4 @@
-using Naja.Models.External;
-
-namespace Naja.Models;
+namespace Naja.ViewModels;
 
 public class AuctionHouseViewModel
 {
@@ -10,5 +8,5 @@ public class AuctionHouseViewModel
     public required byte Stack { get; set; }
     public required int Stock { get; set; }
     public required uint LatestDate { get; set; }
-    public required List<AuctionHouse> Listings { get; set; }
+    public required List<Models.External.AuctionHouse> Listings { get; set; }
 }

@@ -8,9 +8,6 @@ public partial class ItemUsable
 {
     public ushort Itemid { get; set; }
 
-    [ForeignKey("Itemid")]
-    public virtual required ItemBasic ItemBasic { get; set; }
-
     public string Name { get; set; } = null!;
 
     public ushort ValidTargets { get; set; }

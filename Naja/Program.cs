@@ -40,9 +40,10 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
     });
 
 builder.Services.AddSingleton<XmlService>();
-builder.Services.AddTransient<AccountService>();
-builder.Services.AddTransient<CharService>();
 builder.Services.AddSingleton<ZoneService>();
+builder.Services.AddTransient<AccountService>();
+builder.Services.AddScoped<CharacterService>();
+builder.Services.AddScoped<ItemService>();
 
 var app = builder.Build();
 

@@ -12,8 +12,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 using Naja.Data;
-using Naja.Models;
-using Naja.Models.External;
+using Naja.ViewModels;
 
 namespace Naja
 {
@@ -23,13 +22,13 @@ namespace Naja
     {
         private readonly XiContext _context;
         private readonly AccountService _accountService;
-        private readonly CharService _charService;
+        private readonly CharacterService _characterService;
 
-        public AccountCharactersController(XiContext context, AccountService accountService, CharService charService)
+        public AccountCharactersController(XiContext context, AccountService accountService, CharacterService characterService)
         {
             _context = context;
             _accountService = accountService;
-            _charService = charService;
+            _characterService = characterService;
         }
 
         // GET: Account/Characters
@@ -47,9 +46,9 @@ namespace Naja
             var charViewModels = new List<CharViewModel>();
             foreach (var character in chars)
             {
-                var zoneName = _charService.GetCurrentZoneName(character.PosZone);
-                var nationName = _charService.GetNationName(character.Nation);
-                var nationImageUrl = _charService.GetNationImageUrl(character.Nation);
+                var zoneName = _characterService.GetCurrentZoneName(character.PosZone);
+                var nationName = _characterService.GetNationName(character.Nation);
+                var nationImageUrl = _characterService.GetNationImageUrl(character.Nation);
 
                 var viewModel = new CharViewModel
                 {
@@ -137,9 +136,9 @@ namespace Naja
                 return NotFound();
             }
 
-            var zoneName = _charService.GetCurrentZoneName(character.PosZone);
-            var nationName = _charService.GetNationName(character.Nation);
-            var nationImageUrl = _charService.GetNationImageUrl(character.Nation);
+            var zoneName = _characterService.GetCurrentZoneName(character.PosZone);
+            var nationName = _characterService.GetNationName(character.Nation);
+            var nationImageUrl = _characterService.GetNationImageUrl(character.Nation);
 
             var viewModel = new CharViewModel
             {

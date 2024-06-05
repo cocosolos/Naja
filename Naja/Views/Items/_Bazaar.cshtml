@@ -1,6 +1,6 @@
-@model Naja.Models.ItemViewModel
+@model Naja.ViewModels.ItemViewModel
 
-@inject CharService CharService
+@inject CharacterService CharacterService
 
 @if (Model.BazaarStock?.Count() > 0)
 {
@@ -27,13 +27,13 @@
                             {
                                 <tr>
                                     <td>
-                                        @Html.DisplayFor(i => item.Char.Charname)
+                                        @item.Char.Charname
                                     </td>
                                     <td>
-                                        <i>@CharService.GetCurrentZoneName(item.Char.PosZone)</i>
+                                        <i>@CharacterService.GetCurrentZoneName(item.Char.PosZone)</i>
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(i => item.Quantity)
+                                        @item.Quantity
                                     </td>
                                     <td>
                                         @String.Format("{0:n0}", item.Bazaar)g

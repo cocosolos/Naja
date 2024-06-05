@@ -1,8 +1,8 @@
-@model Naja.Models.ItemViewModel
+@model Naja.ViewModels.ItemViewModel
 
-@if (Model.ItemBasic.AH != 0)
+@if (Model.Basic.AH != 0)
 {
-    int stackSize = Model.ItemBasic.StackSize;
+    int stackSize = Model.Basic.StackSize;
     int stockRowSpan = stackSize == 1 ? 1 : 2;
 
     <table class="table table-bordered border-secondary table-sm">
@@ -15,7 +15,7 @@
             <tr>
                 <th class="col-sm-2 bg-secondary bg-opacity-25">Category</th>
                 <td colspan="3">
-                    @Model.ItemBasic.AHDescription
+                    @Model.Basic.AhCategory
                 </td>
             </tr>
             <tr>
@@ -59,13 +59,13 @@
                                 {
                                     <tr>
                                         <td>
-                                            @Html.DisplayFor(i => item.SellDateDt)
+                                            @DateTimeOffset.FromUnixTimeSeconds(item.SellDate).UtcDateTime
                                         </td>
                                         <td>
-                                            @Html.DisplayFor(i => item.SellerName)
+                                            @item.SellerName
                                         </td>
                                         <td>
-                                            @Html.DisplayFor(i => item.BuyerName)
+                                            @item.BuyerName
                                         </td>
                                         <td>
                                             @{

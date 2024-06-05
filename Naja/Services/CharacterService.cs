@@ -1,11 +1,14 @@
+using Naja.Data;
 using Naja.Models.External;
 
-public class CharService
+public class CharacterService
 {
+    private readonly XiContext _context;
     private readonly ZoneService _zoneService;
 
-    public CharService(ZoneService zoneService)
+    public CharacterService(XiContext context, ZoneService zoneService)
     {
+        _context = context;
         _zoneService = zoneService;
     }
 

@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 using Naja.Data;
 using Naja.Models;
+using Naja.ViewModels;
 using Naja.Models.External;
 
 namespace Naja.Controllers
@@ -10,10 +11,11 @@ namespace Naja.Controllers
     public class ItemsController : Controller
     {
         private readonly XiContext _context;
-
-        public ItemsController(XiContext context)
+        private readonly ItemService _itemService;
+        public ItemsController(XiContext context, ItemService itemService)
         {
             _context = context;
+            _itemService = itemService;
         }
 
         // GET: Items
@@ -26,16 +28,11 @@ namespace Naja.Controllers
             ViewData["NameSortParam"] = sort == "name" ? "name_desc" : sort == "name_desc" ? "" : "name";
             ViewData["SortnameSortParam"] = sort == "sortname" ? "sortname_desc" : sort == "sortname_desc" ? "" : "sortname";
 
-            var items = _context.ItemsBasic.Select(item => new ItemViewModel
-            {
-                ItemBasic = item,
-                Name = item.Name.Replace("_", " "),
-                SortName = item.Sortname.Replace("_", " "),
-            });
+            var items = _context.ItemsBasic.Select(item => item);
 
             if (!String.IsNullOrEmpty(search))
             {
-                items = items.Where(s => s.Name.Contains(search) || s.SortName.Contains(search));
+                items = items.Where(s => s.Name.Contains(search.Replace("_", " ")) || s.Sortname.Contains(search.Replace("_", " ")));
             }
 
             // items = items.Select(item => new ItemViewModel
@@ -54,72 +51,31 @@ namespace Naja.Controllers
                     items = items.OrderBy(s => s.Name);
                     break;
                 case "sortname_desc":
-                    items = items.OrderByDescending(s => s.SortName);
+                    items = items.OrderByDescending(s => s.Sortname);
                     break;
                 case "sortname":
-                    items = items.OrderBy(s => s.SortName);
+                    items = items.OrderBy(s => s.Sortname);
                     break;
                 case "itemid_desc":
-                    items = items.OrderByDescending(s => s.ItemBasic.Itemid);
+                    items = items.OrderByDescending(s => s.Itemid);
                     break;
                 default:
-                    items = items.OrderBy(s => s.ItemBasic.Itemid);
+                    items = items.OrderBy(s => s.Itemid);
                     break;
             }
             int pageSize = 100;
-            return View(await PaginatedList<ItemViewModel>.CreateAsync(items.AsNoTracking(), page ?? 1, pageSize));
+            return View(await PaginatedList<ItemBasic>.CreateAsync(items.AsNoTracking(), page ?? 1, pageSize));
         }
 
         // GET: Items/Details/5
-        public async Task<IActionResult> Details(ushort? id)
+        public async Task<IActionResult> Details(ushort id)
         {
-            if (id == null)
+            var viewModel = await _itemService.GetItemViewModel(id);
+
+            if (viewModel == null)
             {
                 return NotFound();
             }
-
-            var item = await _context.ItemsBasic
-                .Include(b => b.ItemUsable)
-                .Include(b => b.ItemEquipment)
-                .Include(b => b.ItemWeapon)
-                .Include(b => b.ItemFurnishing)
-                .Include(b => b.ItemPuppet)
-                .FirstOrDefaultAsync(m => m.Itemid == id);
-
-            if (item == null)
-            {
-                return NotFound();
-            }
-
-            var auctionHouseHistory = await _context.AuctionHouse
-                .Where(ah => ah.Itemid == id && ah.SellDate != 0)
-                .OrderByDescending(ah => ah.Date)
-                .ToListAsync();
-
-            var auctionHouseStock = await _context.AuctionHouse
-                .Where(ah => ah.Itemid == id && ah.SellDate == 0)
-                .GroupBy(ah => ah.Stack)
-                .Select(g => new
-                {
-                    Stack = g.Key,
-                    Count = g.Count()
-                })
-                .ToListAsync();
-
-            int singlesCount = auctionHouseStock.FirstOrDefault(g => g.Stack == 0)?.Count ?? 0;
-            int stacksCount = auctionHouseStock.FirstOrDefault(g => g.Stack == 1)?.Count ?? 0;
-
-            var bazaarStock = await _context.CharInventories.Include(c => c.Char).Where(i => i.ItemId == id && i.Bazaar > 0).OrderBy(i => i.Bazaar).ToListAsync();
-
-            var viewModel = new ItemViewModel
-            {
-                ItemBasic = item,
-                Name = item.Name.Replace("_", " "), //.ToTitleCaseWithRomanNumerals(),
-                SortName = item.Sortname.Replace("_", " "), //.ToTitleCaseWithRomanNumerals(),
-                AuctionHouseHistory = auctionHouseHistory,
-                AuctionHouseStock = (singlesCount, stacksCount),
-                BazaarStock = bazaarStock
-            };
 
             return View(viewModel);
         }

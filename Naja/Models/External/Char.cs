@@ -96,4 +96,7 @@ public partial class Char
     public DateTime Timecreated { get; set; }
 
     public DateTime Lastupdate { get; set; }
+
+    [ForeignKey("Charid")]
+    public virtual AccountsSession? AccountsSession { get; set; }
 }

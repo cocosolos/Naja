@@ -1,10 +1,11 @@
-﻿@model PaginatedList<Naja.Models.ItemViewModel>
+﻿@model PaginatedList<Naja.Models.External.ItemBasic>
 
 @using Humanizer
 
 @{
     ViewData["Title"] = "Items";
     var searchParam = ViewData["SearchParam"] as string;
+    var sortParam = ViewData["CurrentSort"] as string;
 }
 
 <h1 class="text-center">Items</h1>
@@ -27,14 +28,38 @@
 <table class="table table-bordered border-secondary table-hover table-sm">
     <thead>
         <tr>
-            <th class="bg-secondary bg-opacity-25"><a class="text-black" asp-action="Index"
-                    asp-route-search="@ViewData["SearchParam"]" asp-route-sort="@ViewData["NameSortParam"]"
-                    asp-route-page="@(Model.PageIndex)">Name</a>
+            <th class="bg-secondary bg-opacity-25">
+                <a class="text-black" asp-action="Index" asp-route-search="@ViewData["SearchParam"]"
+                    asp-route-sort="@ViewData["NameSortParam"]" asp-route-page="@(Model.PageIndex)">
+                    Name
+                    @{
+                        if (sortParam == "name")
+                        {
+                            <i class="bi bi-caret-up-fill"></i>
+                        }
+                        else if (sortParam == "name_desc")
+                        {
+                            <i class="bi bi-caret-down-fill"></i>
+                        }
+                    }
+                </a>
             </th>
-            <th class="bg-secondary bg-opacity-25"><a class="text-black" asp-action="Index"
-                    asp-route-search="@ViewData["SearchParam"]" asp-route-sort="@ViewData["SortnameSortParam"]"
-                    asp-route-page="@(Model.PageIndex)">Sort
-                    Name</a></th>
+            <th class="bg-secondary bg-opacity-25">
+                <a class="text-black" asp-action="Index" asp-route-search="@ViewData["SearchParam"]"
+                    asp-route-sort="@ViewData["SortnameSortParam"]" asp-route-page="@(Model.PageIndex)">
+                    Sort Name
+                    @{
+                        if (sortParam == "sortname")
+                        {
+                            <i class="bi bi-caret-up-fill"></i>
+                        }
+                        else if (sortParam == "sortname_desc")
+                        {
+                            <i class="bi bi-caret-down-fill"></i>
+                        }
+                    }
+                </a>
+            </th>
             <th class="bg-secondary bg-opacity-25"></th>
         </tr>
     </thead>
@@ -44,14 +69,13 @@
         {
             <tr>
                 <td>
-                    @item.Name
+                    @item.Name.Replace("_", " ")
                 </td>
                 <td>
-                    @item.SortName
+                    @item.Sortname.Replace("_", " ")
                 </td>
                 <td class="col-sm-1 text-center">
-                    <a class="btn btn-primary btn-sm py-0" asp-action="Details"
-                        asp-route-id="@item.ItemBasic.Itemid">Details</a>
+                    <a class="btn btn-primary btn-sm py-0" asp-action="Details" asp-route-id="@item.Itemid">Details</a>
                 </td>
             </tr>
         }

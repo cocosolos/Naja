@@ -22,15 +22,6 @@ public partial class AuctionHouse
 
     public uint Date { get; set; }
 
-    [NotMapped]
-    public DateTime DateDt
-    {
-        get
-        {
-            return DateTimeOffset.FromUnixTimeSeconds(Date).UtcDateTime;
-        }
-    }
-
     public uint Price { get; set; }
 
     public string? BuyerName { get; set; }
@@ -38,13 +29,4 @@ public partial class AuctionHouse
     public uint Sale { get; set; }
 
     public uint SellDate { get; set; }
-
-    [NotMapped]
-    public DateTime SellDateDt
-    {
-        get
-        {
-            return DateTimeOffset.FromUnixTimeSeconds(SellDate).UtcDateTime;
-        }
-    }
 }

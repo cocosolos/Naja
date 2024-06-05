@@ -8,9 +8,6 @@ public partial class ItemFurnishing
 {
     public ushort Itemid { get; set; }
 
-    [ForeignKey("Itemid")]
-    public virtual required ItemBasic ItemBasic { get; set; }
-
     public string Name { get; set; } = null!;
 
     public byte Storage { get; set; }

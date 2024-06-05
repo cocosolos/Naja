@@ -1,6 +1,6 @@
-@model Naja.Models.External.ItemBasic
+@model Naja.ViewModels.ItemViewModel
 
-@if (Model.ItemEquipment != null)
+@if (Model.Equipment != null)
 {
     <table class="table table-bordered border-secondary table-sm">
         <thead class="bg-primary text-white text-center">
@@ -13,75 +13,72 @@
                 <th class="col-sm-2 bg-secondary bg-opacity-25">Slot</th>
                 <td colspan="3">
                     @{
-                        var slots = string.Join(", ", Model.ItemEquipment!.SlotDescriptions);
+                        var slots = string.Join(", ", Model.Equipment.ListSlots);
                     }
                     <span>@slots</span>
                 </td>
             </tr>
-            @if (Model.ItemWeapon != null && Model.ItemWeapon!.Skill != 0)
+            @if (Model.Weapon != null)
             {
 
                 <tr>
                     <th class="col-sm-2 bg-secondary bg-opacity-25">Skill</th>
                     <td class="align-middle">
-                        @Html.DisplayFor(i => Model.ItemWeapon!.SkillDescription)
+                        @Model.Weapon.SkillName
                     </td>
-                    @if (Model.ItemWeapon!.DmgType != 0)
-                    {
-                        <th class="col-sm-2 bg-secondary bg-opacity-25">Damage Type</th>
-                        <td class="align-middle">
-                            @Html.DisplayFor(i => Model.ItemWeapon!.DmgTypeDescription)
-                        </td>
-                    }
+                    <th class="col-sm-2 bg-secondary bg-opacity-25">Damage Type</th>
+                    <td class="align-middle">
+                        @Model.Weapon.DamageType
+                    </td>
                 </tr>
                 <tr>
                     <th class="col-sm-2 bg-secondary bg-opacity-25">Damage</th>
                     <td>
-                        @Html.DisplayFor(i => Model.ItemWeapon!.Dmg)
+                        @Model.Weapon.Dmg
                     </td>
                     <th class="col-sm-2 bg-secondary bg-opacity-25">Delay</th>
                     <td>
-                        @Html.DisplayFor(i => Model.ItemWeapon!.Delay)
+                        @Model.Weapon.Delay
                     </td>
                 </tr>
             }
-            @if (Model.ItemEquipment!.ShieldSize != 0)
+            @if (Model.Equipment.ShieldSize != 0)
             {
                 <tr>
                     <th class="col-sm-2 bg-secondary bg-opacity-25">Shield Size</th>
                     <td colspan="3">
-                        @Html.DisplayFor(i => Model.ItemEquipment!.ShieldSize)
+                        @Model.Equipment.ShieldSize
                     </td>
                 </tr>
             }
             <tr>
                 <th class="col-sm-2 bg-secondary bg-opacity-25">Level</th>
                 <td colspan="3">
-                    @Html.DisplayFor(i => Model.ItemEquipment!.Level)
+                    @Model.Equipment.Level
                 </td>
             </tr>
-            @if (Model.ItemEquipment!.Ilevel != 0)
+            @if (Model.Equipment.Ilevel != 0)
             {
                 <tr>
                     <th class="col-sm-2 bg-secondary bg-opacity-25">Item Level</th>
                     <td colspan="3">
-                        @Html.DisplayFor(i => Model.ItemEquipment!.Ilevel)
+                        @Model.Equipment.Ilevel
                     </td>
                 </tr>
             }
-            @if (Model.ItemEquipment!.SuLevel != 0)
+            @if (Model.Equipment.SuLevel != 0)
             {
                 <tr>
                     <th class="col-sm-2 bg-secondary bg-opacity-25">Superior Level</th>
                     <td colspan="3">
-                        @Html.DisplayFor(i => Model.ItemEquipment!.SuLevel)
+                        @Model.Equipment.SuLevel
                     </td>
                 </tr>
             }
             <tr>
                 <th class="col-sm-2 bg-secondary bg-opacity-25">Jobs</th>
                 <td colspan="3">
-                    @foreach (var job in Model.ItemEquipment!.JobDescriptions)
+                    @foreach (var job in Model.Equipment.ListJobs)
                     {
                         <span>@job</span>
                     }

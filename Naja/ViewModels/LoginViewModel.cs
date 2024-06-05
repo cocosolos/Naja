@@ -1,5 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 
+namespace Naja.ViewModels;
+
 public class LoginViewModel
 {
     [Required]

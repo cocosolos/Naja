@@ -1,17 +1,17 @@
-﻿@model Naja.Models.ItemViewModel
+﻿@model Naja.ViewModels.ItemViewModel
 
 @{
-    ViewData["Title"] = Model.SortName;
+    ViewData["Title"] = Model.Basic.Sortname;
 }
 
 
 <div style="display: flex; align-items: center;">
     <div class="mx-3">
-        <img src="https://static.ffxiah.com/images/icon/@($"{Model.ItemBasic.Itemid}.png")" title="@Model.Name" />
+        <img src="https://static.ffxiah.com/images/icon/@($"{Model.Basic.Itemid}.png")" title="@Model.Basic.Name" />
     </div>
     <div>
-        <h1>@Model.SortName</h1>
-        <a href="https://www.ffxiah.com/item/@Model.ItemBasic.Itemid" target="_blank">
+        <h1>@Model.Basic.Sortname</h1>
+        <a href="https://www.ffxiah.com/item/@Model.Basic.Itemid" target="_blank">
             <img src="~/images/ffxiah.png" alt="FFXIAH" title="FFXIAH" class="align-top" />
         </a>
     </div>
@@ -29,7 +29,7 @@
             <th class="col-sm-2 bg-secondary bg-opacity-25">Flags</th>
             <td colspan="3">
                 @{
-                    var flags = string.Join(", ", Model.ItemBasic.FlagsDescriptions);
+                    var flags = string.Join(", ", Model.Basic.ListFlags);
                 }
                 <span>@flags</span>
             </td>
@@ -37,21 +37,21 @@
         <tr>
             <th class="col-sm-2 bg-secondary bg-opacity-25">Stack Size</th>
             <td colspan="3">
-                @Html.DisplayFor(i => Model.ItemBasic.StackSize)
+                @Model.Basic.StackSize
             </td>
         </tr>
-        @if (Model.ItemBasic.Sellable && Model.ItemBasic.BaseSell > 0)
+        @if (Model.Basic.Sellable == true && Model.Basic.BaseSell > 0)
         {
             <tr>
                 <th class="col-sm-2 bg-secondary bg-opacity-25">Resale Price</th>
                 <td colspan="3">
-                    @String.Format("{0:n0}", Model.ItemBasic.BaseSell)g
+                    @String.Format("{0:n0}", Model.Basic.BaseSell)g
                 </td>
             </tr>
         }
     </tbody>
 </table>
 
-@await Html.PartialAsync("_EquipmentStats", Model.ItemBasic)
+@await Html.PartialAsync("_EquipmentInformation", Model)
 @await Html.PartialAsync("_AuctionHouse", Model)
 @await Html.PartialAsync("_Bazaar", Model)
