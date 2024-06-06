@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 using Naja.Models.External;
+using Naja.Services;
 using Naja.ViewModels;
 
 namespace Naja

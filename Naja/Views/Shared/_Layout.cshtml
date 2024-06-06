@@ -1,4 +1,6 @@
-﻿@inject IAccountService AccountService
+﻿@using Naja.Services
+
+@inject IAccountService AccountService
 
 @{
     var characterId = AccountService.GetCharacterId();

@@ -1,6 +1,8 @@
 using System.Linq;
 using System.Xml.Linq;
 
+namespace Naja.Services;
+
 public class XmlService
 {
     public XDocument LoadXml(string xmlFilePath)

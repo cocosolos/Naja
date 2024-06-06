@@ -4,6 +4,8 @@ using Naja.Controllers;
 using Naja.Models.External;
 using Naja.ViewModels;
 
+namespace Naja.Services;
+
 public interface IItemService
 {
     Task<ItemViewModel?> GetItemViewModel(ushort id);

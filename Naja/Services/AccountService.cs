@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 
 using Naja.Models.External;
 
+namespace Naja.Services;
 public interface IAccountService
 {
     uint? GetAccountId();

@@ -1,5 +1,7 @@
 using System.Xml.Linq;
 
+namespace Naja.Services;
+
 public class ZoneService
 {
     private readonly XmlService _xmlService;

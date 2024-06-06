@@ -10,15 +10,16 @@ using Microsoft.EntityFrameworkCore;
 
 using Naja.ViewModels;
 using Naja.Models.External;
+using Naja.Services;
 
 public class AccountController : Controller
 {
     private readonly XidbContext _context;
     private readonly IHttpClientFactory _httpClientFactory;
     private readonly ILogger<AccountController> _logger;
-    private readonly AccountService _accountService;
+    private readonly IAccountService _accountService;
 
-    public AccountController(XidbContext context, IHttpClientFactory httpClientFactory, ILogger<AccountController> logger, AccountService accountService)
+    public AccountController(XidbContext context, IHttpClientFactory httpClientFactory, ILogger<AccountController> logger, IAccountService accountService)
     {
         _context = context;
         _httpClientFactory = httpClientFactory;

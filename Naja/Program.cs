@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 
 using Naja.Models.External;
+using Naja.Services;
 
 using Pomelo.EntityFrameworkCore.MySql;
 

@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Naja.Models;
 using Naja.ViewModels;
 using Naja.Models.External;
+using Naja.Services;
 
 namespace Naja.Controllers
 {

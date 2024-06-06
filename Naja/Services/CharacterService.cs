@@ -1,5 +1,7 @@
 using Naja.Models.External;
 
+namespace Naja.Services;
+
 public class CharacterService
 {
     private readonly XidbContext _context;

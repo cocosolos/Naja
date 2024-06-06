@@ -1,5 +1,7 @@
 @model Naja.ViewModels.ItemViewModel
 
+@using Naja.Services
+
 @inject CharacterService CharacterService
 
 @if (Model.BazaarStock?.Count() > 0)
