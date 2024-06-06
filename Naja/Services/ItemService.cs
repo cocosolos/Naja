@@ -1,190 +1,24 @@
 using Microsoft.EntityFrameworkCore;
 
 using Naja.Controllers;
-using Naja.Data;
 using Naja.Models.External;
 using Naja.ViewModels;
 
-public class ItemService
+public interface IItemService
 {
-    private readonly XiContext _context;
+    Task<ItemViewModel?> GetItemViewModel(ushort id);
+    bool GetSellable(ushort flags);
+    List<string> GetJobs(uint jobs);
+    List<string> GetFlags(ushort flags);
+    List<string> GetSlots(ushort slotFlags);
+    string GetSkill(byte skill);
+    string? GetAhCategory(byte AH);
+    string GetDmgType(uint dmgType);
+}
 
-    public ItemService(XiContext context)
-    {
-        _context = context;
-    }
-
-    public async Task<ItemViewModel?> GetItemViewModel(ushort id)
-    {
-        var item = await _context.ItemsBasic
-            .Include(b => b.ItemUsable)
-            .Include(b => b.ItemEquipment)
-            .Include(b => b.ItemWeapon)
-            .Include(b => b.ItemFurnishing)
-            .Include(b => b.ItemPuppet)
-            .AsNoTracking()
-            .FirstOrDefaultAsync(m => m.Itemid == id);
-
-        if (item == null)
-        {
-            return null;
-        }
-
-        var ret = new ItemViewModel
-        {
-            Basic = item,
-            ItemUsable = item.ItemUsable,
-            ItemFurnishing = item.ItemFurnishing,
-            ItemPuppet = item.ItemPuppet,
-        };
-        ret.Basic.Name = item.Name.Replace("_", " "); //.ToTitleCaseWithRomanNumerals(),
-        ret.Basic.Sortname = item.Sortname.Replace("_", " "); //.ToTitleCaseWithRomanNumerals(),
-        ret.Basic.ListFlags = GetFlags(item.Flags);
-        ret.Basic.Sellable = GetSellable(item.Flags);
-
-        if (item.ItemEquipment != null)
-        {
-            ret.Equipment = item.ItemEquipment;
-            ret.Equipment.ListJobs = GetJobs(item.ItemEquipment.Jobs);
-            ret.Equipment.ListSlots = GetSlots(item.ItemEquipment.Slot);
-        }
-
-        if (item.ItemWeapon != null)
-        {
-            ret.Weapon = item.ItemWeapon;
-            ret.Weapon.SkillName = GetSkill(item.ItemWeapon.Skill);
-            ret.Weapon.DamageType = GetDmgType(item.ItemWeapon.DmgType);
-        }
-
-        var ahCategory = GetAhCategory(item.AH);
-
-        if (ahCategory != null)
-        {
-            ret.Basic.AhCategory = ahCategory;
-            ret.AuctionHouseHistory = await _context.AuctionHouse
-                .Where(ah => ah.Itemid == id && ah.SellDate != 0)
-                .OrderByDescending(ah => ah.Date)
-                .AsNoTracking()
-                .ToListAsync();
-
-            var auctionHouseStock = await _context.AuctionHouse
-                .Where(ah => ah.Itemid == id && ah.SellDate == 0)
-                .GroupBy(ah => ah.Stack)
-                .Select(g => new
-                {
-                    Stack = g.Key,
-                    Count = g.Count()
-                })
-                .AsNoTracking()
-                .ToListAsync();
-
-            int singlesCount = auctionHouseStock.FirstOrDefault(g => g.Stack == 0)?.Count ?? 0;
-            int stacksCount = auctionHouseStock.FirstOrDefault(g => g.Stack == 1)?.Count ?? 0;
-            ret.AuctionHouseStock = (singlesCount, stacksCount);
-        }
-
-        ret.BazaarStock = await _context.CharInventories
-            .Include(c => c.Char)
-            .Where(i => i.ItemId == id && i.Bazaar > 0 && i.Char.AccountsSession != null)
-            .OrderBy(i => i.Bazaar)
-            .AsNoTracking()
-            .ToListAsync();
-
-        return ret;
-    }
-
-    public bool GetSellable(ushort flags)
-    {
-        return (flags & 0x1000) == 0;
-    }
-
-    public List<string> GetJobs(uint jobs)
-    {
-        if (jobs == 0)
-            return new List<string> { "None" };
-
-        var appliedJobs = new List<string>();
-
-        foreach (var job in JobMappings)
-        {
-            if ((jobs & (uint)Math.Pow(2, job.Key)) != 0)
-            {
-                appliedJobs.Add(job.Value);
-            }
-        }
-
-        return appliedJobs.Count == JobMappings.Count ? new List<string> { "All Jobs" } : appliedJobs;
-    }
-
-    public List<string> GetFlags(ushort flags)
-    {
-        var appliedFlags = new List<string>();
-
-        foreach (var flag in FlagMappings)
-        {
-            if ((flags & flag.Key) != 0)
-            {
-                appliedFlags.Add(flag.Value);
-            }
-        }
-
-        return appliedFlags;
-    }
-
-    public List<string> GetSlots(ushort slotFlags)
-    {
-
-        if (slotFlags == 0)
-            return new List<string>(["None"]);
-
-        var validSlots = new List<string>();
-
-        foreach (var slot in SlotMappings)
-        {
-            if ((slotFlags & (uint)Math.Pow(2, slot.Key)) != 0)
-            {
-                validSlots.Add(slot.Value);
-            }
-        }
-
-        return validSlots;
-    }
-
-    public string GetSkill(byte skill)
-    {
-        string description = "Unknown";
-        if (SkillMappings.TryGetValue(skill, out string? tempDescription))
-        {
-            description = tempDescription!;
-        }
-        return description;
-    }
-
-    public string? GetAhCategory(byte AH)
-    {
-        if (AHMappings.TryGetValue(AH, out string? description))
-        {
-            return description;
-        }
-        return null;
-    }
-
-    public string GetDmgType(uint dmgType)
-    {
-        switch (dmgType)
-        {
-            case 1:
-                return "Piercing";
-            case 2:
-                return "Slashing";
-            case 3:
-                return "Blunt (Impact)";
-            case 4:
-                return "Blunt (Hand to Hand)";
-            default:
-                return "Unknown";
-        }
-    }
+public class ItemService : IItemService
+{
+    private readonly XidbContext _context;
 
     private static readonly Dictionary<int, string> JobMappings = new Dictionary<int, string>
     {
@@ -343,4 +177,177 @@ public class ItemService
         { 64, "Others ➞ Misc. 2" },
         { 65, "Others ➞ Misc. 3" }
     };
+
+    public ItemService(XidbContext context)
+    {
+        _context = context;
+    }
+
+    public async Task<ItemViewModel?> GetItemViewModel(ushort id)
+    {
+        var item = await _context.ItemBasics
+            .Where(b => b.Itemid == id)
+            .Select(b => new ItemViewModel
+            {
+                Basic = b,
+                Equipment = b.ItemEquipment,
+                Weapon = b.ItemEquipment != null ? b.ItemEquipment.ItemWeapon : null,
+                ItemUsable = b.ItemUsable,
+                ItemFurnishing = b.ItemFurnishing,
+                ItemPuppet = b.ItemPuppet,
+            })
+            .AsNoTracking()
+            .FirstOrDefaultAsync();
+
+        if (item == null)
+        {
+            return null;
+        }
+
+        item.Basic.Name = item.Basic.Name.Replace("_", " "); //.ToTitleCaseWithRomanNumerals(),
+        item.Basic.Sortname = item.Basic.Sortname.Replace("_", " "); //.ToTitleCaseWithRomanNumerals(),
+        item.Basic.ListFlags = GetFlags(item.Basic.Flags);
+        item.Basic.Sellable = GetSellable(item.Basic.Flags);
+
+        if (item.Equipment != null)
+        {
+            item.Equipment.ListJobs = GetJobs(item.Equipment.Jobs);
+            item.Equipment.ListSlots = GetSlots(item.Equipment.Slot);
+        }
+
+        if (item.Weapon != null)
+        {
+            item.Weapon.SkillName = GetSkill(item.Weapon.Skill);
+            item.Weapon.DamageType = GetDmgType(item.Weapon.DmgType);
+        }
+
+        var ahCategory = GetAhCategory(item.Basic.AH);
+
+        if (ahCategory != null)
+        {
+            item.Basic.AhCategory = ahCategory;
+            item.AuctionHouseHistory = await _context.AuctionHouses
+                .Where(ah => ah.Itemid == id && ah.SellDate != 0)
+                .OrderByDescending(ah => ah.Date)
+                .AsNoTracking()
+                .ToListAsync();
+
+            var auctionHouseStock = await _context.AuctionHouses
+                .Where(ah => ah.Itemid == id && ah.SellDate == 0)
+                .GroupBy(ah => ah.Stack)
+                .Select(g => new
+                {
+                    Stack = g.Key,
+                    Count = g.Count()
+                })
+                .AsNoTracking()
+                .ToListAsync();
+
+            int singlesCount = auctionHouseStock.FirstOrDefault(g => g.Stack == 0)?.Count ?? 0;
+            int stacksCount = auctionHouseStock.FirstOrDefault(g => g.Stack == 1)?.Count ?? 0;
+            item.AuctionHouseStock = (singlesCount, stacksCount);
+        }
+
+        item.BazaarStock = await _context.CharInventories
+            .Include(c => c.Char)
+            .Where(i => i.ItemId == id && i.Bazaar > 0 && i.Char.AccountsSession != null)
+            .OrderBy(i => i.Bazaar)
+            .AsNoTracking()
+            .ToListAsync();
+
+        return item;
+    }
+
+    public bool GetSellable(ushort flags)
+    {
+        return (flags & 0x1000) == 0;
+    }
+
+    public List<string> GetJobs(uint jobs)
+    {
+        if (jobs == 0)
+            return new List<string> { "None" };
+
+        var appliedJobs = new List<string>();
+
+        foreach (var job in JobMappings)
+        {
+            if ((jobs & (uint)Math.Pow(2, job.Key)) != 0)
+            {
+                appliedJobs.Add(job.Value);
+            }
+        }
+
+        return appliedJobs.Count == JobMappings.Count ? new List<string> { "All Jobs" } : appliedJobs;
+    }
+
+    public List<string> GetFlags(ushort flags)
+    {
+        var appliedFlags = new List<string>();
+
+        foreach (var flag in FlagMappings)
+        {
+            if ((flags & flag.Key) != 0)
+            {
+                appliedFlags.Add(flag.Value);
+            }
+        }
+
+        return appliedFlags;
+    }
+
+    public List<string> GetSlots(ushort slotFlags)
+    {
+
+        if (slotFlags == 0)
+            return new List<string>(["None"]);
+
+        var validSlots = new List<string>();
+
+        foreach (var slot in SlotMappings)
+        {
+            if ((slotFlags & (uint)Math.Pow(2, slot.Key)) != 0)
+            {
+                validSlots.Add(slot.Value);
+            }
+        }
+
+        return validSlots;
+    }
+
+    public string GetSkill(byte skill)
+    {
+        string description = "Unknown";
+        if (SkillMappings.TryGetValue(skill, out string? tempDescription))
+        {
+            description = tempDescription!;
+        }
+        return description;
+    }
+
+    public string? GetAhCategory(byte AH)
+    {
+        if (AHMappings.TryGetValue(AH, out string? description))
+        {
+            return description;
+        }
+        return null;
+    }
+
+    public string GetDmgType(uint dmgType)
+    {
+        switch (dmgType)
+        {
+            case 1:
+                return "Piercing";
+            case 2:
+                return "Slashing";
+            case 3:
+                return "Blunt (Impact)";
+            case 4:
+                return "Blunt (Hand to Hand)";
+            default:
+                return "Unknown";
+        }
+    }
 }

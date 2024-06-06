@@ -1,19 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Naja.Models.External;
 
 public partial class Char
 {
-    [Key]
     public uint Charid { get; set; }
 
     public uint Accid { get; set; }
-
-    [ForeignKey("Accid")]
-    public virtual required Account Account { get; set; }
 
     public uint OriginalAccid { get; set; }
 
@@ -96,7 +90,4 @@ public partial class Char
     public DateTime Timecreated { get; set; }
 
     public DateTime Lastupdate { get; set; }
-
-    [ForeignKey("Charid")]
-    public virtual AccountsSession? AccountsSession { get; set; }
 }

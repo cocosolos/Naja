@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
-using Naja.Data;
+using Naja.Models.External;
 using Naja.Models;
 
 namespace Naja.Controllers
@@ -8,9 +8,9 @@ namespace Naja.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly XiContext _context;
+        private readonly XidbContext _context;
 
-        public HomeController(ILogger<HomeController> logger, XiContext context)
+        public HomeController(ILogger<HomeController> logger, XidbContext context)
         {
             _logger = logger;
             _context = context;

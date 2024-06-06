@@ -6,7 +6,6 @@ public partial class ItemBasic
 {
     public ItemUsable? ItemUsable { get; set; }
     public ItemEquipment? ItemEquipment { get; set; }
-    public ItemWeapon? ItemWeapon { get; set; }
     public ItemFurnishing? ItemFurnishing { get; set; }
     public ItemPuppet? ItemPuppet { get; set; }
 

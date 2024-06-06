@@ -8,18 +8,17 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-using Naja.Data;
 using Naja.ViewModels;
 using Naja.Models.External;
 
 public class AccountController : Controller
 {
-    private readonly XiContext _context;
+    private readonly XidbContext _context;
     private readonly IHttpClientFactory _httpClientFactory;
     private readonly ILogger<AccountController> _logger;
     private readonly AccountService _accountService;
 
-    public AccountController(XiContext context, IHttpClientFactory httpClientFactory, ILogger<AccountController> logger, AccountService accountService)
+    public AccountController(XidbContext context, IHttpClientFactory httpClientFactory, ILogger<AccountController> logger, AccountService accountService)
     {
         _context = context;
         _httpClientFactory = httpClientFactory;
@@ -130,8 +129,8 @@ public class AccountController : Controller
             CurrentEmail = model.Email,
             Timecreate = DateTime.Now,
             Timelastmodify = DateTime.Now,
-            Status = Account.StatusCodes.Normal,
-            Priv = Account.PrivilegeCodes.User,
+            Status = (byte)AccountService.StatusCodes.Normal,
+            Priv = (byte)AccountService.PrivilegeCodes.User,
         };
 
         _context.Accounts.Add(account);

@@ -4,8 +4,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Naja.Models.External;
 
-public partial class ItemMod
+public partial class CharInventory
 {
+    [ForeignKey("Charid")]
+    public required Char Char { get; set; }
+
     [ForeignKey("ItemId")]
-    public virtual required ItemBasic ItemBasic { get; set; }
+    public required ItemBasic ItemBasic { get; set; }
 }

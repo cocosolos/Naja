@@ -7,5 +7,5 @@ namespace Naja.Models.External;
 public partial class ItemPuppet
 {
     [ForeignKey("Itemid")]
-    public virtual required ItemBasic ItemBasic { get; set; }
+    public required ItemBasic ItemBasic { get; set; }
 }

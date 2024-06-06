@@ -376,6 +376,4 @@ public partial class CharPoint
     public byte DarknessSpheresSet { get; set; }
 
     public uint SilverAmanVoucher { get; set; }
-
-    public short? Plaudits { get; set; }
 }

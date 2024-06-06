@@ -1,7 +1,7 @@
 ﻿@model List<Naja.ViewModels.CharViewModel>
 
 @using Humanizer
-@inject AccountService AccountService
+@inject IAccountService AccountService
 
 @{
     ViewData["Title"] = "Index";
@@ -37,37 +37,37 @@
     <tbody>
         @foreach (var item in Model)
         {
-                <tr>
-                    <td>
-                        <b>@Html.DisplayFor(modelItem => item.Char.Charname)</b>
-                    </td>
-                    <td>
-                        <img src="@item.NationImageUrl" alt="@item.NationName" />
-                    </td>
-                    <td>
-                        <i>@Html.DisplayFor(modelItem => item.ZoneName)</i>
-                    </td>
-                    <td>
-                    @TimeSpan.FromSeconds(item.Char.Playtime).Humanize(maxUnit: Humanizer.Localisation.TimeUnit.Day,
-                                      precision: 4)
-                    </td>
-                    <td>
-                    @Html.DisplayFor(modelItem => item.Char.Timecreated)
-                    </td>
-                    <td>
-                    @if (item.Char.Charid == characterId)
+            <tr>
+                <td>
+                    <b>@item.Character.Charname</b>
+                </td>
+                <td>
+                    <img src="@item.NationImageUrl" alt="@item.NationName" />
+                </td>
+                <td>
+                    <i>@item.ZoneName</i>
+                </td>
+                <td>
+                    @TimeSpan.FromSeconds(item.Character.Playtime).Humanize(maxUnit:
+                             Humanizer.Localisation.TimeUnit.Day, precision: 4)
+                </td>
+                <td>
+                    @item.Character.Timecreated
+                </td>
+                <td>
+                    @if (item.Character.Charid == characterId)
                     {
-                                <i class="bi bi-check-lg text-success align-middle" style="font-size: 1.5rem;"></i>
+                        <i class="bi bi-check-lg text-success align-middle" style="font-size: 1.5rem;"></i>
                     }
                     else
                     {
-                                <form asp-action="SelectCharacter" asp-controller="AccountCharacters" method="post">
-                                    <input type="hidden" name="id" value="@item.Char.Charid" />
-                                    <button type="submit" class="btn btn-primary">Select</button>
-                                </form>
+                        <form asp-action="SelectCharacter" asp-controller="AccountCharacters" method="post">
+                            <input type="hidden" name="id" value="@item.Character.Charid" />
+                            <button type="submit" class="btn btn-primary">Select</button>
+                        </form>
                     }
-                    </td>
-                </tr>
+                </td>
+            </tr>
         }
     </tbody>
 </table>

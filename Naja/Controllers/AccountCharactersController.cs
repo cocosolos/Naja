@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
-using Naja.Data;
+using Naja.Models.External;
 using Naja.ViewModels;
 
 namespace Naja
@@ -20,11 +20,11 @@ namespace Naja
     [Authorize]
     public class AccountCharactersController : Controller
     {
-        private readonly XiContext _context;
-        private readonly AccountService _accountService;
+        private readonly XidbContext _context;
+        private readonly IAccountService _accountService;
         private readonly CharacterService _characterService;
 
-        public AccountCharactersController(XiContext context, AccountService accountService, CharacterService characterService)
+        public AccountCharactersController(XidbContext context, IAccountService accountService, CharacterService characterService)
         {
             _context = context;
             _accountService = accountService;
@@ -41,24 +41,21 @@ namespace Naja
                 return Unauthorized();
             }
 
-            var chars = await _context.Chars.Where(c => c.Accid == accountId).ToListAsync();
+            var characters = await _accountService.GetCharacters();
 
             var charViewModels = new List<CharViewModel>();
-            foreach (var character in chars)
+            if (characters != null)
             {
-                var zoneName = _characterService.GetCurrentZoneName(character.PosZone);
-                var nationName = _characterService.GetNationName(character.Nation);
-                var nationImageUrl = _characterService.GetNationImageUrl(character.Nation);
-
-                var viewModel = new CharViewModel
+                foreach (var character in characters)
                 {
-                    Char = character,
-                    ZoneName = zoneName,
-                    NationName = nationName,
-                    NationImageUrl = nationImageUrl
-                };
-
-                charViewModels.Add(viewModel);
+                    charViewModels.Add(new CharViewModel
+                    {
+                        Character = character,
+                        ZoneName = _characterService.GetCurrentZoneName(character.PosZone),
+                        NationName = _characterService.GetNationName(character.Nation),
+                        NationImageUrl = _characterService.GetNationImageUrl(character.Nation)
+                    });
+                }
             }
 
             return View(charViewModels);
@@ -73,10 +70,8 @@ namespace Naja
             {
                 return Unauthorized();
             }
-
-            var character = await _context.Chars
-                .Include(c => c.Account)
-                .FirstOrDefaultAsync(c => c.Charid == id && c.Accid == accountId);
+            var characters = await _accountService.GetCharacters();
+            var character = characters?.Where(c => c.Charid == id).FirstOrDefault();
             if (character == null)
             {
                 return NotFound();
@@ -128,24 +123,19 @@ namespace Naja
                 return Unauthorized();
             }
 
-            var character = await _context.Chars
-                .Include(c => c.Account)
-                .FirstOrDefaultAsync(c => c.Charid == id && c.Accid == accountId);
+            var characters = await _accountService.GetCharacters();
+            var character = characters?.Where(c => c.Charid == id).FirstOrDefault();
             if (character == null)
             {
                 return NotFound();
             }
 
-            var zoneName = _characterService.GetCurrentZoneName(character.PosZone);
-            var nationName = _characterService.GetNationName(character.Nation);
-            var nationImageUrl = _characterService.GetNationImageUrl(character.Nation);
-
             var viewModel = new CharViewModel
             {
-                Char = character,
-                ZoneName = zoneName,
-                NationName = nationName,
-                NationImageUrl = nationImageUrl
+                Character = character,
+                ZoneName = _characterService.GetCurrentZoneName(character.PosZone),
+                NationName = _characterService.GetNationName(character.Nation),
+                NationImageUrl = _characterService.GetNationImageUrl(character.Nation)
             };
 
             return View(viewModel);

@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-using Naja.Data;
 using Naja.Models;
 using Naja.ViewModels;
 using Naja.Models.External;
@@ -10,9 +9,9 @@ namespace Naja.Controllers
 {
     public class ItemsController : Controller
     {
-        private readonly XiContext _context;
-        private readonly ItemService _itemService;
-        public ItemsController(XiContext context, ItemService itemService)
+        private readonly XidbContext _context;
+        private readonly IItemService _itemService;
+        public ItemsController(XidbContext context, IItemService itemService)
         {
             _context = context;
             _itemService = itemService;
@@ -28,7 +27,7 @@ namespace Naja.Controllers
             ViewData["NameSortParam"] = sort == "name" ? "name_desc" : sort == "name_desc" ? "" : "name";
             ViewData["SortnameSortParam"] = sort == "sortname" ? "sortname_desc" : sort == "sortname_desc" ? "" : "sortname";
 
-            var items = _context.ItemsBasic.Select(item => item);
+            var items = _context.ItemBasics.Select(item => item);
 
             if (!String.IsNullOrEmpty(search))
             {

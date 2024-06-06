@@ -5,7 +5,7 @@ namespace Naja.Models.External;
 public partial class ItemWeapon
 {
     [ForeignKey("ItemId")]
-    public virtual required ItemBasic ItemBasic { get; set; }
+    public required ItemEquipment ItemEquipment { get; set; }
 
     [NotMapped]
     public required string SkillName { get; set; }

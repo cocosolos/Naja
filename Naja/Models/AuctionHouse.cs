@@ -4,8 +4,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Naja.Models.External;
 
-public partial class ItemModsPet
+public partial class AuctionHouse
 {
-    [ForeignKey("ItemId")]
-    public virtual required ItemBasic ItemBasic { get; set; }
+    [ForeignKey("Itemid")]
+    public required ItemBasic ItemBasic { get; set; }
 }

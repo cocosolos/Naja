@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 
-using Naja.Data;
+using Naja.Models.External;
 
 using Pomelo.EntityFrameworkCore.MySql;
 
@@ -13,7 +13,7 @@ var environment = builder.Environment.EnvironmentName;
 // Add services to the container.
 var connectionString = $"Server={DotNetEnv.Env.GetString("SERVER")};Database={DotNetEnv.Env.GetString("DATABASE")};User={DotNetEnv.Env.GetString("USER")};Password={DotNetEnv.Env.GetString("PASSWORD")};";
 
-builder.Services.AddDbContext<XiContext>(options => options.UseMySql(
+builder.Services.AddDbContext<XidbContext>(options => options.UseMySql(
         connectionString,
         ServerVersion.AutoDetect(connectionString)
     ));
@@ -41,9 +41,9 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
 
 builder.Services.AddSingleton<XmlService>();
 builder.Services.AddSingleton<ZoneService>();
-builder.Services.AddTransient<AccountService>();
+builder.Services.AddTransient<IAccountService, AccountService>();
 builder.Services.AddScoped<CharacterService>();
-builder.Services.AddScoped<ItemService>();
+builder.Services.AddScoped<IItemService, ItemService>();
 
 var app = builder.Build();
 
