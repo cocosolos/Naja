@@ -1,0 +1,60 @@
+﻿@model IEnumerable<Naja.ViewModels.ChatViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="text-center">Yells</h1>
+
+<table class="table table-sm table-borderless text-danger bg-dark rounded-1">
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td class="col-sm-2 py-0 font-color-red" title="@item.Chat.Datetime">
+                    @($"{item.Chat.Speaker}: ")<span data-chat-message="@item.Message"></span>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts {
+    <script>
+        // Colorize Auto-Translate brackets
+        function colorizeCharacters() {
+            document.addEventListener("DOMContentLoaded", function () {
+                var elements = document.querySelectorAll('[data-chat-message]');
+
+                elements.forEach(function (element) {
+                    var message = element.getAttribute('data-chat-message');
+                    var bracketCount = 0;
+                    var translateString;
+
+                    for (var i = 0; i < message.length; i++) {
+                        if (message[i] === 'ý') {
+                            var bracket = bracketCount % 2 === 0 ? '{' : '}';
+                            var color = bracketCount % 2 === 0 ? 'green' : 'red';
+                            if (bracketCount % 2 !== 0) {
+                                element.innerHTML += translateString;
+                            }
+                            element.innerHTML += '<span class="fw-bold" style="color:' + color + ';">' + bracket + '</span>';
+                            translateString = ''
+                            bracketCount++;
+                        }
+                        else {
+                            if (bracketCount % 2 !== 0) {
+                                translateString += message[i];
+                            }
+                            else {
+                                element.appendChild(document.createTextNode(message[i]));
+                            }
+                        }
+                    }
+                });
+            });
+        }
+
+        colorizeCharacters();
+    </script>
+}

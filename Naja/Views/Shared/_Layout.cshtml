@@ -47,6 +47,10 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="AuctionHouse"
                                 asp-action="Index">AH</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Yells" asp-action="Index"
+                                asp-route-count="50">Yells</a>
+                        </li>
                     </ul>
                     <div class="d-sm-none">
                         <hr class="dropdown-divider">
@@ -87,6 +91,17 @@
             &copy; 2024 - Naja - <a asp-area="" asp-controller="Home" asp-action="About">About</a>
         </div>
     </footer>
+    <script>
+        // Convert Unix timestamps to local time
+        document.addEventListener("DOMContentLoaded", function () {
+            var elements = document.querySelectorAll('[data-unix-time]');
+
+            elements.forEach(function (element) {
+                var unixTime = parseInt(element.getAttribute('data-unix-time'), 10);
+                element.textContent = new Date(unixTime * 1000).toLocaleString();
+            });
+        });
+    </script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

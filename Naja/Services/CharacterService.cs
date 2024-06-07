@@ -5,17 +5,17 @@ namespace Naja.Services;
 public class CharacterService
 {
     private readonly XidbContext _context;
-    private readonly ZoneService _zoneService;
+    private readonly IClientResourcesService _clientResourceService;
 
-    public CharacterService(XidbContext context, ZoneService zoneService)
+    public CharacterService(XidbContext context, IClientResourcesService clientResourceService)
     {
         _context = context;
-        _zoneService = zoneService;
+        _clientResourceService = clientResourceService;
     }
 
     public string GetCurrentZoneName(ushort zoneId)
     {
-        return _zoneService.GetZoneName(zoneId);
+        return _clientResourceService.GetAttribute("zones", zoneId, "en");
     }
 
     public string GetNationName(byte nationId)

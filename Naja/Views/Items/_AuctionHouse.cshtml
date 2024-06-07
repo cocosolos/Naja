@@ -58,9 +58,7 @@
                                 @foreach (var item in Model.AuctionHouseHistory)
                                 {
                                     <tr>
-                                        <td>
-                                            @DateTimeOffset.FromUnixTimeSeconds(item.SellDate).UtcDateTime
-                                        </td>
+                                        <td data-unix-time="@item.SellDate"></td>
                                         <td>
                                             @item.SellerName
                                         </td>

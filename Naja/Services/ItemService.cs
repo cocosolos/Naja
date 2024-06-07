@@ -51,7 +51,7 @@ public class ItemService : IItemService
     private static readonly Dictionary<int, string> FlagMappings = new Dictionary<int, string>
     {
         { 0x0001, "Wall Hanging" },
-        { 0x0002, "Flag 01" },
+        { 0x0002, "GMs Only" },
         { 0x0004, "Mystery Box" },
         { 0x0008, "Mog Garden" },
         { 0x0010, "Mail to Account" },

@@ -41,10 +41,11 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
     });
 
 builder.Services.AddSingleton<XmlService>();
-builder.Services.AddSingleton<ZoneService>();
+builder.Services.AddSingleton<IClientResourcesService, ClientResourcesService>();
 builder.Services.AddTransient<IAccountService, AccountService>();
 builder.Services.AddScoped<CharacterService>();
 builder.Services.AddScoped<IItemService, ItemService>();
+builder.Services.AddScoped<IChatService, ChatService>();
 
 var app = builder.Build();
 
@@ -83,5 +84,9 @@ app.MapControllerRoute(
 app.MapControllerRoute(
     name: "accountCharacters",
     pattern: "{controller=AccountCharacters}/{action=Index}/{id?}");
+
+app.MapControllerRoute(
+    name: "yells",
+    pattern: "{controller=Yells}/{action=Index}/{id?}");
 
 app.Run();
