@@ -1,33 +1,31 @@
-﻿@model IEnumerable<Naja.ViewModels.ChatViewModel>
-
-@using Naja.Services
-
-@inject IAccountService AccountService
+﻿@model Naja.ViewModels.ChatViewModel
 
 @{
-    ViewData["Title"] = "Yells";
-    var currentCharacter = await AccountService.GetCurrentCharacter();
+    ViewData["Title"] = "Delete";
 }
 
-<h1 class="text-center">Yells</h1>
+<h1 class="text-center">Delete Chat</h1>
 
-<table class="table table-sm table-borderless text-danger bg-dark rounded-1">
-    <tbody>
-        @foreach (var item in Model)
-        {
+<div>
+    <table class="table table-sm table-borderless text-danger bg-dark rounded-1">
+        <tbody>
             <tr>
-                <td class="py-0 align-middle" title="@item.Chat.Datetime">
-                    @if (currentCharacter != null && currentCharacter.Gmlevel > 0)
-                    {
-                        <a class="bi bi-trash-fill text-danger" asp-action="Delete" asp-route-id="@item.Chat.LineId"></a>
-                    }
-                    <span class="opacity-50 text-info">@($"{item.Chat.Speaker}: ")</span><span
-                        data-chat-message="@item.Message"></span>
+                <td class="py-0 align-middle" title="@Model.Chat.Datetime">
+                    <span class="opacity-50 text-info">@($"{Model.Chat.Speaker}: ")</span><span
+                        data-chat-message="@Model.Message"></span>
                 </td>
             </tr>
-        }
-    </tbody>
-</table>
+        </tbody>
+    </table>
+    <h3 class="text-center">Are you sure you want to delete this?</h3>
+
+    <form class="text-center" asp-action="Delete" method="post">
+        @Html.AntiForgeryToken()
+        <input type="hidden" asp-for="Chat.LineId" />
+        <input type="submit" value="Delete" class="btn btn-danger" />
+        <a class="btn btn-secondary" asp-action="Index" asp-route-count="50">Cancel</a>
+    </form>
+</div>
 
 @section Scripts {
     <script>

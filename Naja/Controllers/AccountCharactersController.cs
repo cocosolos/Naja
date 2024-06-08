@@ -23,13 +23,15 @@ namespace Naja
     {
         private readonly XidbContext _context;
         private readonly IAccountService _accountService;
-        private readonly CharacterService _characterService;
+        private readonly ICharacterService _characterService;
+        private readonly IClientResourcesService _clientResourceService;
 
-        public AccountCharactersController(XidbContext context, IAccountService accountService, CharacterService characterService)
+        public AccountCharactersController(XidbContext context, IAccountService accountService, ICharacterService characterService, IClientResourcesService clientResourceService)
         {
             _context = context;
             _accountService = accountService;
             _characterService = characterService;
+            _clientResourceService = clientResourceService;
         }
 
         // GET: Account/Characters
@@ -52,8 +54,8 @@ namespace Naja
                     charViewModels.Add(new CharViewModel
                     {
                         Character = character,
-                        ZoneName = _characterService.GetCurrentZoneName(character.PosZone),
-                        NationName = _characterService.GetNationName(character.Nation),
+                        ZoneName = _clientResourceService.GetAttribute("zones", character.PosZone, "en"),
+                        NationName = _clientResourceService.GetAttribute("regions", character.Nation, "en"),
                         NationImageUrl = _characterService.GetNationImageUrl(character.Nation)
                     });
                 }
@@ -83,16 +85,13 @@ namespace Naja
             if (claimsPrincipal.Identity is ClaimsIdentity currentClaimsIdentity)
             {
                 var existingCharacterIdClaim = currentClaimsIdentity.FindFirst("CharacterId");
-                var existingCharacterNameClaim = currentClaimsIdentity.FindFirst("CharacterName");
 
-                if (existingCharacterIdClaim != null && existingCharacterNameClaim != null)
+                if (existingCharacterIdClaim != null)
                 {
                     currentClaimsIdentity.RemoveClaim(existingCharacterIdClaim);
-                    currentClaimsIdentity.RemoveClaim(existingCharacterNameClaim);
                 }
 
                 currentClaimsIdentity.AddClaim(new Claim("CharacterId", character.Charid.ToString()));
-                currentClaimsIdentity.AddClaim(new Claim("CharacterName", character.Charname));
 
                 var authProperties = await HttpContext.AuthenticateAsync(CookieAuthenticationDefaults.AuthenticationScheme);
 
@@ -134,8 +133,8 @@ namespace Naja
             var viewModel = new CharViewModel
             {
                 Character = character,
-                ZoneName = _characterService.GetCurrentZoneName(character.PosZone),
-                NationName = _characterService.GetNationName(character.Nation),
+                ZoneName = _clientResourceService.GetAttribute("zones", character.PosZone, "en"),
+                NationName = _clientResourceService.GetAttribute("regions", character.Nation, "en"),
                 NationImageUrl = _characterService.GetNationImageUrl(character.Nation)
             };
 

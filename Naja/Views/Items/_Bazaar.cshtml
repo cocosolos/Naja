@@ -2,7 +2,7 @@
 
 @using Naja.Services
 
-@inject CharacterService CharacterService
+@inject IClientResourcesService ClientResourcesService
 
 @if (Model.BazaarStock?.Count() > 0)
 {
@@ -32,7 +32,7 @@
                                         @item.Char.Charname
                                     </td>
                                     <td>
-                                        <i>@CharacterService.GetCurrentZoneName(item.Char.PosZone)</i>
+                                        <i>@ClientResourcesService.GetAttribute("zones", item.Char.PosZone, "en")</i>
                                     </td>
                                     <td>
                                         @item.Quantity

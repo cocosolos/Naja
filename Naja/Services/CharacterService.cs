@@ -2,7 +2,12 @@ using Naja.Models.External;
 
 namespace Naja.Services;
 
-public class CharacterService
+public interface ICharacterService
+{
+    string GetNationImageUrl(byte nationId);
+}
+
+public class CharacterService : ICharacterService
 {
     private readonly XidbContext _context;
     private readonly IClientResourcesService _clientResourceService;
@@ -11,26 +16,6 @@ public class CharacterService
     {
         _context = context;
         _clientResourceService = clientResourceService;
-    }
-
-    public string GetCurrentZoneName(ushort zoneId)
-    {
-        return _clientResourceService.GetAttribute("zones", zoneId, "en");
-    }
-
-    public string GetNationName(byte nationId)
-    {
-        switch (nationId)
-        {
-            case 0:
-                return "San d'Oria";
-            case 1:
-                return "Bastok";
-            case 2:
-                return "Windurst";
-            default:
-                return "Monster";
-        }
     }
 
     public string GetNationImageUrl(byte nationId)

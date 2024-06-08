@@ -3,8 +3,7 @@
 @inject IAccountService AccountService
 
 @{
-    var characterId = AccountService.GetCharacterId();
-    var characterName = AccountService.GetCharacterName();
+    var currentCharacter = await AccountService.GetCurrentCharacter();
 }
 
 <!DOCTYPE html>
@@ -59,10 +58,11 @@
                         @if (User?.Identity?.IsAuthenticated ?? false)
                         {
                             <li class="nav-item d-flex align-items-center ms-auto">
-                                @if (characterId != null && characterName != null)
+                                @if (currentCharacter != null)
                                 {
                                     <a class="nav-link text-dark" asp-area="" asp-controller="AccountCharacters"
-                                        asp-action="Details" asp-route-id="@characterId">@characterName</a>
+                                        asp-action="Details"
+                                        asp-route-id="@currentCharacter.Charid">@currentCharacter.Charname</a>
                                 }
                                 <a class="nav-link text-dark py-1 px-2" asp-area="" asp-controller="AccountCharacters"
                                     asp-action="Index" title="Character Select"><i class="bi bi-person-circle fs-4"></i></a>

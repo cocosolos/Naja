@@ -10,7 +10,7 @@
 }
 
 @{
-    var characterId = AccountService.GetCharacterId();
+    var currentCharacter = await AccountService.GetCurrentCharacter();
 }
 
 <h1 class="text-center">Select Character</h1>
@@ -41,6 +41,10 @@
         {
             <tr>
                 <td>
+                    @if (item.Character.Gmlevel > 0)
+                    {
+                        <img src="/images/gm-icon.png" title="This character is a GM." />
+                    }
                     <b>@item.Character.Charname</b>
                 </td>
                 <td>
@@ -57,7 +61,7 @@
                     @item.Character.Timecreated
                 </td>
                 <td>
-                    @if (item.Character.Charid == characterId)
+                    @if (currentCharacter != null && item.Character.Charid == currentCharacter.Charid)
                     {
                         <i class="bi bi-check-lg text-success align-middle" style="font-size: 1.5rem;"></i>
                     }

@@ -42,8 +42,8 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
 
 builder.Services.AddSingleton<XmlService>();
 builder.Services.AddSingleton<IClientResourcesService, ClientResourcesService>();
-builder.Services.AddTransient<IAccountService, AccountService>();
-builder.Services.AddScoped<CharacterService>();
+builder.Services.AddScoped<IAccountService, AccountService>();
+builder.Services.AddScoped<ICharacterService, CharacterService>();
 builder.Services.AddScoped<IItemService, ItemService>();
 builder.Services.AddScoped<IChatService, ChatService>();
 

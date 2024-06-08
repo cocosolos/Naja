@@ -6,9 +6,9 @@ namespace Naja.Services;
 public interface IAccountService
 {
     uint? GetAccountId();
-    uint? GetCharacterId();
-    string? GetCharacterName();
-    Task<ICollection<Naja.Models.External.Char>?> GetCharacters();
+    uint? GetCurrentCharacterId();
+    Task<Models.External.Char?> GetCurrentCharacter();
+    Task<ICollection<Models.External.Char>?> GetCharacters();
 }
 
 public class AccountService : IAccountService
@@ -55,7 +55,7 @@ public class AccountService : IAccountService
         return null;
     }
 
-    public uint? GetCharacterId()
+    public uint? GetCurrentCharacterId()
     {
         var characterIdClaim = _httpContextAccessor.HttpContext?.User.FindFirst("CharacterId")?.Value;
         if (uint.TryParse(characterIdClaim, out uint characterId))
@@ -65,9 +65,13 @@ public class AccountService : IAccountService
         return null;
     }
 
-    public string? GetCharacterName()
+    public async Task<Models.External.Char?> GetCurrentCharacter()
     {
-        return _httpContextAccessor.HttpContext?.User.FindFirst("CharacterName")?.Value;
+        var characterId = GetCurrentCharacterId();
+        return await _context.Chars
+                .Where(c => c.Charid == characterId)
+                .AsNoTracking()
+                .FirstOrDefaultAsync();
     }
 
     public async Task<ICollection<Naja.Models.External.Char>?> GetCharacters()
@@ -79,4 +83,6 @@ public class AccountService : IAccountService
                 .AsNoTracking()
                 .FirstOrDefaultAsync();
     }
+
+
 }
