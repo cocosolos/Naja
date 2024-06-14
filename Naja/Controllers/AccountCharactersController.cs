@@ -117,14 +117,16 @@ namespace Naja
                 return NotFound();
             }
 
-            var accountId = _accountService.GetAccountId();
-            if (accountId == null)
+            var characters = await _accountService.GetCharacters();
+            if (characters?.Where(c => c.Charid == id).FirstOrDefault() == null)
             {
                 return Unauthorized();
             }
 
-            var characters = await _accountService.GetCharacters();
-            var character = characters?.Where(c => c.Charid == id).FirstOrDefault();
+            var character = _context.Chars
+                .Include(c => c.Inventory)
+                .ThenInclude(i => i.Item)
+                .FirstOrDefault(c => c.Charid == id);
             if (character == null)
             {
                 return NotFound();
@@ -135,7 +137,8 @@ namespace Naja
                 Character = character,
                 ZoneName = _clientResourceService.GetAttribute("zones", character.PosZone, "en"),
                 NationName = _clientResourceService.GetAttribute("regions", character.Nation, "en"),
-                NationImageUrl = _characterService.GetNationImageUrl(character.Nation)
+                NationImageUrl = _characterService.GetNationImageUrl(character.Nation),
+                Gil = _characterService.GetGil(character.Charid)
             };
 
             return View(viewModel);

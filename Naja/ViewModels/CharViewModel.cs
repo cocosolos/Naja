@@ -6,4 +6,5 @@ public class CharViewModel
     public string? ZoneName { get; set; }
     public string? NationName { get; set; }
     public string? NationImageUrl { get; set; }
+    public uint? Gil { get; set; }
 }

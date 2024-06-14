@@ -41,11 +41,14 @@
         {
             <tr>
                 <td>
-                    @if (item.Character.Gmlevel > 0)
-                    {
-                        <img src="/images/gm-icon.png" title="This character is a GM." />
-                    }
-                    <b>@item.Character.Charname</b>
+                    <a class="nav-link text-dark" asp-area="" asp-controller="AccountCharacters" asp-action="Details"
+                        asp-route-id="@item.Character.Charid">
+                        @if (item.Character.Gmlevel > 0)
+                        {
+                            <img src="/images/gm-icon.png" title="This character is a GM." />
+                        }
+                        <b>@item.Character.Charname</b>
+                    </a>
                 </td>
                 <td>
                     <img src="@item.NationImageUrl" alt="@item.NationName" />

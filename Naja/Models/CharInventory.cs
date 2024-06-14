@@ -10,5 +10,5 @@ public partial class CharInventory
     public required Char Character { get; set; }
 
     [ForeignKey("ItemId")]
-    public required ItemBasic ItemBasic { get; set; }
+    public required ItemBasic Item { get; set; }
 }
