@@ -1,4 +1,4 @@
-﻿@using Naja.Services
+@using Naja.Services
 
 @inject IAccountService AccountService
 
@@ -61,8 +61,13 @@
                                 @if (currentCharacter != null)
                                 {
                                     <a class="nav-link text-dark" asp-area="" asp-controller="AccountCharacters"
-                                        asp-action="Details"
-                                        asp-route-id="@currentCharacter.Charid">@currentCharacter.Charname</a>
+                                        asp-action="Details" asp-route-id="@currentCharacter.Charid">
+                                        @if (currentCharacter.Gmlevel > 0)
+                                        {
+                                            <img src="~/images/gm-icon.png" title="This character is a GM." />
+                                        }
+                                        @currentCharacter.Charname
+                                    </a>
                                 }
                                 <a class="nav-link text-dark py-1 px-2" asp-area="" asp-controller="AccountCharacters"
                                     asp-action="Index" title="Character Select"><i class="bi bi-person-circle fs-4"></i></a>

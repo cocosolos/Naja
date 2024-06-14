@@ -80,6 +80,7 @@ public class ChatService : IChatService
                     else if (op == AutoTranslateOp.Item)
                     {
                         autoString = _clientResourceService.GetAttribute("items", id, "en");
+                        // TODO: Come up with a way to convey that this is an item without including the HTML here. Handle linking in the view script section.
                         result.Append($"{(char)message[i]}<a href=\"/Items/Details/{id}\" class=\"text-reset\">{autoString}</a>{(char)message[i + 5]}");
                     }
                     else if (op == AutoTranslateOp.KeyItem)

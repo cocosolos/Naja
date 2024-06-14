@@ -251,8 +251,8 @@ public class ItemService : IItemService
         }
 
         item.BazaarStock = await _context.CharInventories
-            .Include(c => c.Char)
-            .Where(i => i.ItemId == id && i.Bazaar > 0 && i.Char.AccountsSession != null)
+            .Include(c => c.Character)
+            .Where(i => i.ItemId == id && i.Bazaar > 0 && i.Character.AccountsSession != null)
             .OrderBy(i => i.Bazaar)
             .AsNoTracking()
             .ToListAsync();

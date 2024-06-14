@@ -7,7 +7,7 @@ namespace Naja.Models.External;
 public partial class CharInventory
 {
     [ForeignKey("Charid")]
-    public required Char Char { get; set; }
+    public required Char Character { get; set; }
 
     [ForeignKey("ItemId")]
     public required ItemBasic ItemBasic { get; set; }

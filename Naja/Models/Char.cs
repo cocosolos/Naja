@@ -11,4 +11,7 @@ public partial class Char
 
     [ForeignKey("Charid")]
     public AccountsSession? AccountsSession { get; set; }
+
+    [InverseProperty("Character")]
+    public ICollection<CharInventory> Inventory { get; set; } = new List<CharInventory>();
 }

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Naja.ViewModels.ChatViewModel>
+@model IEnumerable<Naja.ViewModels.ChatViewModel>
 
 @using Naja.Services
 
@@ -22,7 +22,7 @@
                         <a class="bi bi-trash-fill text-danger" asp-action="Delete" asp-route-id="@item.Chat.LineId"></a>
                     }
                     <span class="opacity-50 text-info">@($"{item.Chat.Speaker}: ")</span><span
-                        data-chat-message="@item.Message"></span>
+                        data-chat-message="@item.Message">@item.Message</span>
                 </td>
             </tr>
         }
@@ -37,6 +37,7 @@
                 var elements = document.querySelectorAll('[data-chat-message]');
 
                 elements.forEach(function (element) {
+                    element.innerHTML = '';
                     var message = element.getAttribute('data-chat-message');
                     var bracketCount = 0;
                     var translateString;
