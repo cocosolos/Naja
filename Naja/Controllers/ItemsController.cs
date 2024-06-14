@@ -32,7 +32,7 @@ namespace Naja.Controllers
 
             if (!String.IsNullOrEmpty(search))
             {
-                items = items.Where(s => s.Name.Contains(search.Replace("_", " ")) || s.Sortname.Contains(search.Replace("_", " ")));
+                items = items.Where(s => s.Name.Contains(search.Replace(" ", "_")) || s.Sortname.Contains(search.Replace(" ", "_")));
             }
 
             // items = items.Select(item => new ItemViewModel

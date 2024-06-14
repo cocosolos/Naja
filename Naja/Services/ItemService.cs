@@ -21,32 +21,9 @@ public interface IItemService
 public class ItemService : IItemService
 {
     private readonly XidbContext _context;
+    private readonly IClientResourcesService _clientResourcesService;
 
-    private static readonly Dictionary<int, string> JobMappings = new Dictionary<int, string>
-    {
-        {  0, "WAR" },
-        {  1, "MNK" },
-        {  2, "WHM" },
-        {  3, "BLM" },
-        {  4, "RDM" },
-        {  5, "THF" },
-        {  6, "PLD" },
-        {  7, "DRK" },
-        {  8, "BST" },
-        {  9, "BRD" },
-        { 10, "RNG" },
-        { 11, "SAM" },
-        { 12, "NIN" },
-        { 13, "DRG" },
-        { 14, "SMN" },
-        { 15, "BLU" },
-        { 16, "COR" },
-        { 17, "PUP" },
-        { 18, "DNC" },
-        { 19, "SCH" },
-        { 20, "GEO" },
-        { 21, "RUN" }
-    };
+    public const int AllJobs = 0x3FFFFF;
 
     private static readonly Dictionary<int, string> FlagMappings = new Dictionary<int, string>
     {
@@ -66,50 +43,6 @@ public class ItemService : IItemService
         { 0x2000, "No Delivery" },
         { 0x4000, "EX" },
         { 0x8000, "Rare" }
-    };
-
-    private static readonly Dictionary<int, string> SlotMappings = new Dictionary<int, string>
-    {
-        { 0, "Main" },
-        { 1, "Sub" },
-        { 2, "Ranged" },
-        { 3, "Ammo" },
-        { 4, "Head" },
-        { 5, "Body" },
-        { 6, "Hands" },
-        { 7, "Legs" },
-        { 8, "Feet" },
-        { 9, "Neck" },
-        { 10, "Waist" },
-        { 11, "Earring1" },
-        { 12, "Earring2" },
-        { 13, "Ring1" },
-        { 14, "Ring2" },
-        { 15, "Back" }
-    };
-
-    private static readonly Dictionary<int, string> SkillMappings = new Dictionary<int, string>
-    {
-        { 0, "None" },
-        { 1, "Hand To Hand" },
-        { 2, "Dagger" },
-        { 3, "Sword" },
-        { 4, "Great Sword" },
-        { 5, "Axe" },
-        { 6, "Great Axe" },
-        { 7, "Scythe" },
-        { 8, "Polearm" },
-        { 9, "Katana" },
-        { 10, "Great Katana" },
-        { 11, "Club" },
-        { 12, "Staff" },
-        { 25, "Archery" },
-        { 26, "Marksmanship" },
-        { 27, "Throwing" },
-        { 41, "String Instrument" },
-        { 42, "Wind Instrument" },
-        { 45, "Handbell" },
-        { 48, "Fishing" }
     };
 
     private static readonly Dictionary<byte, string> AHMappings = new Dictionary<byte, string>
@@ -180,9 +113,10 @@ public class ItemService : IItemService
         { 65, "Others ➞ Misc. 3" }
     };
 
-    public ItemService(XidbContext context)
+    public ItemService(XidbContext context, IClientResourcesService clientResourcesService)
     {
         _context = context;
+        _clientResourcesService = clientResourcesService;
     }
 
     public async Task<ItemViewModel?> GetItemViewModel(ushort id)
@@ -267,20 +201,25 @@ public class ItemService : IItemService
 
     public List<string> GetJobs(uint jobs)
     {
-        if (jobs == 0)
+        if (jobs == AllJobs)
+        {
+            return new List<string> { "All Jobs" };
+        }
+        else if (jobs == 0)
+        {
             return new List<string> { "None" };
+        }
 
         var appliedJobs = new List<string>();
 
-        foreach (var job in JobMappings)
+        for (var i = 0; i < 22; ++i)
         {
-            if ((jobs & (uint)Math.Pow(2, job.Key)) != 0)
+            if ((jobs & (uint)Math.Pow(2, i)) != 0)
             {
-                appliedJobs.Add(job.Value);
+                appliedJobs.Add(_clientResourcesService.GetAttribute("jobs", (ushort)(i + 1), "ens"));
             }
         }
-
-        return appliedJobs.Count == JobMappings.Count ? new List<string> { "All Jobs" } : appliedJobs;
+        return appliedJobs;
     }
 
     public List<string> GetFlags(ushort flags)
@@ -302,15 +241,17 @@ public class ItemService : IItemService
     {
 
         if (slotFlags == 0)
+        {
             return new List<string>(["None"]);
+        }
 
         var validSlots = new List<string>();
 
-        foreach (var slot in SlotMappings)
+        for (var i = 0; i < 16; ++i)
         {
-            if ((slotFlags & (uint)Math.Pow(2, slot.Key)) != 0)
+            if ((slotFlags & (uint)Math.Pow(2, i)) != 0)
             {
-                validSlots.Add(slot.Value);
+                validSlots.Add(_clientResourcesService.GetAttribute("slots", (ushort)i, "en"));
             }
         }
 
@@ -319,12 +260,7 @@ public class ItemService : IItemService
 
     public string GetSkill(byte skill)
     {
-        string description = "Unknown";
-        if (SkillMappings.TryGetValue(skill, out string? tempDescription))
-        {
-            description = tempDescription!;
-        }
-        return description;
+        return _clientResourcesService.GetAttribute("skills", skill, "en");
     }
 
     public string? GetAhCategory(byte AH)
