@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 using Naja.Models.External;
@@ -27,11 +21,24 @@ namespace Naja
         }
 
         // GET: Yells
-        public async Task<IActionResult> Index(int count)
+        public async Task<IActionResult> Index(int? count, int? page)
         {
-            var chats = await _chatService.GetYells(count);
+            var defaultCount = 25;
+            ViewData["count"] = count;
 
-            return View(chats);
+            var chats = _context.AuditChats
+            .Where(c => c.Type == "YELL")
+            .Select(chat => new ChatViewModel
+            {
+                Chat = chat,
+                Message = _chatService.ConvertBlobToString(chat.Message),
+            })
+            .OrderBy(x => x.Chat.Datetime)
+            .AsNoTracking();
+
+            var totalPages = await chats.CountAsync();
+            var lastPage = (int)Math.Ceiling(totalPages / (double)(count ?? defaultCount));
+            return View(await PaginatedList<ChatViewModel>.CreateAsync(chats, page ?? lastPage, count ?? defaultCount));
         }
 
         // GET: Yells/Delete/5
@@ -87,7 +94,7 @@ namespace Naja
             }
 
             await _context.SaveChangesAsync();
-            return RedirectToAction("Index", new { count = 50 });
+            return RedirectToAction("Index");
         }
     }
 }

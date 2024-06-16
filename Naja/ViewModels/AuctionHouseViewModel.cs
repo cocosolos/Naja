@@ -3,7 +3,7 @@ namespace Naja.ViewModels;
 public class AuctionHouseViewModel
 {
     public required uint ItemId { get; set; }
-    public required string SortName { get; set; }
+    public required string DisplayName { get; set; }
     public required byte Quantity { get; set; }
     public required byte Stack { get; set; }
     public required int Stock { get; set; }

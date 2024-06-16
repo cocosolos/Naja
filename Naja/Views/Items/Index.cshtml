@@ -1,6 +1,4 @@
-﻿@model PaginatedList<Naja.Models.External.ItemBasic>
-
-@using Humanizer
+﻿@model PaginatedList<Naja.ViewModels.ItemViewModel>
 
 @{
     ViewData["Title"] = "Items";
@@ -28,7 +26,7 @@
 <table class="table table-bordered border-secondary table-hover table-sm">
     <thead>
         <tr>
-            <th class="bg-secondary bg-opacity-25">
+            <th class="bg-secondary bg-opacity-25 col-sm-2">
                 <a class="text-black" asp-action="Index" asp-route-search="@ViewData["SearchParam"]"
                     asp-route-sort="@ViewData["NameSortParam"]" asp-route-page="@(Model.PageIndex)">
                     Name
@@ -45,22 +43,8 @@
                 </a>
             </th>
             <th class="bg-secondary bg-opacity-25">
-                <a class="text-black" asp-action="Index" asp-route-search="@ViewData["SearchParam"]"
-                    asp-route-sort="@ViewData["SortnameSortParam"]" asp-route-page="@(Model.PageIndex)">
-                    Sort Name
-                    @{
-                        if (sortParam == "sortname")
-                        {
-                            <i class="bi bi-caret-up-fill"></i>
-                        }
-                        else if (sortParam == "sortname_desc")
-                        {
-                            <i class="bi bi-caret-down-fill"></i>
-                        }
-                    }
-                </a>
+                Description
             </th>
-            <th class="bg-secondary bg-opacity-25"></th>
         </tr>
     </thead>
     <tbody>
@@ -69,13 +53,12 @@
         {
             <tr>
                 <td>
-                    @item.Name.Replace("_", " ")
+                    <a asp-action="Details" asp-route-id="@item.Basic.Itemid" title="@item.Basic.Name">
+                        @item.DisplayName
+                    </a>
                 </td>
                 <td>
-                    @item.Sortname.Replace("_", " ")
-                </td>
-                <td class="col-sm-1 text-center">
-                    <a class="btn btn-primary btn-sm py-0" asp-action="Details" asp-route-id="@item.Itemid">Details</a>
+                    @item.Description
                 </td>
             </tr>
         }

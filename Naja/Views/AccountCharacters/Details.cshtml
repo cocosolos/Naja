@@ -4,10 +4,10 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<h1>@Model.Character.Charname</h1>
 
 <div>
-    <h4>@Model.Character.Charname</h4>
+    <h5>@Model.Title</h5>
     <hr />
     <p>Gil: @String.Format("{0:n0}", Model.Gil)g</p>
     <table class="table table-bordered border-secondary table-sm">
@@ -17,24 +17,30 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var item in Model.Character.Inventory)
+            @foreach (var item in Model.Inventory)
             {
-                @if (item.ItemId != 65535) @* gil *@
+                @if (item.Inventory.ItemId != 65535) @* gil *@
                 {
                     <tr>
                         <td>
-                            <a asp-action="Details" asp-controller="Items" asp-route-id="@item.ItemId">
-                                @item.Item.Sortname.Replace("_", " ")
+                            <a asp-action="Details" asp-controller="Items" asp-route-id="@item.Inventory.ItemId">
+                                @item.DisplayName
                             </a>
-                            @if (item.Quantity > 1)
+                            @if (item.Inventory.Quantity > 1)
                             {
-                                @($"x{item.Quantity}")
+                                @($"x{item.Inventory.Quantity}")
                             }
-                            @if (item.Signature != "")
+                            @if (item.Inventory.Signature != "")
                             {
-                                @($"[{item.Signature}]")
+                                @($"[{item.Inventory.Signature}]")
                             }
                         </td>
+                        @if (Model.Character.Session == null)
+                        {
+                            <td class="col-sm-1 text-center">
+                                <a class="btn btn-danger btn-sm py-0" @*asp-action="Delete" asp-route-id="@item.Itemid"*@>Drop</a>
+                            </td>
+                        }
                     </tr>
                 }
             }

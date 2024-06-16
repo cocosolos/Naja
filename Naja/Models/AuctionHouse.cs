@@ -7,5 +7,5 @@ namespace Naja.Models.External;
 public partial class AuctionHouse
 {
     [ForeignKey("Itemid")]
-    public required ItemBasic ItemBasic { get; set; }
+    public required ItemBasic Item { get; set; }
 }

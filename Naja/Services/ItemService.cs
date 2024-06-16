@@ -125,6 +125,7 @@ public class ItemService : IItemService
             .Where(b => b.Itemid == id)
             .Select(b => new ItemViewModel
             {
+                DisplayName = _clientResourcesService.GetAttribute("items", b.Itemid, "en"),
                 Basic = b,
                 Equipment = b.ItemEquipment,
                 Weapon = b.ItemEquipment != null ? b.ItemEquipment.ItemWeapon : null,
@@ -140,8 +141,6 @@ public class ItemService : IItemService
             return null;
         }
 
-        item.Basic.Name = item.Basic.Name.Replace("_", " "); //.ToTitleCaseWithRomanNumerals(),
-        item.Basic.Sortname = item.Basic.Sortname.Replace("_", " "); //.ToTitleCaseWithRomanNumerals(),
         item.Basic.ListFlags = GetFlags(item.Basic.Flags);
         item.Basic.Sellable = GetSellable(item.Basic.Flags);
 
@@ -165,6 +164,7 @@ public class ItemService : IItemService
             item.AuctionHouseHistory = await _context.AuctionHouses
                 .Where(ah => ah.Itemid == id && ah.SellDate != 0)
                 .OrderByDescending(ah => ah.Date)
+                .Take(25)
                 .AsNoTracking()
                 .ToListAsync();
 
@@ -186,7 +186,7 @@ public class ItemService : IItemService
 
         item.BazaarStock = await _context.CharInventories
             .Include(c => c.Character)
-            .Where(i => i.ItemId == id && i.Bazaar > 0 && i.Character.AccountsSession != null)
+            .Where(i => i.ItemId == id && i.Bazaar > 0 && i.Character.Session != null)
             .OrderBy(i => i.Bazaar)
             .AsNoTracking()
             .ToListAsync();

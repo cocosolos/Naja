@@ -9,9 +9,7 @@ public partial class Char
     [ForeignKey("Accid")]
     public required Account Account { get; set; }
 
-    [ForeignKey("Charid")]
-    public AccountsSession? AccountsSession { get; set; }
-
-    [InverseProperty("Character")]
-    public ICollection<CharInventory> Inventory { get; set; } = new List<CharInventory>();
+    public AccountsSession? Session { get; set; }
+    public required CharStat Stats { get; set; }
+    public required ICollection<CharInventory> Inventory { get; set; } = new List<CharInventory>();
 }

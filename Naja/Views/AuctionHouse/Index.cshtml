@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Naja.ViewModels.AuctionHouseViewModel>
+﻿@model PaginatedList<Naja.ViewModels.AuctionHouseViewModel>
 
 @{
     ViewData["Title"] = "Auction House";
@@ -19,7 +19,7 @@
             <tr>
                 <td>
                     <a asp-action="Details" asp-controller="Items" asp-route-id="@group.ItemId">
-                        @Html.DisplayFor(g => group.SortName)
+                        @group.DisplayName
                     </a>
                     @if (group.Stack == 1)
                     {
@@ -33,3 +33,22 @@
         }
     </tbody>
 </table>
+
+@{
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+}
+<div class="text-center">
+    <a asp-action="Index" asp-route-page="1" class="btn btn-default @prevDisabled">
+        First
+    </a>
+    <a asp-action="Index" asp-route-page="@(Model.PageIndex - 1)" class="btn btn-default @prevDisabled">
+        Previous
+    </a>
+    <a asp-action="Index" asp-route-page="@(Model.PageIndex + 1)" class="btn btn-default @nextDisabled">
+        Next
+    </a>
+    <a asp-action="Index" asp-route-page="@(Model.TotalPages)" class="btn btn-default @nextDisabled">
+        Last
+    </a>
+</div>

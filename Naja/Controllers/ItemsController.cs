@@ -12,10 +12,13 @@ namespace Naja.Controllers
     {
         private readonly XidbContext _context;
         private readonly IItemService _itemService;
-        public ItemsController(XidbContext context, IItemService itemService)
+        private readonly IClientResourcesService _clientResourcesService;
+
+        public ItemsController(XidbContext context, IItemService itemService, IClientResourcesService clientResourcesService)
         {
             _context = context;
             _itemService = itemService;
+            _clientResourcesService = clientResourcesService;
         }
 
         // GET: Items
@@ -26,45 +29,37 @@ namespace Naja.Controllers
             ViewData["CurrentSort"] = sort;
             ViewData["SearchParam"] = search;
             ViewData["NameSortParam"] = sort == "name" ? "name_desc" : sort == "name_desc" ? "" : "name";
-            ViewData["SortnameSortParam"] = sort == "sortname" ? "sortname_desc" : sort == "sortname_desc" ? "" : "sortname";
 
-            var items = _context.ItemBasics.Select(item => item);
+            var items = _context.ItemBasics.Select(item => new ItemViewModel
+            {
+                Basic = item,
+                DisplayName = _clientResourcesService.GetAttribute("items", item.Itemid, "en"),
+                Description = _clientResourcesService.GetAttribute("item_descriptions", item.Itemid, "en"),
+            });
 
             if (!String.IsNullOrEmpty(search))
             {
-                items = items.Where(s => s.Name.Contains(search.Replace(" ", "_")) || s.Sortname.Contains(search.Replace(" ", "_")));
+                search = search.Replace(" ", "_").Replace("'", "");
+                items = items.Where(s => s.Basic.Name.Contains(search) || s.Basic.Sortname.Contains(search));
             }
-
-            // items = items.Select(item => new ItemViewModel
-            // {
-            //     ItemBasic = item.ItemBasic,
-            //     Name = item.Name.ToTitleCaseWithRomanNumerals(),
-            //     SortName = item.SortName.ToTitleCaseWithRomanNumerals(),
-            // });
 
             switch (sort)
             {
                 case "name_desc":
-                    items = items.OrderByDescending(s => s.Name);
+                    items = items.OrderByDescending(s => s.Basic.Sortname);
                     break;
                 case "name":
-                    items = items.OrderBy(s => s.Name);
-                    break;
-                case "sortname_desc":
-                    items = items.OrderByDescending(s => s.Sortname);
-                    break;
-                case "sortname":
-                    items = items.OrderBy(s => s.Sortname);
+                    items = items.OrderBy(s => s.Basic.Sortname);
                     break;
                 case "itemid_desc":
-                    items = items.OrderByDescending(s => s.Itemid);
+                    items = items.OrderByDescending(s => s.Basic.Itemid);
                     break;
                 default:
-                    items = items.OrderBy(s => s.Itemid);
+                    items = items.OrderBy(s => s.Basic.Itemid);
                     break;
             }
             int pageSize = 100;
-            return View(await PaginatedList<ItemBasic>.CreateAsync(items.AsNoTracking(), page ?? 1, pageSize));
+            return View(await PaginatedList<ItemViewModel>.CreateAsync(items.AsNoTracking(), page ?? 1, pageSize));
         }
 
         // GET: Items/Details/5

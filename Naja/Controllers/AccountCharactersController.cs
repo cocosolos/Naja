@@ -126,19 +126,34 @@ namespace Naja
             var character = _context.Chars
                 .Include(c => c.Inventory)
                 .ThenInclude(i => i.Item)
+                .Include(c => c.Session)
+                .Include(c => c.Stats)
                 .FirstOrDefault(c => c.Charid == id);
             if (character == null)
             {
                 return NotFound();
             }
 
+            var inventory = new List<ItemViewModel>();
+            foreach (var item in character.Inventory)
+            {
+                inventory.Add(new ItemViewModel
+                {
+                    Basic = item.Item,
+                    DisplayName = _clientResourceService.GetAttribute("items", item.ItemId, "en"),
+                    Inventory = item
+                });
+            }
+
             var viewModel = new CharViewModel
             {
                 Character = character,
+                Inventory = inventory,
                 ZoneName = _clientResourceService.GetAttribute("zones", character.PosZone, "en"),
                 NationName = _clientResourceService.GetAttribute("regions", character.Nation, "en"),
                 NationImageUrl = _characterService.GetNationImageUrl(character.Nation),
-                Gil = _characterService.GetGil(character.Charid)
+                Gil = _characterService.GetGil(character.Charid),
+                Title = _clientResourceService.GetAttribute("titles", character.Stats.Title, "en")
             };
 
             return View(viewModel);

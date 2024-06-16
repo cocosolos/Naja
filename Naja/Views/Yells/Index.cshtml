@@ -1,4 +1,4 @@
-@model IEnumerable<Naja.ViewModels.ChatViewModel>
+@model PaginatedList<Naja.ViewModels.ChatViewModel>
 
 @using Naja.Services
 
@@ -11,7 +11,20 @@
 
 <h1 class="text-center">Yells</h1>
 
-<table class="table table-sm table-borderless text-danger bg-dark rounded-1">
+<table class="table table-sm table-borderless text-danger bg-dark rounded">
+    <thead>
+        @if (Model.HasPreviousPage)
+        {
+            <tr>
+                <td class="p-0">
+                    <a asp-action="Index" asp-route-page="@(Model.PageIndex - 1)" asp-route-count="@ViewData["count"]"
+                        class="rounded-0 rounded-top btn btn-secondary btn-sm align-top p-0 w-100">
+                        Previous
+                    </a>
+                </td>
+            </tr>
+        }
+    </thead>
     <tbody>
         @foreach (var item in Model)
         {
@@ -21,12 +34,29 @@
                     {
                         <a class="bi bi-trash-fill text-danger" asp-action="Delete" asp-route-id="@item.Chat.LineId"></a>
                     }
-                    <span class="opacity-50 text-info">@($"{item.Chat.Speaker}: ")</span><span
-                        data-chat-message="@item.Message">@item.Message</span>
+                    <span class="opacity-50 text-info">
+                        @($"{item.Chat.Speaker}: ")
+                    </span>
+                    <span data-chat-message="@item.Message">
+                        @item.Message
+                    </span>
                 </td>
             </tr>
         }
     </tbody>
+    <tfoot>
+        @if (Model.HasNextPage)
+        {
+            <tr>
+                <td class="p-0">
+                    <a asp-action="Index" asp-route-page="@(Model.PageIndex + 1)" asp-route-count="@ViewData["count"]"
+                        class="rounded-0 rounded-bottom btn btn-secondary btn-sm align-bottom p-0 w-100">
+                        Next
+                    </a>
+                </td>
+            </tr>
+        }
+    </tfoot>
 </table>
 
 @section Scripts {

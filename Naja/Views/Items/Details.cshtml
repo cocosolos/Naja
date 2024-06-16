@@ -1,19 +1,23 @@
 ﻿@model Naja.ViewModels.ItemViewModel
 
 @{
-    ViewData["Title"] = Model.Basic.Sortname;
+    ViewData["Title"] = Model.DisplayName;
 }
-
 
 <div style="display: flex; align-items: center;">
     <div class="mx-3">
         <img src="https://static.ffxiah.com/images/icon/@($"{Model.Basic.Itemid}.png")" title="@Model.Basic.Name" />
     </div>
-    <div>
-        <h1>@Model.Basic.Sortname</h1>
-        <a href="https://www.ffxiah.com/item/@Model.Basic.Itemid" target="_blank">
-            <img src="~/images/ffxiah.png" alt="FFXIAH" title="FFXIAH" class="align-top" />
-        </a>
+    <div class="mb-2">
+        <h1 class="mb-0">@Model.DisplayName</h1>
+        <div>
+            <a href="https://www.bg-wiki.com/ffxi/@Model.DisplayName" target="_blank">
+                <img src="~/images/bgwiki.png" alt="BG-Wiki" title="BG-Wiki" />
+            </a>
+            <a href="https://www.ffxiah.com/item/@Model.Basic.Itemid" target="_blank">
+                <img src="~/images/ffxiah.png" alt="FFXIAH" title="FFXIAH" />
+            </a>
+        </div>
     </div>
 </div>
 
