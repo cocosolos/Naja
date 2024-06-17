@@ -4,13 +4,22 @@ Naja interfaces with a [LandSandBoat](https://github.com/LandSandBoat/server) se
 
 **Features include:**
 - Live and historical Auction House listings.
-- Online bazaar information.
-- Server Yell chat display.
 - Item lookup and information. [^1]
+- Online bazaar information.
 - Account registration and log in.
 - Character information display.
 - Inventory management. [^2]
+- Server Yell chat display.
 - Yell chat moderation tools. [^3]
+
+![AuctionHouse](https://github.com/cocosolos/Naja/assets/2593549/4ce4b9c9-541e-4240-af88-b63099d362de)
+
+![Items_Details](https://github.com/cocosolos/Naja/assets/2593549/0e17e35f-526f-475e-9240-62df4b9012a3)
+
+![Character_Select](https://github.com/cocosolos/Naja/assets/2593549/15a956ee-9f32-4356-936a-941c03674467)
+
+![Yells_GM](https://github.com/cocosolos/Naja/assets/2593549/aa4fcb43-ecee-42a5-a9fe-bf05d91d7dd3)
+
 
 **Future development goals:**
 - Server status and news display.
