@@ -1,7 +1,7 @@
 ﻿@model Naja.ViewModels.CharViewModel
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Manage Character";
 }
 
 <h1>@Model.Character.Charname</h1>
@@ -10,40 +10,43 @@
     <h5>@Model.Title</h5>
     <hr />
     <p>Gil: @String.Format("{0:n0}", Model.Gil)g</p>
-    <table class="table table-bordered border-secondary table-sm">
-        <thead class="bg-primary text-white text-center">
-            <tr>
-                <th colspan="4">Inventory</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model.Inventory)
-            {
-                @if (item.Inventory.ItemId != 65535) @* gil *@
+    @if (Model.Inventory != null)
+    {
+        <table class="table table-bordered border-secondary table-sm">
+            <thead class="bg-primary text-white text-center">
+                <tr>
+                    <th colspan="4">Inventory</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Inventory)
                 {
-                    <tr>
-                        <td>
-                            <a asp-action="Details" asp-controller="Items" asp-route-id="@item.Inventory.ItemId">
-                                @item.DisplayName
-                            </a>
-                            @if (item.Inventory.Quantity > 1)
-                            {
-                                @($"x{item.Inventory.Quantity}")
-                            }
-                            @if (item.Inventory.Signature != "")
-                            {
-                                @($"[{item.Inventory.Signature}]")
-                            }
-                        </td>
-                        @if (Model.Character.Session == null)
-                        {
-                            <td class="col-sm-1 text-center">
-                                <a class="btn btn-danger btn-sm py-0" @*asp-action="Delete" asp-route-id="@item.Itemid"*@>Drop</a>
+                    @if (item.Inventory != null && item.Inventory.ItemId != 65535) @* gil *@
+                    {
+                        <tr>
+                            <td>
+                                <a asp-action="Details" asp-controller="Items" asp-route-id="@item.Inventory.ItemId">
+                                    @item.DisplayName
+                                </a>
+                                @if (item.Inventory.Quantity > 1)
+                                {
+                                    @($"x{item.Inventory.Quantity}")
+                                }
+                                @if (item.Inventory.Signature != "")
+                                {
+                                    @($"[{item.Inventory.Signature}]")
+                                }
                             </td>
-                        }
-                    </tr>
+                            @if (Model.Character.Session == null)
+                            {
+                                <td class="col-sm-1 text-center">
+                                    <a class="btn btn-danger btn-sm py-0" @*asp-action="Delete" asp-route-id="@item.Itemid"*@>Drop</a>
+                                </td>
+                            }
+                        </tr>
+                    }
                 }
-            }
-        </tbody>
-    </table>
+            </tbody>
+        </table>
+    }
 </div>

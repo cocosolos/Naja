@@ -23,8 +23,12 @@ namespace Naja
         // GET: Yells
         public async Task<IActionResult> Index(int? count, int? page)
         {
+            if (count > 100)
+            {
+                count = 100;
+            }
             var defaultCount = 25;
-            ViewData["count"] = count;
+            ViewData["count"] = count ?? defaultCount;
 
             var chats = _context.AuditChats
             .Where(c => c.Type == "YELL")

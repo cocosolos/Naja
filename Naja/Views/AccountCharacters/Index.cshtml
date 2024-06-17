@@ -6,14 +6,14 @@
 @inject IAccountService AccountService
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Character Select";
 }
 
 @{
     var currentCharacter = await AccountService.GetCurrentCharacter();
 }
 
-<h1 class="text-center">Select Character</h1>
+<h1 class="text-center display-4">Character Select</h1>
 
 <table class="table text-center align-middle">
     <thead>

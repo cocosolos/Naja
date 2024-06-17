@@ -6,26 +6,37 @@
 
 @{
     ViewData["Title"] = "Yells";
+    var count = ViewData["count"];
     var currentCharacter = await AccountService.GetCurrentCharacter();
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
 }
 
-<h1 class="text-center">Yells</h1>
+<h1 class="text-center display-4">Yells</h1>
 
 <table class="table table-sm table-borderless text-danger bg-dark rounded">
     <thead>
-        @if (Model.HasPreviousPage)
-        {
-            <tr>
-                <td class="p-0">
-                    <a asp-action="Index" asp-route-page="@(Model.PageIndex - 1)" asp-route-count="@ViewData["count"]"
-                        class="rounded-0 rounded-top btn btn-secondary btn-sm align-top p-0 w-100">
-                        Previous
-                    </a>
-                </td>
-            </tr>
-        }
+        <tr>
+            <td class="p-0">
+                <a asp-action="Index" asp-route-page="1" asp-route-count="@count"
+                    class="rounded-0 rounded-top btn btn-secondary btn-sm align-top p-0 w-100 border-2 shadow-none @prevDisabled">
+                    Oldest
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td class="p-0">
+                <a asp-action="Index" asp-route-page="@(Model.PageIndex - 1)" asp-route-count="@count"
+                    class="rounded-0 btn btn-secondary btn-sm align-top p-0 w-100 shadow-none @prevDisabled">
+                    Previous
+                </a>
+            </td>
+        </tr>
     </thead>
     <tbody>
+        @{
+            var i = 0;
+        }
         @foreach (var item in Model)
         {
             <tr>
@@ -42,20 +53,31 @@
                     </span>
                 </td>
             </tr>
+            ++i;
+        }
+        @while (i < (int)count)
+        {
+            <tr><td class="py-0 align-middle">&nbsp;</td></tr>
+            ++i;
         }
     </tbody>
     <tfoot>
-        @if (Model.HasNextPage)
-        {
-            <tr>
-                <td class="p-0">
-                    <a asp-action="Index" asp-route-page="@(Model.PageIndex + 1)" asp-route-count="@ViewData["count"]"
-                        class="rounded-0 rounded-bottom btn btn-secondary btn-sm align-bottom p-0 w-100">
-                        Next
-                    </a>
-                </td>
-            </tr>
-        }
+        <tr>
+            <td class="p-0">
+                <a asp-action="Index" asp-route-page="@(Model.PageIndex + 1)" asp-route-count="@count"
+                    class="rounded-0 btn btn-secondary btn-sm align-bottom p-0 w-100 shadow-none @nextDisabled">
+                    Next
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td class="p-0">
+                <a asp-action="Index" asp-route-page="@(Model.TotalPages)" asp-route-count="@count"
+                    class="rounded-0 rounded-bottom btn btn-secondary btn-sm align-bottom p-0 w-100 border-2 shadow-none @nextDisabled">
+                    Newest
+                </a>
+            </td>
+        </tr>
     </tfoot>
 </table>
 
